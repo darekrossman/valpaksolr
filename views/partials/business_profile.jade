@@ -1,0 +1,33 @@
+div#listing-detail
+
+  div
+    img.business-logo(ng-src="http://vptst.valpak.com/img/print/{{profile.logoImageFileName}}")
+    h1.business-name {{profile.profileVO.bpp.bppName | titleCase}}
+
+    div.business-detail
+      p {{profile.selectedAddressOffer.asSingleString}}
+
+      div.business-socialshares
+        span.icon-facebook-circled
+        span.icon-twitter-circled
+        span.icon-pinterest-circled
+        span.icon-gplus-circled
+
+    div.business-map(gmap)
+
+    div.business-photos
+      div(ng-repeat="image in profile.profileVO.bpp.photos.images")
+        img(ng-src="http://vptst.valpak.com/img/bpp/{{image.fileName}}")
+
+
+    p.marketing-message
+      | Bacon ipsum dolor sit amet capicola turducken turkey ball tip, filet mignon boudin tenderloin prosciutto salami short loin strip steak. Venison bresaola strip steak, pork belly leberkas kielbasa prosciutto t-bone capicola turkey. Salami pig swine t-bone pastrami venison beef meatloaf corned beef.
+
+
+
+  //- Main content area
+  div
+
+    ul.plain
+      li(ng-repeat="listing in profile.selectedAddressOffer.couponOffers", class="listing-detail")
+        div(coupontile_detail, type="tile_detail")

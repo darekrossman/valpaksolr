@@ -1,0 +1,41 @@
+img(ng-show="listingFilter.loading", class="loader", src="/img/progress.gif")
+
+div#listings-layout
+
+  //- Sidebar
+  include listings_sidebar
+
+  //- Results List
+  div#maincolumn
+    div.listings-header
+      button.closeDeviceMenu.icon-cancel-squared(onclick="closeDeviceMenu()")
+      h3 {{listingFilter.resultsLabel | titleCase}}
+
+      button.toggle-menu.icon-menu(ng-click="toggleDeviceNav()")
+
+      div.sorted-by
+        ul.plain
+          li
+            a(ng-href="#")
+              span.icon-down-dir Sorted by Distance
+          li
+            a(ng-href="#")
+              span.icon-down-dir Within 25 Miles
+          li
+            a#print-coupon.off-link(ng-href="#")
+              span.icon-print 0
+
+    ul.plain
+      li(ng-repeat="listing in couponListings", ng-show="listingFilter.lists.vpPrintable", class="listing")
+        div(coupontile, type="tile_basic")
+
+      li(ng-repeat="listing in groceryListings", ng-show="listingFilter.lists.grocery", class="listing")
+        div(coupontile_grocery, type="tile_basic")
+
+
+      li(ng-repeat="listing in dealsListings", ng-show="listingFilter.lists.deals", class="listing")
+        div(coupontile_deal, type="tile_basic")
+
+
+      li(ng-repeat="listing in sdcListings", ng-show="listingFilter.lists.sdc", class="listing")
+        div(coupontile_sdc, type="tile_basic")

@@ -1,0 +1,74 @@
+#listing-detail
+  clearfix()
+  width: 1240px
+  margin: 70px auto
+
+  & > div:nth-child(1)
+    column(4)
+    width: 480px
+    padding: 20px
+    box-sizing: border-box
+    margin: 0
+    background: #FFF
+    font-size: 13px
+
+    .business-name
+      font-weight: 100
+      margin: 0 0 .2em 0
+      font-size: 2.4em
+      line-height: 1em
+
+    .business-logo
+      width: 60px
+      height: auto
+      float: left
+      margin: 0 20px 0 0
+
+    .business-detail
+      overflow: hidden
+      p
+        margin: 0
+        line-height: 1.5em
+
+      .business-socialshares
+        margin-top: 6px
+        margin-left: -4px;
+        font-size: 20px
+        color: #444
+
+
+    .media
+      margin: 0
+
+    .business-photos
+      clearfix()
+      & > div
+        width: 24%
+        margin-right: 1%
+        height: 66px
+        overflow: hidden
+        float: left
+        img
+          max-width: 100%
+          max-height: 100%
+
+    .marketing-message
+      font-size: 13px
+      color: #777
+      line-height: 1.6em
+      margin-bottom: 20px
+
+    .business-map
+      margin: 16px -20px !important
+      width: 480px !important
+      border-top: 1px solid #DDD
+      border-bottom: 1px solid #DDD
+
+  & > div:nth-child(2)
+    column(8)
+    width: 740px
+    margin: 0 0 0 20px
+
+
+
+

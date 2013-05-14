@@ -1,0 +1,26 @@
+div
+
+  div.media
+
+    div.media-img
+      img(ng-src="{{getLogoSrc()}}")
+
+    div.media-body
+      h5.tile-businessname {{listing.businessName | titleCase}}
+      p.tile-offertext {{listing.selectedDetail.offerText}}
+
+  div.tile-dealdetail
+    div.col-mini.col-divider-r.
+      <p><span class="highlight-heavy">{{listing.buyNowValueFormatted}}</span><br>Value</p>
+    div.col-mini.col-divider-r.
+      <p><span class="highlight-heavy">{{listing.buyNowSavings}}</span><br>Savings</p>
+    div.col-mini.
+      <p><span class="highlight-heavy">{{listing.buyNowDiscount}}</span><br>Discount</p>
+
+  footer
+    div.tile-location-detail
+      //p.tile-address {{listing.selectedDetail.asSingleString}}
+      p.tile-distance {{listing.selectedDetail.formattedDist}} miles away
+
+
+    a.btn.btn-green(ng-href="/listing/profile/{{listing.selectedDetail.bppId}}") Get Deal

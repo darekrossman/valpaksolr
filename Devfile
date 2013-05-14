@@ -1,0 +1,7 @@
+all 'run', 'public/js'
+
+task 'run', 'web.js', ->
+    exec "nodemon web.js"
+
+task 'public/js', 'public/js/coffee', ->
+    exec "coffee -o public/js/build -cw public/js/coffee/"

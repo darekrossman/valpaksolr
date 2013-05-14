@@ -1,0 +1,25 @@
+extends layout
+
+block content
+
+  include /partials/listings_sidebar
+
+  div.body-wrap
+
+    header
+      div.header-box
+        a(href="/welcome/foo")
+          img.app-logo(src="img/valpak-logo.svg")
+
+        script
+          function closeDeviceMenu() {
+            $('.body-wrap').removeClass('slideOutRight')
+          }
+
+
+        form#solr-search.search(ng-controller="SearchController", ng-submit="queryKeyword()")
+          input.search-input(autofocus, name="q", placeholder="Search by keyword", ng-model="listingFilter.searchText")
+          button.submit.icon-search(type="submit")
+
+    div#container
+      div(ng-view)

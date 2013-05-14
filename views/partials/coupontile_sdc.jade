@@ -1,0 +1,13 @@
+div
+
+  div.media
+
+    div.media-img
+      img(ng-src="{{getLogoSrc()}}")
+
+    div.media-body
+      h5.tile-businessname {{listing.businessName | titleCase}}
+      p.tile-offertext {{listing.title}}
+
+  footer
+    a.btn(ng-href="{{listing.dealURL}}") Gimme!

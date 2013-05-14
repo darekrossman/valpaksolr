@@ -1,0 +1,17 @@
+div
+
+  div.media
+
+    div.media-img
+      img(ng-src="{{getLogoSrc()}}")
+
+    div.media-body
+      h5.tile-businessname {{listing.businessName | titleCase}}
+      p.tile-offertext {{listing.selectedDetail.offerText}}
+
+  footer
+    div.tile-location-detail
+      //- p.tile-address {{listing.selectedDetail.asSingleString}}
+      p.tile-distance {{listing.selectedDetail.formattedDist}} miles away
+
+    a.btn(ng-href="/listing/profile/{{listing.selectedDetail.bppId}}") Gimme!

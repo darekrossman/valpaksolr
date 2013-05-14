@@ -1,0 +1,14 @@
+div
+
+  div.media
+
+    div.media-img
+      img(ng-src="{{getLogoSrc()}}")
+
+    div.media-body
+      h5.tile-businessname {{listing.businessName | titleCase}}
+      p.tile-offertext {{listing.selectedDetail.offerText}}
+
+
+  footer
+    a.btn(ng-href="/listing/profile/{{listing.selectedDetail.bppId}}") Print It
