@@ -68,11 +68,14 @@ angular.module('app.directives', [])
             }]
 
   .directive 'slidemenuToggle', (ListingFilter) ->
-    template: 'MENU'
+    scope: {
+      slidemenuActive: ListingFilter.slidemenuActive
+    }
     link: (scope, element, attrs) ->
       element.bind 'click', () ->
-        ListingFilter.slidemenuActive = !ListingFilter.slidemenuActive
-        console.log(ListingFilter)
+        scope.$apply(
+          slidemenuActive = !slidemenuActive
+        )
 
 
 

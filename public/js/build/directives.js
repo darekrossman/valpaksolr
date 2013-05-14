@@ -60,11 +60,14 @@
     };
   }).directive('slidemenuToggle', function(ListingFilter) {
     return {
-      template: 'MENU',
+      scope: {
+        slidemenuActive: ListingFilter.slidemenuActive
+      },
       link: function(scope, element, attrs) {
         return element.bind('click', function() {
-          ListingFilter.slidemenuActive = !ListingFilter.slidemenuActive;
-          return console.log(ListingFilter);
+          var slidemenuActive;
+
+          return scope.$apply(slidemenuActive = !slidemenuActive);
         });
       }
     };
