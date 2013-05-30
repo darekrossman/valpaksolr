@@ -1,0 +1,16 @@
+div(scroll-view)
+
+  div(loader, ng-class="{hide: !listingFilter.loading}") Happy saving, saver!
+
+  ul(ng-class="listingFilter.layoutOption")
+    li(ng-repeat="listing in couponListings", ng-show="listingFilter.lists.vpPrintable", class="listing")
+      div(coupontile, type="printable")
+
+    li(ng-repeat="listing in groceryListings", ng-show="listingFilter.lists.grocery", class="listing")
+      div(coupontile, type="grocery")
+
+    li(ng-repeat="listing in dealsListings", ng-show="listingFilter.lists.deals", class="listing")
+      div(coupontile, type="deals")
+
+    li(ng-repeat="listing in sdcListings", ng-show="listingFilter.lists.sdc", class="listing")
+      div(coupontile, type="sdc")

@@ -1,0 +1,93 @@
+tile-columns = 3
+
+.transition1
+  transition all .2s ease-out !important
+  -webkit-backface-visibility hidden
+
+.no-touch .tile
+  transition transform .4s ease-out, background .3s, opacity, .4s
+
+.tile
+  -webkit-backface-visibility hidden
+  clearfix()
+  z-index 2
+  background gray(18)
+  position relative
+  border-radius 2px
+  min-height: 70px
+
+  &.scroll-below
+    transform translateZ(-10px) rotateX(-30deg)
+    transform-origin top left
+
+  &.scroll-above
+    transform translateZ(-10px) rotateX(30deg)
+    transform-origin bottom left
+
+.grid
+  margin 20px
+  .tile
+    width (100% / tile-columns)
+    height 150px
+    margin 0
+    padding 10px
+    float left
+    border-color gray(20)
+    border-width 0px
+    border-style dashed
+
+    border-right-width 1px
+    border-bottom-width 1px
+
+    .tile-logo
+      width 70px
+
+    .btn
+      button()
+
+
+.list
+  // margin 20px
+  .tile
+    margin 0
+    padding 12px
+
+    border-color gray(20)
+    border-width 0px
+    border-style dashed
+
+    border-bottom-width 1px
+
+    .tile-logo
+      width 60px
+
+    .btn
+      button()
+      float right
+      display none
+
+    .tile-businessname
+      font-weight: 700
+      font-size: 13px
+      margin-bottom: .3em
+
+    .tile-offertext
+      font-size: 18px
+      font-weight: 400
+      line-height: 1.5em
+
+
+    .tile-distance
+      font-size: 12px
+      color gray(50)
+      line-height 1.5em
+
+.scroll-visible
+  z-index 3
+  opacity 1
+  transform translateZ(0) rotateX(0)
+  background #FFF
+
+
+
+
