@@ -4,50 +4,80 @@
 
   module = angular.module('app.controllers', []);
 
+  module.controller('AppController', [
+    '$scope', 'ListingFilter', function($scope, ListingFilter) {
+      return $scope.listingFilter = ListingFilter;
+    }
+  ]);
+
   module.controller('HomeController', ['$scope', function($scope) {}]);
+
+  module.controller('ToolbarController', [
+    '$scope', '$route', 'ListingFilter', function($scope, $route, ListingFilter) {
+      $scope.layout = ListingFilter.layoutOption;
+      if ($route.current.params.keywords) {
+        ListingFilter.resultsLabel = "Showing results for: '" + $route.current.params.keywords + "'";
+      } else {
+        ListingFilter.resultsLabel = $route.current.params.cat;
+      }
+      return $scope.setLayout = function(layout) {
+        ListingFilter.layoutOption = layout;
+        $scope.layout = layout;
+        return localStorage.setItem('layout_option', layout);
+      };
+    }
+  ]);
 
   module.controller('SearchController', [
     '$scope', '$location', 'ListingFilter', function($scope, $location, ListingFilter) {
       $scope.listingFilter = ListingFilter;
       return $scope.queryKeyword = function() {
-        $location.url("/search/?keywords=" + ListingFilter.searchText);
-        return angular.element('.search-input').blur();
+        console.log('QUERYING');
+        return $location.url("/search/?keywords=" + ListingFilter.searchText);
       };
     }
   ]);
 
-  module.controller('ListingController', [
-    '$scope', '$location', '$route', 'KeywordListingLoader', 'CategoryListingsLoader', 'ListingFilter', function($scope, $location, $route, KeywordListingLoader, CategoryListingsLoader, ListingFilter) {
-      var getListings;
+  module.controller('SidebarController', ['$scope', function($scope) {}]);
 
-      ListingFilter.loading = true;
+  module.controller('ListingController', [
+    '$scope', '$location', '$route', '$q', 'KeywordListingLoader', 'CategoryListingsLoader', 'ListingFilter', function($scope, $location, $route, $q, KeywordListingLoader, CategoryListingsLoader, ListingFilter) {
+      var delay, getListings;
+
       $scope.listingFilter = ListingFilter;
-      $scope.selectedCategory = '';
-      $scope.currentSearch = $route.current.params.keywords;
+      ListingFilter.loading = true;
       if ($route.current.params.keywords) {
-        getListings = KeywordListingLoader();
-        ListingFilter.resultsLabel = "Showing results for: '" + $route.current.params.keywords + "'";
+        if (localStorage.getItem('search_pizza') && $route.current.params.keywords) {
+          delay = $q.defer();
+          getListings = delay.promise;
+          delay.resolve(JSON.parse(localStorage.getItem('search_pizza')));
+        } else {
+          getListings = KeywordListingLoader();
+          ListingFilter.resultsLabel = "Showing results for: '" + $route.current.params.keywords + "'";
+        }
       } else if ($route.current.params.cat) {
         getListings = CategoryListingsLoader();
         ListingFilter.resultsLabel = $route.current.params.cat;
       }
       getListings.then(function(listings) {
-        console.log(listings);
+        if ($route.current.params.keywords === 'pizza') {
+          if (!localStorage.getItem('search_pizza')) {
+            JSON.stringify(localStorage.setItem('search_pizza', JSON.stringify(listings)));
+            console.log(localStorage.getItem('search_pizza'));
+          }
+        }
         $scope.listings = [listings.keywordCouponsList, listings.keywordGroceryList, listings.keywordSdcCouponsList, listings.keywordDealsList];
-        $scope.couponListings = listings.keywordCouponsList;
+        $scope.couponListings = listings.keywordCouponsList.splice(0, 1);
         $scope.selectedDetail = $scope.listings.selectedDetail;
-        $scope.dealsListings = listings.keywordDealsList;
-        $scope.groceryListings = listings.keywordGroceryList;
-        $scope.sdcListings = listings.keywordSdcCouponsList;
-        ListingFilter.loading = false;
-        return $scope.toggleDeviceNav = function() {
-          return $('.body-wrap').addClass('slideOutRight');
-        };
+        $scope.dealsListings = listings.keywordDealsList.splice(0, 1);
+        $scope.groceryListings = listings.keywordGroceryList.splice(0, 1);
+        $scope.sdcListings = listings.keywordSdcCouponsList.splice(0, 20);
+        return ListingFilter.loading = false;
       });
-      $scope.getLogoSrc = function(logo) {
+      return $scope.getLogoSrc = function(logo) {
         if (this.listing.slugTypeId !== null) {
           if (this.listing.logoImageFileName) {
-            return 'http://vptst.valpak.com/img/print/' + this.listing.logoImageFileName;
+            return 'http://www.valpak.com/img/print/' + this.listing.logoImageFileName;
           } else {
             return '/img/defaultLogo.png';
           }
@@ -60,9 +90,6 @@
             return '/img/defaultLogo.png';
           }
         }
-      };
-      return $scope.getBusinessProfile = function(profileId) {
-        return $location.url("/listing/profile/" + profileId);
       };
     }
   ]);

@@ -1,11 +1,20 @@
+'use strict';
+
 var express = require('express'),
     routes = require('./routes'),
     api = require('./routes/api'),
     http = require('http'),
     path = require('path'),
-    stylus = require('stylus');
+    stylus = require('stylus'),
+    app = express(),
+    server;
 
-var app = express();
+function compile(str, path) {
+  return stylus(str)
+    .set('filename', path)
+    .set('compress', true)
+    .use(require('nib')());
+}
 
 app.configure(function(){
   app.set('port', process.env.PORT || 5000);
@@ -22,14 +31,6 @@ app.configure(function(){
   app.use(express.static(path.join(__dirname, 'public')));
 });
 
-
-function compile(str, path) {
-  return stylus(str)
-    .set('filename', path)
-    .set('compress', true)
-    .use(require('nib')());
-}
-
 app.configure('development', function(){
   app.use(express.errorHandler());
 });
@@ -45,8 +46,8 @@ app.get('/search', routes.search);
 app.get('/listings/category/:cat', routes.searchCategory);
 app.get('/listing/profile/:id', routes.index);
 
-var server = http.createServer(app).listen(app.get('port'), function(){
-  console.log("Valpak Application is now listening on port " + app.get('port'));
+server = http.createServer(app).listen(app.get('port'), function(){
+  console.log('Valpak Application is now listening on port ' + app.get('port'));
 });
 
 

@@ -3,15 +3,12 @@ div
   div.media
 
     div.media-img
-      img(ng-src="{{getLogoSrc()}}")
+      img.tile-logo(ng-src="{{getLogoSrc()}}")
 
     div.media-body
       h5.tile-businessname {{listing.businessName | titleCase}}
-      p.tile-offertext {{listing.selectedDetail.offerText}}
-
-  footer
-    div.tile-location-detail
-      //- p.tile-address {{listing.selectedDetail.asSingleString}}
-      p.tile-distance {{listing.selectedDetail.formattedDist}} miles away
+      p.tile-offertext {{listing.title}}
+      p.tile-distance(ng-show="listing.selectedDetail.formattedDist") {{listing.selectedDetail.formattedDist}} miles away
 
     a.btn(ng-href="/listing/profile/{{listing.selectedDetail.bppId}}") Gimme!
+

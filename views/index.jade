@@ -2,24 +2,15 @@ extends layout
 
 block content
 
-  include /partials/listings_sidebar
-
-  div.body-wrap
+  div#app(ng-controller="AppController")
 
     header
-      div.header-box
-        a(href="/welcome/foo")
-          img.app-logo(src="img/valpak-logo.svg")
+      div
+        a.app-logo(href="/welcome")
+          img(src="img/valpak-logo.svg")
 
-        script
-          function closeDeviceMenu() {
-            $('.body-wrap').removeClass('slideOutRight')
-          }
+        div(coupon-search)
 
 
-        form#solr-search.search(ng-controller="SearchController", ng-submit="queryKeyword()")
-          input.search-input(autofocus, name="q", placeholder="Search by keyword", ng-model="listingFilter.searchText")
-          button.submit.icon-search(type="submit")
-
-    div#container
+    div
       div(ng-view)

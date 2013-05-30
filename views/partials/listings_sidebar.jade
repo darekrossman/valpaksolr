@@ -1,82 +1,39 @@
-div#device-sidebar
+div.secondary(ng-controller="SidebarController")
 
-  nav#main-nav.device-navigation
-    a(ng-href="/listings/category/all").
-      All <span>(341)</span>
-    a(ng-href="/listings/category/restaurants").
-      Restaurants <span>(109)</span>
-    a(ng-href="/listings/category/home-office").
-      Home & Office <span>(57)</span>
-    a(ng-href="/listings/category/services").
-      Services <span>(60)</span>
-    a(ng-href="/listings/category/automotive").
-      Automotive <span>(36)</span>
-    a(ng-href="/listings/category/entertainment-travel").
-      Entertainment & Travel <span>(37)</span>
-    a(ng-href="/listings/category/personal-care").
-      Personal Care <span>(29)</span>
-    a(ng-href="/listings/category/general").
-      General <span>(18)</span>
-    a(ng-href="/listings/category/health").
-      Health <span>(34)</span>
-    a(ng-href="/listings/category/shops").
-      Shops <span>(32)</span>
-  // end Category
+  nav
+    ul.n1
+      li
+        a(ng-href="/listings/category/all") All
+      li
+        a(ng-href="/listings/category/restaurants") Restaurants
+      li
+        a(ng-href="/listings/category/home-office") Home &amp; Office
+      li
+        a(ng-href="/listings/category/services") Services
+      li
+        a(ng-href="/listings/category/automotive") Automotive
+      li
+        a(ng-href="/listings/category/entertainment-travel") Entertainment &amp; Travel
+      li
+        a(ng-href="/listings/category/personal-care") Personal Care
+      li
+        a(ng-href="/listings/category/general") General
+      li
+        a(ng-href="/listings/category/health") Health
+      li
+        a(ng-href="/listings/category/shops") Shops
 
-div#sidebar
-
-  // Category
-  div.navigation
-    ul
-      li
-        a(ng-href="/listings/category/all").
-          All <span>(341)</span>
-      li
-        a(ng-href="/listings/category/restaurants").
-          Restaurants <span>(109)</span>
-      li
-        a(ng-href="/listings/category/home-office").
-          Home & Office <span>(57)</span>
-      li
-        a(ng-href="/listings/category/services").
-          Services <span>(60)</span>
-      li
-        a(ng-href="/listings/category/automotive").
-          Automotive <span>(36)</span>
-      li
-        a(ng-href="/listings/category/entertainment-travel").
-          Entertainment & Travel <span>(37)</span>
-      li
-        a(ng-href="/listings/category/personal-care").
-          Personal Care <span>(29)</span>
-      li
-        a(ng-href="/listings/category/general").
-          General <span>(18)</span>
-      li
-        a(ng-href="/listings/category/health").
-          Health <span>(34)</span>
-      li
-        a(ng-href="/listings/category/shops").
-          Shops <span>(32)</span>
-  // end Category
-
-  // Filters
-  div.navigation
-    form
-      ul
-        li
-          input(type="checkbox", ng-model="listingFilter.lists.vpPrintable")
-          label Printable Coupons
-
-        li
-          input(type="checkbox", ng-model="listingFilter.lists.deals")
-          label Purchase Deals
-
-        li
-          input(type="checkbox", ng-model="listingFilter.lists.sdc")
-          label Coupon Codes
-
-        li
-          input(type="checkbox", ng-model="listingFilter.lists.grocery")
-          label Grocery Coupons
-  // end Filters
+  //- form
+  //-   ul
+  //-     li
+  //-       input(type="checkbox", ng-model="listingFilter.lists.vpPrintable")
+  //-       label Printable Coupons
+  //-     li
+  //-       input(type="checkbox", ng-model="listingFilter.lists.deals")
+  //-       label Purchase Deals
+  //-     li
+  //-       input(type="checkbox", ng-model="listingFilter.lists.sdc")
+  //-       label Coupon Codes
+  //-     li
+  //-       input(type="checkbox", ng-model="listingFilter.lists.grocery")
+  //-       label Grocery Coupons

@@ -4,8 +4,44 @@ module = angular.module('app.controllers', [])
 
 # Home Controller
 # -----------------------------------------
+module.controller('AppController',
+  ['$scope', 'ListingFilter', ($scope, ListingFilter) ->
+    $scope.listingFilter = ListingFilter
+  ]
+)
+
+
+
+
+
+# Home Controller
+# -----------------------------------------
 module.controller('HomeController',
   ['$scope', ($scope) ->
+
+  ]
+)
+
+
+
+
+
+# Toolbar Controller
+# -----------------------------------------
+module.controller('ToolbarController',
+  ['$scope', '$route', 'ListingFilter', ($scope, $route, ListingFilter) ->
+
+    $scope.layout = ListingFilter.layoutOption
+
+    if $route.current.params.keywords
+      ListingFilter.resultsLabel = "Showing results for: '#{$route.current.params.keywords}'"
+    else
+      ListingFilter.resultsLabel = $route.current.params.cat
+
+    $scope.setLayout = (layout) ->
+      ListingFilter.layoutOption = layout
+      $scope.layout = layout
+      localStorage.setItem('layout_option', layout)
 
   ]
 )
@@ -21,8 +57,18 @@ module.controller('SearchController',
 
     $scope.listingFilter = ListingFilter
     $scope.queryKeyword = () ->
+      console.log('QUERYING')
       $location.url("/search/?keywords=#{ListingFilter.searchText}")
-      angular.element('.search-input').blur()
+  ]
+)
+
+
+
+# Sidebar Controller
+# -----------------------------------------
+module.controller('SidebarController',
+  ['$scope', ($scope) ->
+
   ]
 )
 
@@ -34,66 +80,67 @@ module.controller('SearchController',
 # -----------------------------------------
 module.controller('ListingController',
   ['$scope',
-  '$location',
-  '$route',
-  'KeywordListingLoader',
-  'CategoryListingsLoader',
-  'ListingFilter',
-  ($scope, $location, $route, KeywordListingLoader, CategoryListingsLoader, ListingFilter) ->
+   '$location',
+   '$route',
+   '$q',
+   'KeywordListingLoader',
+   'CategoryListingsLoader',
+   'ListingFilter',
+    ($scope, $location, $route, $q, KeywordListingLoader, CategoryListingsLoader, ListingFilter) ->
 
-    ListingFilter.loading = true
+      $scope.listingFilter = ListingFilter
 
-    $scope.listingFilter = ListingFilter
-    $scope.selectedCategory = ''
-    $scope.currentSearch = $route.current.params.keywords
+      ListingFilter.loading = true
 
-
-    if $route.current.params.keywords
-      getListings = KeywordListingLoader()
-      ListingFilter.resultsLabel = "Showing results for: '#{$route.current.params.keywords}'"
-    else if $route.current.params.cat
-      getListings = CategoryListingsLoader()
-      ListingFilter.resultsLabel = $route.current.params.cat
-
-    getListings.then (listings)->
-      console.log(listings)
-
-      $scope.listings = [
-        listings.keywordCouponsList
-        listings.keywordGroceryList
-        listings.keywordSdcCouponsList
-        listings.keywordDealsList
-      ]
-
-      $scope.couponListings = listings.keywordCouponsList
-      $scope.selectedDetail = $scope.listings.selectedDetail
-
-      $scope.dealsListings = listings.keywordDealsList
-      $scope.groceryListings = listings.keywordGroceryList
-      $scope.sdcListings = listings.keywordSdcCouponsList
-
-      ListingFilter.loading = false
-
-      $scope.toggleDeviceNav = () ->
-        $('.body-wrap').addClass('slideOutRight')
-
-    $scope.getLogoSrc = (logo) ->
-      if this.listing.slugTypeId != null
-        if this.listing.logoImageFileName
-          return 'http://vptst.valpak.com/img/print/' + this.listing.logoImageFileName
+      if $route.current.params.keywords
+        if localStorage.getItem('search_pizza') and $route.current.params.keywords
+          delay = $q.defer()
+          getListings = delay.promise
+          delay.resolve( JSON.parse(localStorage.getItem('search_pizza')) )
         else
-          return '/img/defaultLogo.png'
-      else
-        if this.listing.logoImageFileName
-          return this.listing.logoImageFileName
-        else if this.listing.dealImageURL
-          return this.listing.dealImageURL
+          getListings = KeywordListingLoader()
+          ListingFilter.resultsLabel = "Showing results for: '#{$route.current.params.keywords}'"
+
+      else if $route.current.params.cat
+        getListings = CategoryListingsLoader()
+        ListingFilter.resultsLabel = $route.current.params.cat
+
+      getListings.then (listings) ->
+
+        if $route.current.params.keywords == 'pizza'
+          unless localStorage.getItem('search_pizza')
+            JSON.stringify(localStorage.setItem('search_pizza', JSON.stringify(listings)))
+            console.log localStorage.getItem('search_pizza')
+
+        $scope.listings = [
+          listings.keywordCouponsList
+          listings.keywordGroceryList
+          listings.keywordSdcCouponsList
+          listings.keywordDealsList
+        ]
+
+        $scope.couponListings = listings.keywordCouponsList.splice(0,1)
+        $scope.selectedDetail = $scope.listings.selectedDetail
+
+        $scope.dealsListings = listings.keywordDealsList.splice(0,1)
+        $scope.groceryListings = listings.keywordGroceryList.splice(0, 1)
+        $scope.sdcListings = listings.keywordSdcCouponsList.splice(0,20)
+
+        ListingFilter.loading = false
+
+      $scope.getLogoSrc = (logo) ->
+        if this.listing.slugTypeId != null
+          if this.listing.logoImageFileName
+            return 'http://www.valpak.com/img/print/' + this.listing.logoImageFileName
+          else
+            return '/img/defaultLogo.png'
         else
-          return '/img/defaultLogo.png'
-
-    $scope.getBusinessProfile = (profileId) ->
-      $location.url("/listing/profile/#{profileId}")
-
+          if this.listing.logoImageFileName
+            return this.listing.logoImageFileName
+          else if this.listing.dealImageURL
+            return this.listing.dealImageURL
+          else
+            return '/img/defaultLogo.png'
   ]
 )
 
@@ -103,10 +150,10 @@ module.controller('ListingController',
 module.controller('BusinessProfileController',
   ['$scope', '$location', '$route', 'profile', ($scope, $location, $route, profile) ->
 
-      $scope.profile = profile
-      $scope.businessGeo = profile.selectedAddressOffer.geoCoordinates
+    $scope.profile = profile
+    $scope.businessGeo = profile.selectedAddressOffer.geoCoordinates
 
-      console.log(profile)
+    console.log(profile)
 
   ]
 )

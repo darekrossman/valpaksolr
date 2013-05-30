@@ -6,16 +6,16 @@ var request = require('request');
 // Listings:  http://vpdev.valpak.com/rshack/rs/lists/?latitude=27.878991&langitude=-82.758636&keywords=pizza
 
 var vpRestConfig = {
-  HOST: 'http://vptst.valpak.com/rshack/rs',
+  HOST: 'http://www.valpak.com/rshack/rs',
   BPP: '/bpp/',
   LISTINGS: '/lists/'
-}
+};
 
 
 
 var yipitOpts = {
   key: 'dWeyfrp8FyBPz2z3'
-}
+};
 
 
 exports.getBusinessProfile = function(req, res) {
@@ -28,13 +28,13 @@ exports.getBusinessProfile = function(req, res) {
   function(error, response, body) {
     if (!error && response.statusCode == 200) {
       res.writeHead(200, { 'Content-Type': 'application/json' });
-      res.write(body)
-      res.end()
+      res.write(body);
+      res.end();
     } else {
-      res.send(404, 'Could not connect.')
+      res.send(404, 'Could not connect.');
     }
   });
-}
+};
 
 exports.getAllListings = function(req, res) {
   request({
@@ -48,15 +48,16 @@ exports.getAllListings = function(req, res) {
   },
   function(error, response, body) {
     console.log(response.req.path);
-    if (!error && response.statusCode == 200) {
+    if (!error && response.statusCode === 200) {
       res.writeHead(200, { 'Content-Type': 'application/json' });
-      res.write(body)
-      res.end()
+      console.log(body)
+      res.write(body);
+      res.end();
     } else {
-      res.send(404, 'Could not connect.')
+      res.send(404, 'Could not connect.');
     }
   });
-}
+};
 
 exports.getAllListingsInCategory = function(req, res) {
   request({

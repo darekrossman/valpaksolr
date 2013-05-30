@@ -63,16 +63,18 @@ angular.module('app.services', ['ngResource'])
   .factory('ListingFilter',
     ['$routeParams', ($routeParams) ->
       return {
+        searchTerms: null
         loading: true
         searchText: ''
         activeFilters: {}
         lists:
           vpPrintable: true
-          grocery: false
+          grocery: true
           deals: true
           sdc: true
         resultsLabel: ''
         slidemenuActive: true
+        layoutOption: localStorage.getItem('layout_option') || 'grid'
       }
     ]
   )
