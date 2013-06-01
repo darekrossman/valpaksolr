@@ -40,7 +40,7 @@ app.get('/partials/:name', routes.partials);
 app.get('/solr/listings', api.getAllListings);
 app.get('/solr/listings/:cat', api.getAllListingsInCategory);
 app.get('/api/profile/:id', api.getBusinessProfile);
-app.get('/api/deals', api.getYipitDeals);
+
 
 app.get('/search', routes.search);
 app.get('/listings/category/:cat', routes.searchCategory);

@@ -8,17 +8,27 @@ module.directive 'ngTap', ->
     element.bind 'touchmove', (e) -> tapping = false
     element.bind 'touchend', (e) -> scope.$apply(attrs['ngTap'], element) if tapping
 
-module.directive 'scrollView', () ->
+
+
+
+
+module.directive 'scrollView', ['$rootScope', ($rootScope) ->
   controller: ($scope) ->
     $scope.offsetTop = 0
-  link: (scope, element, attrs) ->
-    console.log scope
+  link: (scope, element, attrs, $rootScope) ->
     element
       .addClass('scroll-view')
       .bind 'scroll', (e) ->
         scope.$apply(
           scope.offsetTop = element.scrollTop()
         )
+        $rootScope.$broadcast('e:scroll')
+]
+
+
+
+
+
 
 cnt = 161
 # Coupontile
@@ -34,48 +44,53 @@ module.directive 'coupontile', () ->
     element
       .addClass('tile')
       .addClass("tile-#{attrs.type}")
-    # .css('z-index', cnt--)
 
     if scope.listing.selectedDetail?
       scope.listing.title = scope.listing.selectedDetail.offerText
 
     scope.initialOffset = element.offset().top
 
-    if !angular.element('html').hasClass('touch')
-      scope.$watch '$parent.offsetTop', () ->
-        tileTop = element.offset().top
-        scrollTop = scope.$parent.offsetTop
-        winH = angular.element(window).height()
 
-        if tileTop < winH && tileTop > 0
-          element.addClass('scroll-visible')
-          element.removeClass('scroll-above')
-          element.removeClass('scroll-below')
-        else
-          element.removeClass('scroll-visible')
-          if tileTop < 100
-            element.addClass('scroll-above')
+    if (false)
+    # browser is not touch enabled
+      if (!('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch)
+        scope.$watch '$parent.offsetTop', () ->
+          tileTop = element.offset().top
+          scrollTop = scope.$parent.offsetTop
+          winH = angular.element(window).height()
+
+          if tileTop < winH && tileTop > 0
+            element.addClass('scroll-visible')
+            element.removeClass('scroll-above')
+            element.removeClass('scroll-below')
           else
-            element.addClass('scroll-below')
+            element.removeClass('scroll-visible')
+            if tileTop < 100
+              element.addClass('scroll-above')
+            else
+              element.addClass('scroll-below')
+
+      # browser is touch enabled
+      else
+        element.addClass('scroll-visible')
+
+        element.parent().hammer().on 'dragright', (ev) ->
+          ev.gesture.preventDefault()
+          # console.log ev.gesture
+
+          if ev.gesture.distance < 100
+            element
+              .removeClass('transition1')
+              .css
+                'transform': 'translateZ(0) translateX(' + Math.round(ev.gesture.distance) + 'px)'
+
+        element.parent().hammer().on 'dragend', (ev) ->
+          element
+            .addClass('transition1')
+            .css
+              'transform': 'translateX(0px) translateZ(0)'
     else
       element.addClass('scroll-visible')
-
-      element.parent().hammer().on 'dragright', (ev) ->
-        ev.gesture.preventDefault()
-        # console.log ev.gesture
-
-        if ev.gesture.distance < 100
-          element
-            .removeClass('transition1')
-            .css
-              'transform': 'translateZ(0) translateX(' + Math.round(ev.gesture.distance) + 'px)'
-
-      element.parent().hammer().on 'dragend', (ev) ->
-        element
-          .addClass('transition1')
-          .css
-            'transform': 'translateX(0px) translateZ(0)'
-
 
 
 
@@ -108,10 +123,22 @@ module.directive 'couponSearch', ['ListingFilter', '$location', (ListingFilter, 
     submitBtn = angular.element(element.find('.submit'))
 
     scope.performSearch = () ->
-      $location.url("/search/?keywords=#{ListingFilter.searchTerms}")
       searchField.val('').blur()
+      #$location.url("/search/?keywords=#{ListingFilter.searchTerms}")
+      $location.search("keywords=#{ListingFilter.searchTerms}")
 
     scope.listingFilter = ListingFilter
+]
+
+
+
+module.directive 'paginate', [() ->
+  require: '^scrollView'
+  link: (scope, element, attrs) ->
+    scope.$watch 'offsetTop', (_new, _prev) ->
+      # do stuff on scroll
+
+
 ]
 
 

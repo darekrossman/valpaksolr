@@ -29,7 +29,7 @@ describe( "Controllers", function () {
   );
 
   it('should fetch data from the server', function(){
-    expect(scope.couponListings).toBeUndefined();
+    expect(scope.listings).toBeUndefined();
     mockBackend.flush();
     expect(scope.listings).toBeDefined();
   });

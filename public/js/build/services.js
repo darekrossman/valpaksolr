@@ -7,7 +7,8 @@
   ]).factory('CategoryListings', [
     '$resource', function($resource) {
       return $resource('/solr/listings/:cat', {
-        cat: '@cat'
+        cat: '@cat',
+        page: '@page'
       });
     }
   ]).factory('KeywordListingLoader', [
@@ -27,13 +28,15 @@
       };
     }
   ]).factory('CategoryListingsLoader', [
-    'CategoryListings', '$q', '$route', function(CategoryListings, $q, $route) {
+    'CategoryListings', '$q', '$route', '$location', function(CategoryListings, $q, $route, $location) {
       return function() {
         var delay;
 
+        console.log($route.current);
         delay = $q.defer();
         CategoryListings.get({
-          cat: $route.current.params.cat
+          cat: $route.current.params.cat,
+          page: 1
         }, function(listings) {
           return delay.resolve(listings);
         }, function() {
@@ -82,6 +85,6 @@
         layoutOption: localStorage.getItem('layout_option') || 'grid'
       };
     }
-  ]);
+  ]).factory;
 
 }).call(this);

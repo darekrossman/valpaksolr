@@ -5,16 +5,15 @@ tile-columns = 3
   -webkit-backface-visibility hidden
 
 .no-touch .tile
-  transition transform .4s ease-out, background .3s, opacity, .4s
+  //transition transform .4s ease-out, background .3s, opacity, .4s
 
 .tile
   -webkit-backface-visibility hidden
   clearfix()
   z-index 2
-  background gray(18)
+  background #FFF
   position relative
-  border-radius 2px
-  min-height: 70px
+  border-radius 1px
 
   &.scroll-below
     transform translateZ(-10px) rotateX(-30deg)
@@ -25,11 +24,10 @@ tile-columns = 3
     transform-origin bottom left
 
 .grid
-  margin 20px
+  margin 15px
   .tile
     width (100% / tile-columns)
     height 150px
-    margin 0
     padding 10px
     float left
     border-color gray(20)
@@ -49,17 +47,18 @@ tile-columns = 3
 .list
   // margin 20px
   .tile
-    margin 0
+    margin 0 0 0 0
     padding 12px
 
-    border-color gray(20)
+    border-color gray(7)
     border-width 0px
-    border-style dashed
+    border-style solid
 
     border-bottom-width 1px
 
     .tile-logo
-      width 60px
+      width 68px
+      margin-right 5px
 
     .btn
       button()
@@ -70,6 +69,7 @@ tile-columns = 3
       font-weight: 700
       font-size: 13px
       margin-bottom: .3em
+      color c1
 
     .tile-offertext
       font-size: 18px
@@ -78,8 +78,11 @@ tile-columns = 3
 
 
     .tile-distance
+      position absolute
+      right 15px
+      top 9px
       font-size: 12px
-      color gray(50)
+      color gray(30)
       line-height 1.5em
 
 .scroll-visible

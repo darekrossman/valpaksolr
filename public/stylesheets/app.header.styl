@@ -8,7 +8,7 @@
   width 100%
   height header-height
 
-  border-bottom 1px solid gray(10)
+  background c3
 
   // Header wrapper
   div:first-child
@@ -17,30 +17,30 @@
       figure 80px
       position absolute
       top 50%
-      left 20px
+      left 10px
       margin-top -19px
 
-    [coupon-search]
-      position absolute
-      top 10px
-      // left secondary-width
-      right 20px
-      input
-        width 14em
-        margin 0
-        padding 0
-        vertical-align top
-        padding 5px 6px
-        font-size 16px
-        border 1px solid gray(20)
-        border-radius 2px
-        margin-right 5px
-        transition width .2s .2s ease-out
-        &:focus
-          outline none
-          width 24em
-          border-color gray(40)
-      button
-        button(#007fb7)
-        vertical-align top
-        line-height 20px
+
+  .location-status
+    color white
+    background darken(c3, 0)
+    display inline-block
+    padding 5px 12px
+    border-radius 2px
+    font-size 14px
+    font-weight 400
+    margin-bottom 15px
+    position absolute
+    right 169px
+    top 10px
+    line-height 20px
+    cursor pointer
+    &:before
+      margin 0 4px 0 -6px
+      font-size 17px
+      color c1
+      vertical-align -1px
+    &:hover
+      background darken(c3, 4)
+
+

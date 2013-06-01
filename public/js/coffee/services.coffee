@@ -9,7 +9,7 @@ angular.module('app.services', ['ngResource'])
 
   .factory('CategoryListings',
     ['$resource', ($resource) ->
-        return $resource '/solr/listings/:cat', {cat: '@cat'}
+        return $resource '/solr/listings/:cat', {cat: '@cat', page: '@page'}
     ])
 
   .factory('KeywordListingLoader',
@@ -27,10 +27,11 @@ angular.module('app.services', ['ngResource'])
   )
 
   .factory('CategoryListingsLoader',
-    ['CategoryListings', '$q', '$route', (CategoryListings, $q, $route) ->
+    ['CategoryListings', '$q', '$route', '$location', (CategoryListings, $q, $route, $location) ->
       return () ->
+        console.log($route.current)
         delay = $q.defer()
-        CategoryListings.get({cat:$route.current.params.cat}
+        CategoryListings.get({cat:$route.current.params.cat, page:1}
           (listings) ->
             delay.resolve(listings)
           () ->
@@ -78,3 +79,6 @@ angular.module('app.services', ['ngResource'])
       }
     ]
   )
+
+
+  .factory

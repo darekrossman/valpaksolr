@@ -82,15 +82,20 @@ module.controller('ListingController',
   ['$scope',
    '$location',
    '$route',
+   '$rootScope',
    '$q',
    'KeywordListingLoader',
    'CategoryListingsLoader',
    'ListingFilter',
-    ($scope, $location, $route, $q, KeywordListingLoader, CategoryListingsLoader, ListingFilter) ->
+    ($scope, $location, $route, $q, $rootScope, KeywordListingLoader, CategoryListingsLoader, ListingFilter) ->
+
+      requestedPage = $route.current.params.page
 
       $scope.listingFilter = ListingFilter
+      $scope.listings = []
 
       ListingFilter.loading = true
+
 
       if $route.current.params.keywords
         if localStorage.getItem('search_pizza') and $route.current.params.keywords
@@ -110,25 +115,26 @@ module.controller('ListingController',
         if $route.current.params.keywords == 'pizza'
           unless localStorage.getItem('search_pizza')
             JSON.stringify(localStorage.setItem('search_pizza', JSON.stringify(listings)))
-            console.log localStorage.getItem('search_pizza')
 
-        $scope.listings = [
-          listings.keywordCouponsList
-          listings.keywordGroceryList
-          listings.keywordSdcCouponsList
+        $scope.allListings = Array.prototype.concat(
+          listings.keywordCouponsList,
+          listings.keywordGroceryList,
+          listings.keywordSdcCouponsList,
           listings.keywordDealsList
-        ]
+        )
 
-        $scope.couponListings = listings.keywordCouponsList.splice(0,1)
-        $scope.selectedDetail = $scope.listings.selectedDetail
 
-        $scope.dealsListings = listings.keywordDealsList.splice(0,1)
-        $scope.groceryListings = listings.keywordGroceryList.splice(0, 1)
-        $scope.sdcListings = listings.keywordSdcCouponsList.splice(0,20)
 
+        $scope.appendListings()
+
+        # turn off the loading indicator
         ListingFilter.loading = false
 
-      $scope.getLogoSrc = (logo) ->
+
+      $scope.$on 'e:scroll', () ->
+        console.log 'scrolling!'
+
+      $scope.getLogoSrc = () ->
         if this.listing.slugTypeId != null
           if this.listing.logoImageFileName
             return 'http://www.valpak.com/img/print/' + this.listing.logoImageFileName
@@ -141,6 +147,9 @@ module.controller('ListingController',
             return this.listing.dealImageURL
           else
             return '/img/defaultLogo.png'
+
+      $scope.appendListings = () ->
+        $scope.listings = $scope.listings.concat($scope.allListings.splice(0, 20))
   ]
 )
 
@@ -153,7 +162,7 @@ module.controller('BusinessProfileController',
     $scope.profile = profile
     $scope.businessGeo = profile.selectedAddressOffer.geoCoordinates
 
-    console.log(profile)
+#    console.log(profile)
 
   ]
 )

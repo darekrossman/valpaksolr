@@ -3,6 +3,9 @@ div.toolbar-view(ng-controller="ToolbarController")
     h3
       strong.demi {{listingFilter.resultsLabel | titleCase}}
 
+
+
+
   div.button-group(data-control="layout")
 
     button.icon-layout(
@@ -14,3 +17,5 @@ div.toolbar-view(ng-controller="ToolbarController")
       ng-click="setLayout('list')",
       ng-class="{toggled: layout == 'list'}"
     )
+
+

@@ -41,10 +41,12 @@
   module.controller('SidebarController', ['$scope', function($scope) {}]);
 
   module.controller('ListingController', [
-    '$scope', '$location', '$route', '$q', 'KeywordListingLoader', 'CategoryListingsLoader', 'ListingFilter', function($scope, $location, $route, $q, KeywordListingLoader, CategoryListingsLoader, ListingFilter) {
-      var delay, getListings;
+    '$scope', '$location', '$route', '$rootScope', '$q', 'KeywordListingLoader', 'CategoryListingsLoader', 'ListingFilter', function($scope, $location, $route, $q, $rootScope, KeywordListingLoader, CategoryListingsLoader, ListingFilter) {
+      var delay, getListings, requestedPage;
 
+      requestedPage = $route.current.params.page;
       $scope.listingFilter = ListingFilter;
+      $scope.listings = [];
       ListingFilter.loading = true;
       if ($route.current.params.keywords) {
         if (localStorage.getItem('search_pizza') && $route.current.params.keywords) {
@@ -63,18 +65,16 @@
         if ($route.current.params.keywords === 'pizza') {
           if (!localStorage.getItem('search_pizza')) {
             JSON.stringify(localStorage.setItem('search_pizza', JSON.stringify(listings)));
-            console.log(localStorage.getItem('search_pizza'));
           }
         }
-        $scope.listings = [listings.keywordCouponsList, listings.keywordGroceryList, listings.keywordSdcCouponsList, listings.keywordDealsList];
-        $scope.couponListings = listings.keywordCouponsList.splice(0, 1);
-        $scope.selectedDetail = $scope.listings.selectedDetail;
-        $scope.dealsListings = listings.keywordDealsList.splice(0, 1);
-        $scope.groceryListings = listings.keywordGroceryList.splice(0, 1);
-        $scope.sdcListings = listings.keywordSdcCouponsList.splice(0, 20);
+        $scope.allListings = Array.prototype.concat(listings.keywordCouponsList, listings.keywordGroceryList, listings.keywordSdcCouponsList, listings.keywordDealsList);
+        $scope.appendListings();
         return ListingFilter.loading = false;
       });
-      return $scope.getLogoSrc = function(logo) {
+      $scope.$on('e:scroll', function() {
+        return console.log('scrolling!');
+      });
+      $scope.getLogoSrc = function() {
         if (this.listing.slugTypeId !== null) {
           if (this.listing.logoImageFileName) {
             return 'http://www.valpak.com/img/print/' + this.listing.logoImageFileName;
@@ -91,14 +91,16 @@
           }
         }
       };
+      return $scope.appendListings = function() {
+        return $scope.listings = $scope.listings.concat($scope.allListings.splice(0, 20));
+      };
     }
   ]);
 
   module.controller('BusinessProfileController', [
     '$scope', '$location', '$route', 'profile', function($scope, $location, $route, profile) {
       $scope.profile = profile;
-      $scope.businessGeo = profile.selectedAddressOffer.geoCoordinates;
-      return console.log(profile);
+      return $scope.businessGeo = profile.selectedAddressOffer.geoCoordinates;
     }
   ]);
 
