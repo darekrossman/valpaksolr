@@ -16,5 +16,8 @@ div(scroll-view)
     //  div(coupontile, type="sdc")
 
 
-  div.load-more
-    div.btn(ng-click="appendListings()", ng-show="listings.length > 0") Show More<br><span class="icon-down-dir"></span>
+    li.listing.load-more(ng-class="{visible: scrollBottomReached}")
+        div.btn(loadmore, action="appendListings()", show="listings.length > 0") Show me more <span class="icon-down-open"></span>
+
+
+  div.error-msg(ng-show="gotError") <div class="icon-thumbs-down"></div> {{errorInfo}}

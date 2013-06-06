@@ -12,6 +12,8 @@ global-reset()
 
 ::-webkit-input-placeholder {
    color: #ccc
+   font-style: italic
+   font-size 14px
 }
 
 :-moz-placeholder { /* Firefox 18- */
@@ -37,7 +39,6 @@ body
   height 100%
   font-family app-font
   background gray(5)
-  transform translateZ(0)
 
 
 // Primary Column
@@ -118,7 +119,6 @@ body
     color #FFF
 
 .scroll-view
-  -webkit-backface-visibility hidden
   overflow-x hidden
   overflow-y scroll
   position absolute
@@ -129,9 +129,11 @@ body
   z-index 9996
   background gray(8)
   -webkit-overflow-scrolling: touch;
-  perspective 400px
   ul
     clearfix()
+    perspective 400
+    position relative
+    overflow hidden
     // transform translateZ(0px)
 
 
@@ -148,32 +150,30 @@ body
 
 
 .load-more
-	margin 0 0 -80px 0
-	position relative
-	height 100px
-	overflow hidden
-	width 200px
-	margin 0 auto
+	z-index 3
 	.btn
-		position relative
-		bottom -30px
+		padding 15px 0
 		display block
 		font-weight 100
-		background c3
-		width 200px
-		height 200px
-		border-radius 100px
+		background c1
 		border 0
 		margin 0
 		text-align center
-		color #FFF
-		padding-top 30px
+		color white
 		cursor pointer
+		border-top 1px solid darken(c1, 20)
+		//transform translateY(-100px)
+		//transition transform .2s ease-out
+
 		span:before
 			font-size 20px
-			line-height 25px
+			line-height 10px
 		&:hover
-			background c2
+			background c5
+			border-top-color darken(c5, 10)
+	&.visible
+		.btn
+			transform translateY(0px)
 
 
 [coupon-search]
@@ -191,7 +191,8 @@ body
     border 0
     border-radius 2px
     margin-right 0px
-    transition width .2s cubic-bezier(0.175, 0.885, 0.320, 1.275)
+    // transform translateZ(0)
+    transition all .2s cubic-bezier(0.175, 0.885, 0.320, 1.275)
     &:focus
       outline none
       width 20em
@@ -249,3 +250,17 @@ strong
   &.demi
     font-weight 700
 
+
+
+.login-btn
+	button()
+
+
+.error-msg
+    text-align center
+    font-size 62px
+    font-weight 100
+    color #CCC
+    .icon-thumbs-down
+        &:before
+            font-size 80px

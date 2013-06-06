@@ -12,7 +12,7 @@ module.directive 'ngTap', ->
 
 
 
-module.directive 'scrollView', ['$rootScope', ($rootScope) ->
+module.directive 'scrollView', ['ScrollWatch', (ScrollWatch) ->
   controller: ($scope) ->
     $scope.offsetTop = 0
   link: (scope, element, attrs, $rootScope) ->
@@ -22,7 +22,8 @@ module.directive 'scrollView', ['$rootScope', ($rootScope) ->
         scope.$apply(
           scope.offsetTop = element.scrollTop()
         )
-        $rootScope.$broadcast('e:scroll')
+        if (element.height() + scope.offsetTop + 100) >= element[0].scrollHeight
+          ScrollWatch.scrollLimit(element)
 ]
 
 
@@ -51,7 +52,7 @@ module.directive 'coupontile', () ->
     scope.initialOffset = element.offset().top
 
 
-    if (false)
+    if (false )
     # browser is not touch enabled
       if (!('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch)
         scope.$watch '$parent.offsetTop', () ->
@@ -115,7 +116,7 @@ module.directive 'gmap', () ->
                     }]
 
 
-module.directive 'couponSearch', ['ListingFilter', '$location', (ListingFilter, $location) ->
+module.directive 'couponSearch', ['ListingFilter', '$location', '$rootScope', (ListingFilter, $location, $rootScope) ->
   scope: true
   templateUrl: '/partials/searchbar.jade'
   link: (scope, element, attrs) ->
@@ -124,8 +125,9 @@ module.directive 'couponSearch', ['ListingFilter', '$location', (ListingFilter, 
 
     scope.performSearch = () ->
       searchField.val('').blur()
-      #$location.url("/search/?keywords=#{ListingFilter.searchTerms}")
-      $location.search("keywords=#{ListingFilter.searchTerms}")
+      $location.url("/coupons/query?keywords=#{ListingFilter.searchTerms}&geo=#{$rootScope.userDetail.geo}")
+      #$location.search("keywords=#{ListingFilter.searchTerms}")
+      console.log($location)
 
     scope.listingFilter = ListingFilter
 ]
@@ -172,5 +174,33 @@ module.directive 'loader', ['$rootScope', '$timeout', 'ListingFilter', ($rootSco
   #     , (transitionSpeed * 1000) + 10)
 
 ]
+
+
+module.directive 'loadmore', () ->
+  scope:
+    action: '&'
+    show: '='
+  link: (scope, element, attributes) ->
+
+
+    scope.$watch 'show', (visible) ->
+      element.css('visibility', 'visible') if visible
+      element.css('visibility', 'hidden') if not visible
+
+
+
+    element.hammer().on 'tap', () ->
+#      sv = element.parents('.scroll-view')
+#      st = sv.scrollTop()
+#      element.parents('.scroll-view').animate({
+#        'scrollTop': st + 200 + 'px'
+#      }, 600)
+      element.parent().prev().css({
+        'border-bottom': '16px solid #EEE'
+      })
+      scope.$apply(
+        scope.action.call()
+      )
+
 
 

@@ -1,3 +1,6 @@
+var mongoose = require( 'mongoose' );
+var User     = mongoose.model( 'User' );
+
 var childProcess = require('child_process'),
     ph;
 
@@ -40,4 +43,22 @@ exports.searchCategory = function (req, res) {
 exports.partials = function (req, res) {
   var name = req.params.name;
   res.render('partials/' + name);
+};
+
+
+
+exports.create = function ( req, res ){
+  var newUser = req.body.user;
+  newUser.joined = Date.now();
+
+  new User(newUser).save( function( err, user, count ){
+      res.json(user)
+    });
+};
+
+exports.getUser = function ( req, res ){
+  User.findOne( {fbId: req.params.id}, function ( err, user, count ){
+
+    res.json(user);
+  });
 };

@@ -25,7 +25,7 @@
   });
 
   module.directive('scrollView', [
-    '$rootScope', function($rootScope) {
+    'ScrollWatch', function(ScrollWatch) {
       return {
         controller: function($scope) {
           return $scope.offsetTop = 0;
@@ -33,7 +33,9 @@
         link: function(scope, element, attrs, $rootScope) {
           return element.addClass('scroll-view').bind('scroll', function(e) {
             scope.$apply(scope.offsetTop = element.scrollTop());
-            return $rootScope.$broadcast('e:scroll');
+            if ((element.height() + scope.offsetTop + 100) >= element[0].scrollHeight) {
+              return ScrollWatch.scrollLimit(element);
+            }
           });
         }
       };
@@ -121,7 +123,7 @@
   });
 
   module.directive('couponSearch', [
-    'ListingFilter', '$location', function(ListingFilter, $location) {
+    'ListingFilter', '$location', '$rootScope', function(ListingFilter, $location, $rootScope) {
       return {
         scope: true,
         templateUrl: '/partials/searchbar.jade',
@@ -132,7 +134,8 @@
           submitBtn = angular.element(element.find('.submit'));
           scope.performSearch = function() {
             searchField.val('').blur();
-            return $location.search("keywords=" + ListingFilter.searchTerms);
+            $location.url("/coupons/query?keywords=" + ListingFilter.searchTerms + "&geo=" + $rootScope.userDetail.geo);
+            return console.log($location);
           };
           return scope.listingFilter = ListingFilter;
         }
@@ -169,5 +172,30 @@
       };
     }
   ]);
+
+  module.directive('loadmore', function() {
+    return {
+      scope: {
+        action: '&',
+        show: '='
+      },
+      link: function(scope, element, attributes) {
+        scope.$watch('show', function(visible) {
+          if (visible) {
+            element.css('visibility', 'visible');
+          }
+          if (!visible) {
+            return element.css('visibility', 'hidden');
+          }
+        });
+        return element.hammer().on('tap', function() {
+          element.parent().prev().css({
+            'border-bottom': '16px solid #EEE'
+          });
+          return scope.$apply(scope.action.call());
+        });
+      }
+    };
+  });
 
 }).call(this);

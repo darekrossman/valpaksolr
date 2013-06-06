@@ -6,19 +6,27 @@ deps = [
   'app.directives'
   'app.controllers'
   'ngResource'
+  'ngCookies'
 ]
 
-appConfig = ['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) ->
+appConfig = ['$routeProvider', '$locationProvider', '$httpProvider', ($routeProvider, $locationProvider, $httpProvider) ->
   $routeProvider
-    .when '/',
+    .when '/coupons/home',
       templateUrl: '/partials/home.jade'
       controller: 'HomeController'
 
-    .when '/search/',
+    .when '/coupons/query',
       templateUrl: '/partials/results.layout.jade'
       controller: 'ListingController'
+      resolve:
+        list: ($q) ->
+          console.log('resolving...')
+          d = $q.defer()
+          d.resolve('REJECT!')
+          return d.promise
 
-    .when '/listings/category/:cat',
+
+    .when '/coupons/local-coupons/:category/:geo',
       templateUrl: '/partials/results.layout.jade'
       controller: 'ListingController'
 
@@ -33,9 +41,14 @@ appConfig = ['$routeProvider', '$locationProvider', ($routeProvider, $locationPr
       redirectTo: '/'
 
   $locationProvider.html5Mode(true).hashPrefix('!')
+
+
 ]
 
 
 app = angular.module('app', deps)
 app.config(appConfig)
 
+app.run ['$rootScope', '$log', ($rootScope, $log) ->
+  $rootScope
+]

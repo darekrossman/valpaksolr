@@ -2,11 +2,51 @@
 module = angular.module('app.controllers', [])
 
 
-# Home Controller
+
+
+
+
+
+
+# App Controller
 # -----------------------------------------
-module.controller('AppController',
-  ['$scope', 'ListingFilter', ($scope, ListingFilter) ->
+AppController = module.controller('AppController',
+  ['$scope', '$fb', '$rootScope', '$log', 'ListingFilter', 'User', ($scope, $fb, $rootScope, $log, ListingFilter, User) ->
+
     $scope.listingFilter = ListingFilter
+    $scope.isAuthorized = false
+
+    $log.debug(User)
+    $scope.user = User
+
+    $rootScope.$on '$routeChangeError', (ev, current, previous, rejection) ->
+      console.debug('uh oh! something went wrong!')
+
+    $fb.init().then (user) ->
+      $scope.isAuthenticated = true
+      $scope.user.loggedIn = true
+      $scope.user.name = user.name
+      $scope.user.avatar = user.picture.data
+
+      User.fbId = user.id
+      User.name = user.name
+
+      User.$save()
+
+      #User.find(user.id)
+
+
+    $scope.fblogin = () ->
+      $fb.login().then (user) ->
+        $scope.isAuthorized = true
+        $scope.user.loggedIn = true
+        $scope.user.name = user.name
+        $scope.user.avatar = user.picture.data
+        User.$save()
+
+    $rootScope.userDetail =
+      geo: '33703'
+
   ]
 )
 
@@ -18,7 +58,7 @@ module.controller('AppController',
 # -----------------------------------------
 module.controller('HomeController',
   ['$scope', ($scope) ->
-
+    return
   ]
 )
 
@@ -36,7 +76,7 @@ module.controller('ToolbarController',
     if $route.current.params.keywords
       ListingFilter.resultsLabel = "Showing results for: '#{$route.current.params.keywords}'"
     else
-      ListingFilter.resultsLabel = $route.current.params.cat
+      ListingFilter.resultsLabel = $route.current.params.category
 
     $scope.setLayout = (layout) ->
       ListingFilter.layoutOption = layout
@@ -53,12 +93,10 @@ module.controller('ToolbarController',
 # Search Controller
 # -----------------------------------------
 module.controller('SearchController',
-  ['$scope', '$location', 'ListingFilter', ($scope, $location, ListingFilter) ->
+  ['$scope', '$location', '$rootScope', 'ListingFilter', ($scope, $location, $rootScope, ListingFilter) ->
 
     $scope.listingFilter = ListingFilter
-    $scope.queryKeyword = () ->
-      console.log('QUERYING')
-      $location.url("/search/?keywords=#{ListingFilter.searchText}")
+
   ]
 )
 
@@ -68,7 +106,7 @@ module.controller('SearchController',
 # -----------------------------------------
 module.controller('SidebarController',
   ['$scope', ($scope) ->
-
+    return
   ]
 )
 
@@ -84,56 +122,53 @@ module.controller('ListingController',
    '$route',
    '$rootScope',
    '$q',
-   'KeywordListingLoader',
-   'CategoryListingsLoader',
+   'Coupons'
    'ListingFilter',
-    ($scope, $location, $route, $q, $rootScope, KeywordListingLoader, CategoryListingsLoader, ListingFilter) ->
-
-      requestedPage = $route.current.params.page
+   'ScrollWatch'
+    ($scope, $location, $route, $q, $rootScope, Coupons, ListingFilter, ScrollWatch) ->
 
       $scope.listingFilter = ListingFilter
       $scope.listings = []
+      $scope.scrollBottomReached = false
 
-      ListingFilter.loading = true
+      # turn on loader gif
+      $scope.listingFilter.loading = true
+
+      # get all listings (based on URL)
+      Coupons.getAllListings().then(
+
+        # promise successfully resolved
+        (listings) ->
+
+          $scope.gotError = false
+
+          # concatenate listing arrays into single array
+          $scope.allListings = Array.prototype.concat(
+            listings.keywordCouponsList,
+            listings.keywordGroceryList,
+            listings.keywordSdcCouponsList,
+            listings.keywordDealsList
+          )
+
+          # consume subset of listings
+          $scope.appendListings()
+
+          # turn off the loading indicator
+          $scope.listingFilter.loading = false
+
+        # promise rejected
+        (error) ->
+          console.debug(error)
+          displayError(error)
+      )
+
+      # listen for scroll to reach bottom
+      $scope.$on 'scrollLimit', (ev, data) ->
+        $scope.scrollBottomReached = true
 
 
-      if $route.current.params.keywords
-        if localStorage.getItem('search_pizza') and $route.current.params.keywords
-          delay = $q.defer()
-          getListings = delay.promise
-          delay.resolve( JSON.parse(localStorage.getItem('search_pizza')) )
-        else
-          getListings = KeywordListingLoader()
-          ListingFilter.resultsLabel = "Showing results for: '#{$route.current.params.keywords}'"
-
-      else if $route.current.params.cat
-        getListings = CategoryListingsLoader()
-        ListingFilter.resultsLabel = $route.current.params.cat
-
-      getListings.then (listings) ->
-
-        if $route.current.params.keywords == 'pizza'
-          unless localStorage.getItem('search_pizza')
-            JSON.stringify(localStorage.setItem('search_pizza', JSON.stringify(listings)))
-
-        $scope.allListings = Array.prototype.concat(
-          listings.keywordCouponsList,
-          listings.keywordGroceryList,
-          listings.keywordSdcCouponsList,
-          listings.keywordDealsList
-        )
-
-
-
-        $scope.appendListings()
-
-        # turn off the loading indicator
-        ListingFilter.loading = false
-
-
-      $scope.$on 'e:scroll', () ->
-        console.log 'scrolling!'
-
+      # TODO: figure out how to get logos from differing listing types
+      # get correct logo image source
       $scope.getLogoSrc = () ->
         if this.listing.slugTypeId != null
           if this.listing.logoImageFileName
@@ -149,7 +184,14 @@ module.controller('ListingController',
             return '/img/defaultLogo.png'
 
       $scope.appendListings = () ->
-        $scope.listings = $scope.listings.concat($scope.allListings.splice(0, 20))
+        $scope.listings = $scope.listings.concat($scope.allListings.splice(0, 20))  # get next 20 listings
+        $scope.scrollBottomReached = false  # reset scroll watcher
+
+
+      displayError = (error) ->
+        $scope.listingFilter.loading = false
+        $scope.gotError = true
+        $scope.errorInfo = "404, dawg."
   ]
 )
 

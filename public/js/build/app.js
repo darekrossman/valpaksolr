@@ -2,17 +2,27 @@
 (function() {
   var app, appConfig, deps;
 
-  deps = ['app.filters', 'app.services', 'app.directives', 'app.controllers', 'ngResource'];
+  deps = ['app.filters', 'app.services', 'app.directives', 'app.controllers', 'ngResource', 'ngCookies'];
 
   appConfig = [
-    '$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
-      $routeProvider.when('/', {
+    '$routeProvider', '$locationProvider', '$httpProvider', function($routeProvider, $locationProvider, $httpProvider) {
+      $routeProvider.when('/coupons/home', {
         templateUrl: '/partials/home.jade',
         controller: 'HomeController'
-      }).when('/search/', {
+      }).when('/coupons/query', {
         templateUrl: '/partials/results.layout.jade',
-        controller: 'ListingController'
-      }).when('/listings/category/:cat', {
+        controller: 'ListingController',
+        resolve: {
+          list: function($q) {
+            var d;
+
+            console.log('resolving...');
+            d = $q.defer();
+            d.resolve('REJECT!');
+            return d.promise;
+          }
+        }
+      }).when('/coupons/local-coupons/:category/:geo', {
         templateUrl: '/partials/results.layout.jade',
         controller: 'ListingController'
       }).when('/listing/profile/:profileId', {
@@ -33,5 +43,11 @@
   app = angular.module('app', deps);
 
   app.config(appConfig);
+
+  app.run([
+    '$rootScope', '$log', function($rootScope, $log) {
+      return $rootScope;
+    }
+  ]);
 
 }).call(this);

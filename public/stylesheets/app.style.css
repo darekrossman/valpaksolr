@@ -48,16 +48,16 @@ button.toggled{background:#ccd96a}
 .list .tile .tile-logo{width:68px;margin-right:5px}
 .list .tile .btn{font-family:'Open Sans',sans-serif;border:0;margin:0;display:inline-block;-webkit-border-radius:2px;border-radius:2px;border:0 solid #333;background:#1a4b5f;font-size:14px;font-weight:300;line-height:1.5em;padding:.3em 1.2em;text-decoration:none;color:#fff;border-color:#fff;float:right;display:none}
 .list .tile .btn.toggled{background:#ccd96a}
-.list .tile .tile-businessname{font-weight:700;font-size:13px;margin-bottom:.3em;color:#1f5b73}
-.list .tile .tile-offertext{font-size:18px;font-weight:400;line-height:1.5em}
+.list .tile .tile-businessname{font-weight:300;font-size:14px;line-height:1.3em;color:#808080}
+.list .tile .tile-offertext{color:#1f5b73;font-size:14px;font-weight:700;line-height:1.3em;margin-right:100px}
 .list .tile .tile-distance{position:absolute;right:15px;top:9px;font-size:12px;color:#b3b3b3;line-height:1.5em}
 .scroll-visible{z-index:3;opacity:1;-ms-filter:none;filter:none;-webkit-transform:translateZ(0) rotateX(0);-moz-transform:translateZ(0) rotateX(0);-o-transform:translateZ(0) rotateX(0);-ms-transform:translateZ(0) rotateX(0);transform:translateZ(0) rotateX(0);background:#fff}
-::-webkit-input-placeholder{color:#ccc}
+::-webkit-input-placeholder{color:#ccc;font-style:italic;font-size:14px}
 :-moz-placeholder{color:#f00}
 ::-moz-placeholder{color:#f00}
 :-ms-input-placeholder{color:#f00}
 html{height:100%}
-body{width:100%;overflow-x:hidden;padding:0;margin:0;height:100%;font-family:'Open Sans',sans-serif;background:#f2f2f2;-webkit-transform:translateZ(0);-moz-transform:translateZ(0);-o-transform:translateZ(0);-ms-transform:translateZ(0);transform:translateZ(0)}
+body{width:100%;overflow-x:hidden;padding:0;margin:0;height:100%;font-family:'Open Sans',sans-serif;background:#f2f2f2}
 .primary{zoom:1;z-index:9999;overflow:hidden;position:absolute;top:50px;bottom:0;right:0;left:220px;-webkit-background-size:100% auto;-moz-background-size:100% auto;background-size:100% auto;-webkit-transition:-webkit-transform .2s ease-out;-moz-transition:-moz-transform .2s ease-out;-o-transition:-o-transform .2s ease-out;-ms-transition:-ms-transform .2s ease-out;transition:transform .2s ease-out}
 .primary:before,.primary:after{content:"";display:table}
 .primary:after{clear:both}
@@ -73,18 +73,19 @@ body{width:100%;overflow-x:hidden;padding:0;margin:0;height:100%;font-family:'Op
 .toolbar-view:before,.toolbar-view:after{content:"";display:table}
 .toolbar-view:after{clear:both}
 .toolbar-view div:nth-child(1){padding-left:20px;float:left;color:#fff}
-.scroll-view{-webkit-backface-visibility:hidden;overflow-x:hidden;overflow-y:scroll;position:absolute;top:50px;left:0;right:0;bottom:0;z-index:9996;background:#ebebeb;-webkit-overflow-scrolling:touch;-webkit-perspective:400px;-moz-perspective:400px;-ms-perspective:400px;perspective:400px;}
-.scroll-view ul{zoom:1}
+.scroll-view{overflow-x:hidden;overflow-y:scroll;position:absolute;top:50px;left:0;right:0;bottom:0;z-index:9996;background:#ebebeb;-webkit-overflow-scrolling:touch;}
+.scroll-view ul{zoom:1;-webkit-perspective:400;-moz-perspective:400;-ms-perspective:400;perspective:400;position:relative;overflow:hidden}
 .scroll-view ul:before,.scroll-view ul:after{content:"";display:table}
 .scroll-view ul:after{clear:both}
 [data-control="layout"]{position:absolute;right:10px;top:10px;line-height:20px;}
 [data-control="layout"] button{line-height:22px}
-.load-more{margin:0 0 -80px 0;position:relative;height:100px;overflow:hidden;width:200px;margin:0 auto;}
-.load-more .btn{position:relative;bottom:-30px;display:block;font-weight:100;background:#1bafbf;width:200px;height:200px;-webkit-border-radius:100px;border-radius:100px;border:0;margin:0;text-align:center;color:#fff;padding-top:30px;cursor:pointer;}
-.load-more .btn span:before{font-size:20px;line-height:25px}
-.load-more .btn:hover{background:#1ba6a6}
+.load-more{z-index:3;}
+.load-more .btn{padding:15px 0;display:block;font-weight:100;background:#1f5b73;border:0;margin:0;text-align:center;color:#fff;cursor:pointer;border-top:1px solid #091b23;}
+.load-more .btn span:before{font-size:20px;line-height:10px}
+.load-more .btn:hover{background:#ccd96a;border-top-color:#becf41}
+.load-more.visible .btn{-webkit-transform:translateY(0);-moz-transform:translateY(0);-o-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0)}
 [coupon-search]{position:absolute;top:10px;right:12px;}
-[coupon-search] input{background:#fff;width:9em;color:#1f5b73;margin:0;vertical-align:top;padding:6px 6px;font-size:16px;border:0;-webkit-border-radius:2px;border-radius:2px;margin-right:0;-webkit-transition:width .2s cubic-bezier(.175,.885,.32,1.275);-moz-transition:width .2s cubic-bezier(.175,.885,.32,1.275);-o-transition:width .2s cubic-bezier(.175,.885,.32,1.275);-ms-transition:width .2s cubic-bezier(.175,.885,.32,1.275);transition:width .2s cubic-bezier(.175,.885,.32,1.275);}
+[coupon-search] input{background:#fff;width:9em;color:#1f5b73;margin:0;vertical-align:top;padding:6px 6px;font-size:16px;border:0;-webkit-border-radius:2px;border-radius:2px;margin-right:0;-webkit-transition:all .2s cubic-bezier(.175,.885,.32,1.275);-moz-transition:all .2s cubic-bezier(.175,.885,.32,1.275);-o-transition:all .2s cubic-bezier(.175,.885,.32,1.275);-ms-transition:all .2s cubic-bezier(.175,.885,.32,1.275);transition:all .2s cubic-bezier(.175,.885,.32,1.275);}
 [coupon-search] input:focus{outline:none;width:20em}
 [coupon-search] button{font-family:'Open Sans',sans-serif;border:0;margin:0;display:inline-block;-webkit-border-radius:2px;border-radius:2px;border:0 solid #333;background:#1a4b5f;font-size:14px;font-weight:300;line-height:1.5em;padding:.3em 1.2em;text-decoration:none;color:#fff;border-color:#fff;vertical-align:top;line-height:30px;margin-left:-32px;color:#1f5b73;background:transparent;padding:0 2px;-webkit-border-radius:2px;border-radius:2px;}
 [coupon-search] button.toggled{background:#ccd96a}
@@ -97,3 +98,7 @@ body{width:100%;overflow-x:hidden;padding:0;margin:0;height:100%;font-family:'Op
 .media .media-body{overflow:hidden}
 strong{font-weight:800;}
 strong.demi{font-weight:700}
+.login-btn{font-family:'Open Sans',sans-serif;border:0;margin:0;display:inline-block;-webkit-border-radius:2px;border-radius:2px;border:0 solid #333;background:#1a4b5f;font-size:14px;font-weight:300;line-height:1.5em;padding:.3em 1.2em;text-decoration:none;color:#fff;border-color:#fff}
+.login-btn.toggled{background:#ccd96a}
+.error-msg{text-align:center;font-size:62px;font-weight:100;color:#ccc;}
+.error-msg .icon-thumbs-down:before{font-size:80px}

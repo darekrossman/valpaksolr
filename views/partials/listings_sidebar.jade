@@ -1,29 +1,37 @@
 div.secondary(ng-controller="SidebarController")
 
+  div.user-module(ng-click="fblogin()")
+
+    div.user-detail(ng-show="isAuthorized")
+        img(ng-src="{{user.avatar.url}}")
+        h6 {{user.name}}
+
+    div.login-btn(ng-show="!isAuthorized") Login with Facebook
+
   div.nav-module
 
       nav
         ul.n1
           li
-            a(ng-href="/listings/category/all") All
+            a(ng-href="/coupons/local-coupons/all/{{userDetail.geo}}") All
           li
-            a(ng-href="/listings/category/restaurants") Restaurants
+            a(ng-href="/coupons/local-coupons/restaurants/{{userDetail.geo}}") Restaurants
           li
-            a(ng-href="/listings/category/home-office") Home &amp; Office
+            a(ng-href="/coupons/local-coupons/home-office/{{userDetail.geo}}") Home &amp; Office
           li
-            a(ng-href="/listings/category/services") Services
+            a(ng-href="/coupons/local-coupons/services/{{userDetail.geo}}") Services
           li
-            a(ng-href="/listings/category/automotive") Automotive
+            a(ng-href="/coupons/local-coupons/automotive/{{userDetail.geo}}") Automotive
           li
-            a(ng-href="/listings/category/entertainment-travel") Entertainment &amp; Travel
+            a(ng-href="/coupons/local-coupons/entertainment-travel/{{userDetail.geo}}") Entertainment &amp; Travel
           li
-            a(ng-href="/listings/category/personal-care") Personal Care
+            a(ng-href="/coupons/local-coupons/personal-care/{{userDetail.geo}}") Personal Care
           li
-            a(ng-href="/listings/category/general") General
+            a(ng-href="/coupons/local-coupons/general/{{userDetail.geo}}") General
           li
-            a(ng-href="/listings/category/health") Health
+            a(ng-href="/coupons/local-coupons/health/{{userDetail.geo}}") Health
           li
-            a(ng-href="/listings/category/shops") Shops
+            a(ng-href="/coupons/local-coupons/shops/{{userDetail.geo}}") Shops
 
   //- form
   //-   ul

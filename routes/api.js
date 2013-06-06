@@ -1,6 +1,8 @@
 var request = require('request');
 var listingCache = require('memory-cache');
 
+var caching = true;
+
 // Example
 // BPP:       http://vpdev.valpak.com/rshack/rs/bpp?businessProfileId=33216
 // Listings:  http://vpdev.valpak.com/rshack/rs/lists/?latitude=27.878991&langitude=-82.758636&keywords=pizza
@@ -28,7 +30,6 @@ exports.getBusinessProfile = function(req, res) {
     function(error, response, body) {
       if (!error && response.statusCode == 200) {
         res.writeHead(200, { 'Content-Type': 'application/json' });
-        res.write(body);
         res.end();
       } else {
         res.send(404, 'Could not connect.');
@@ -47,10 +48,8 @@ exports.getAllListings = function(req, res) {
       }
     },
     function(error, response, body) {
-      console.log(response.req.path);
       if (!error && response.statusCode === 200) {
         res.writeHead(200, { 'Content-Type': 'application/json' });
-        console.log(body)
         res.write(body);
         res.end();
       } else {
@@ -64,9 +63,7 @@ exports.getAllListingsInCategory = function(req, res) {
   var categoryListingCache = listingCache.get('category:' + req.params.cat);
 
 
-  if (categoryListingCache == null) {
-    console.log('****************************')
-    console.log('category listings not cached')
+  if (categoryListingCache == null || !caching) {
     request(
       {
         url: vpRestConfig.HOST + vpRestConfig.LISTINGS,
@@ -88,8 +85,6 @@ exports.getAllListingsInCategory = function(req, res) {
         }
       });
   } else {
-    console.log('****************************')
-    console.log('category listings cached')
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.write(categoryListingCache)
     res.end()
