@@ -7,20 +7,18 @@
   AppController = module.controller('AppController', [
     '$scope', '$fb', '$rootScope', '$log', 'ListingFilter', 'User', function($scope, $fb, $rootScope, $log, ListingFilter, User) {
       $scope.listingFilter = ListingFilter;
-      $scope.isAuthorized = false;
-      $log.debug(User);
       $scope.user = User;
       $rootScope.$on('$routeChangeError', function(ev, current, previous, rejection) {
         return console.debug('uh oh! something went wrong!');
       });
       $fb.init().then(function(user) {
-        $scope.isAuthenticated = true;
+        $scope.user.isAuthenticated = true;
         $scope.user.loggedIn = true;
         $scope.user.name = user.name;
         $scope.user.avatar = user.picture.data;
-        User.fbId = user.id;
-        User.name = user.name;
-        return User.$save();
+        $scope.user.fbId = user.id;
+        $scope.name = user.name;
+        return $scope.user.$save();
       });
       $scope.fblogin = function() {
         return $fb.login().then(function(user) {
@@ -120,3 +118,7 @@
   ]);
 
 }).call(this);
+
+/*
+//@ sourceMappingURL=controllers.map
+*/

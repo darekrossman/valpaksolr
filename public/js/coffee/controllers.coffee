@@ -14,24 +14,22 @@ AppController = module.controller('AppController',
   ['$scope', '$fb', '$rootScope', '$log', 'ListingFilter', 'User', ($scope, $fb, $rootScope, $log, ListingFilter, User) ->
 
     $scope.listingFilter = ListingFilter
-    $scope.isAuthorized = false
 
-    $log.debug(User)
     $scope.user = User
 
     $rootScope.$on '$routeChangeError', (ev, current, previous, rejection) ->
       console.debug('uh oh! something went wrong!')
 
     $fb.init().then (user) ->
-      $scope.isAuthenticated = true
+      $scope.user.isAuthenticated = true
       $scope.user.loggedIn = true
       $scope.user.name = user.name
       $scope.user.avatar = user.picture.data
 
-      User.fbId = user.id
-      User.name = user.name
+      $scope.user.fbId = user.id
+      $scope.name = user.name
 
-      User.$save()
+      $scope.user.$save()
 
       #User.find(user.id)
 

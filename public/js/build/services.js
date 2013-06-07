@@ -34,7 +34,6 @@
         return userResource.create({
           user: this
         }, function(response) {
-          console.debug('RESPONSE:');
           return console.debug(response);
         }, function(err) {
           return console.debug('CANT CREATE USER');
@@ -211,7 +210,6 @@
           if (response.status === 'connected') {
             console.log('user authorized, getting user');
             return FB.api('/me?fields=id,name,picture', function(user) {
-              console.debug(user);
               return $rootScope.$apply(defer.resolve(user));
             });
           } else if (response.status === 'not_authorized') {
@@ -245,3 +243,7 @@
   ]);
 
 }).call(this);
+
+/*
+//@ sourceMappingURL=services.map
+*/

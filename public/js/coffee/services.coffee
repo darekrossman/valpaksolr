@@ -32,7 +32,6 @@ module.service('User',
     User.prototype.$save = () ->
       userResource.create({user: this}
         (response) ->
-          console.debug('RESPONSE:')
           console.debug(response)
         (err) ->
           console.debug('CANT CREATE USER')
@@ -277,7 +276,6 @@ module.factory('$fb',
         if response.status is 'connected'
           console.log('user authorized, getting user')
           FB.api '/me?fields=id,name,picture', (user) ->
-            console.debug(user)
             $rootScope.$apply(defer.resolve(user))
         else if response.status is 'not_authorized'
           console.log('not authorized')
