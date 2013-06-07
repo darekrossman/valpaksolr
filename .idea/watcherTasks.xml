@@ -2,14 +2,14 @@
 <project version="4">
   <component name="ProjectTasksOptions">
     <TaskOptions isEnabled="true">
-      <option name="arguments" value="--map --compile --output  $ProjectFileDir$/public/js/build/ $ProjectFileDir$/public/js/coffee/ " />
+      <option name="arguments" value="--compile --map $FileName$ " />
       <option name="checkSyntaxErrors" value="true" />
       <option name="description" value="Compiles .coffee files into .js files" />
       <option name="exitCodeBehavior" value="ERROR" />
       <option name="fileExtension" value="coffee" />
-      <option name="immediateSync" value="false" />
+      <option name="immediateSync" value="true" />
       <option name="name" value="CoffeeScript" />
-      <option name="output" value="" />
+      <option name="output" value="$FileNameWithoutExtension$.js:$FileNameWithoutExtension$.map" />
       <option name="outputFilters">
         <array />
       </option>
@@ -18,7 +18,7 @@
       <option name="program" value="/usr/local/share/npm/bin/coffee" />
       <option name="scopeName" value="Project Files" />
       <option name="trackOnlyRoot" value="true" />
-      <option name="workingDir" value="" />
+      <option name="workingDir" value="$FileDir$" />
       <envs />
     </TaskOptions>
   </component>
