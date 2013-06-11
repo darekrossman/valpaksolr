@@ -47,8 +47,8 @@ exports.partials = function (req, res) {
 
 
 
-exports.create = function ( req, res ){
-  var newUser = req.body.user;
+exports.createUser = function ( req, res ){
+  var newUser = req.body;
   newUser.joined = Date.now();
 
   new User(newUser).save( function( err, user, count ){
@@ -57,8 +57,19 @@ exports.create = function ( req, res ){
 };
 
 exports.getUser = function ( req, res ){
-  User.findOne( {fbId: req.params.id}, function ( err, user, count ){
-
+  User.findOne( {name: "Darek Rossman"}, function ( err, user, count ){
     res.json(user);
+  });
+};
+
+exports.updateUser = function ( req, res ){
+  var query = {fbId: req.params.id}
+  User.findOneAndUpdate(query, req.body, function( err, user ){
+    if (!user) {
+      console.log('Could not find user with fbId "'+ req.params.id +'"')
+      res.json(user)
+    } else {
+      res.json(user);
+    }
   });
 };

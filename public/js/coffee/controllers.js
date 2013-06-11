@@ -5,30 +5,11 @@
   module = angular.module('app.controllers', []);
 
   AppController = module.controller('AppController', [
-    '$scope', '$fb', '$rootScope', '$log', 'ListingFilter', 'User', function($scope, $fb, $rootScope, $log, ListingFilter, User) {
+    '$scope', '$rootScope', '$log', 'ListingFilter', 'User', function($scope, $rootScope, $log, ListingFilter, User) {
       $scope.listingFilter = ListingFilter;
-      $scope.user = User;
       $rootScope.$on('$routeChangeError', function(ev, current, previous, rejection) {
         return console.debug('uh oh! something went wrong!');
       });
-      $fb.init().then(function(user) {
-        $scope.user.isAuthenticated = true;
-        $scope.user.loggedIn = true;
-        $scope.user.name = user.name;
-        $scope.user.avatar = user.picture.data;
-        $scope.user.fbId = user.id;
-        $scope.name = user.name;
-        return $scope.user.$save();
-      });
-      $scope.fblogin = function() {
-        return $fb.login().then(function(user) {
-          $scope.isAuthorized = true;
-          $scope.user.loggedIn = true;
-          $scope.user.name = user.name;
-          $scope.user.avatar = user.picture.data;
-          return User.$save();
-        });
-      };
       return $rootScope.userDetail = {
         geo: '33703'
       };
@@ -105,7 +86,7 @@
       return displayError = function(error) {
         $scope.listingFilter.loading = false;
         $scope.gotError = true;
-        return $scope.errorInfo = "404, dawg.";
+        return $scope.errorInfo = "Sorry, dawg. No can do.";
       };
     }
   ]);

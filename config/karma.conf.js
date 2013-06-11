@@ -12,10 +12,11 @@ files = [
   JASMINE_ADAPTER,
   'public/components/angular/angular.min.js',
   'public/components/angular-resource/angular-resource.min.js',
+  'public/components/angular/angular-cookies.min.js',
   'test/lib/angular/angular-mocks.js',
   'http://maps.googleapis.com/maps/api/js?sensor=false',
   'public/js/lib/*.js',
-  'public/js/build/*.js',
+  'public/js/coffee/*.js',
   'test/unit/*.js'
 ];
 

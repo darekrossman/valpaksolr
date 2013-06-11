@@ -8,45 +8,42 @@ module = angular.module('app.services', ['ngResource'])
 # A user, duh
 # ------------------------------------------------
 module.service('User',
-  ['$resource', ($resource) ->
-
-    userResource = $resource '/user/:action/:id', {action: '@action', id: '@id'},
-      create:
-        method: 'POST'
-        params:
-          action: 'create'
+  ['$resource', '$q', ($resource, $q) ->
 
 
-    User = () ->
-      this.name = ''
-      this.fbId = ''
-      this.email = ''
-      this.loggedIn = false
-      this.isAuthenticated = false
-      this.defaultGeo = ''
+    this.username = ''
+    this.email = ''
+    this.geo = ''
 
 
-    User.prototype.setDefaultGeo = (geo) ->
-        this.defaultGeo = geo
-
-    User.prototype.$save = () ->
-      userResource.create({user: this}
-        (response) ->
-          console.debug(response)
-        (err) ->
-          console.debug('CANT CREATE USER')
-      )
-
-    User.prototype.find = (id) ->
-      userResource.get({id: id}
-        (_user) ->
-          console.debug(_user)
-        () ->
-          console.debug('NO USER')
-      )
 
 
-    return new User()
+#    userResource = $resource '/user/:id', {id: '@id'}
+#
+#    return userResource
+
+#    User.prototype.$save = () ->
+#      userResource.create({user: this}
+#        (response) ->
+#          console.debug(response)
+#        (err) ->
+#          console.debug('CANT CREATE USER')
+#      )
+#
+#    User.prototype.find = (id) ->
+#      findDelay = $q.defer()
+#      userResource.get({id: id}
+#        (_user) ->
+#          findDelay.resolve(_user)
+#          console.debug(_user)
+#        () ->
+#          findDelay.reject('no user')
+#          console.debug('NO USER')
+#      )
+#      return findDelay.promise
+#
+#
+#    return new User()
   ])
 
 
@@ -195,15 +192,6 @@ module.service('ListingFilter',
     return {
       searchTerms: null
       loading: true
-      searchText: ''
-      activeFilters: {}
-      lists:
-        vpPrintable: true
-        grocery: true
-        deals: true
-        sdc: true
-      resultsLabel: ''
-      slidemenuActive: true
       layoutOption: localStorage.getItem('layout_option') || 'grid'
     }
   ]
@@ -238,23 +226,10 @@ module.factory('ScrollWatch',
 #
 # A service for authenticating users via Facebook
 # ------------------------------------------------
-module.factory('$fb',
+module.factory('Facebook',
   ['$rootScope', '$window', '$q', ($rootScope, $window, $q)->
 
     defer = $q.defer()
-
-    init = () ->
-
-      return defer.promise
-
-    login = () ->
-      loginDefer = $q.defer()
-      FB.login (response) ->
-        FB.api '/me?fields=id,name,picture', (user) ->
-          $rootScope.$apply(
-            loginDefer.resolve(user)
-          )
-      return loginDefer.promise
 
     $window.fbAsyncInit = ->
 
@@ -265,37 +240,30 @@ module.factory('$fb',
         cookie     : true
         xfbml      : true
 
-      FB.Event.subscribe 'auth.authResponseChange', (response) ->
-#          if response.status is 'connected'
-#            testAPI();
-#          else if response.status is 'not_authorized'
-#            FB.login()
-#          else
-#            FB.login()
-      FB.getLoginStatus (response) ->
-        if response.status is 'connected'
-          console.log('user authorized, getting user')
-          FB.api '/me?fields=id,name,picture', (user) ->
-            $rootScope.$apply(defer.resolve(user))
-        else if response.status is 'not_authorized'
-          console.log('not authorized')
-          defer.resolve(response)
-        else
-          console.log('not logged in')
-          defer.resolve(response)
+      defer.resolve(FB)
 
-    ((d) ->
-      id = 'facebook-jssdk'; ref = d.getElementsByTagName('script')[0]
-      if d.getElementById(id)
-        return
-      js = d.createElement('script'); js.id = id; js.async = true;
-      js.src = "//connect.facebook.net/en_US/all.js"; ref.parentNode.insertBefore(js, ref)
-    )(document)
+#      FB.Event.subscribe 'auth.authResponseChange', (response) ->
+##          if response.status is 'connected'
+##            testAPI();
+##          else if response.status is 'not_authorized'
+##            FB.login()
+##          else
+##            FB.login()
+#      FB.getLoginStatus (response) ->
+#        if response.status is 'connected'
+#
+#          FB.api '/me?fields=id,name,picture', (user) ->
+#            $rootScope.$apply(defer.resolve(user))
+#
+#        else if response.status is 'not_authorized'
+#          defer.resolve(response)
+#
+#        else
+#          console.log('not logged in')
 
-    return {
-      init: init
-      login: login
-    }
+
+
+    return defer.promise
 
   ]
 )

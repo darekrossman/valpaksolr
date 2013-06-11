@@ -3,14 +3,11 @@ var Schema   = mongoose.Schema;
 
 var User = new Schema({
   name        : String,
-  fbId        : {type: String, unique: true},
-  email       : String,
+  password    : String,
+  email       : {type: String, unique: true},
   defaultGeo  : String,
   joined      : Date
 });
 
 mongoose.model( 'User', User );
 
-mongoose.connect( 'mongodb://localhost/vp_users', function(err, res) {
-  console.log(arguments)
-});

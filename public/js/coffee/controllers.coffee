@@ -11,36 +11,33 @@ module = angular.module('app.controllers', [])
 # App Controller
 # -----------------------------------------
 AppController = module.controller('AppController',
-  ['$scope', '$fb', '$rootScope', '$log', 'ListingFilter', 'User', ($scope, $fb, $rootScope, $log, ListingFilter, User) ->
+  ['$scope', '$rootScope', '$log', 'ListingFilter', 'User', ($scope, $rootScope, $log, ListingFilter, User) ->
 
     $scope.listingFilter = ListingFilter
-
-    $scope.user = User
 
     $rootScope.$on '$routeChangeError', (ev, current, previous, rejection) ->
       console.debug('uh oh! something went wrong!')
 
-    $fb.init().then (user) ->
-      $scope.user.isAuthenticated = true
-      $scope.user.loggedIn = true
-      $scope.user.name = user.name
-      $scope.user.avatar = user.picture.data
+#    $fb.init().then (fbuser) ->
+#
+#      User.get({id: fbuser.id}
+#        (user) ->
+#          console.log(user)
+#        () ->
+#          console.log('error getting user')
+#      )
 
-      $scope.user.fbId = user.id
-      $scope.name = user.name
-
-      $scope.user.$save()
 
       #User.find(user.id)
 
 
-    $scope.fblogin = () ->
-      $fb.login().then (user) ->
-        $scope.isAuthorized = true
-        $scope.user.loggedIn = true
-        $scope.user.name = user.name
-        $scope.user.avatar = user.picture.data
-        User.$save()
+#    $scope.fblogin = () ->
+#      $fb.login().then (user) ->
+#        $scope.isAuthorized = true
+#        $scope.user.loggedIn = true
+#        $scope.user.name = user.name
+#        $scope.user.avatar = user.picture.data
+#        User.$save()
 
     $rootScope.userDetail =
       geo: '33703'
@@ -189,7 +186,7 @@ module.controller('ListingController',
       displayError = (error) ->
         $scope.listingFilter.loading = false
         $scope.gotError = true
-        $scope.errorInfo = "404, dawg."
+        $scope.errorInfo = "Sorry, dawg. No can do."
   ]
 )
 

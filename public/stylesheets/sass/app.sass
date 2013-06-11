@@ -1,0 +1,245 @@
+@import "_base"
+
+
+html
+  height: 100%
+
+body
+  width: 100%
+  overflow-x: hidden
+  padding: 0
+  margin: 0
+  height: 100%
+  font-family: $app-font
+  background: #CCC
+
+
+// Primary Column
+// ---------------------------------
+.primary
+  @include pie-clearfix
+  z-index: 9999
+  overflow: hidden
+  position: absolute
+  top: $header-height
+  bottom: 0
+  right: 0
+  left: $secondary-width + 0px
+  background-size: 100% auto
+  //transition: transform .2s ease-out
+
+
+// Secondary Column
+// ---------------------------------
+.secondary
+  @include pie-clearfix
+  position: absolute
+  top: header-height
+  bottom: 0
+  left: 0
+  width: secondary-width
+  padding: 0
+  transition: transform .2s ease-out
+  background: #CCC
+
+
+
+
+.no-sidebar .primary,
+.no-sidebar .secondary
+  @include translateX(-300px)
+
+
+
+
+
+// Navigation Styling
+// ---------------------------------
+.nav-module
+
+  padding: 20px 0
+
+
+  [class^="icon-"]:before, [class*=" icon-"]:before
+    margin-right: 5px
+    width: 17px
+
+  .n1
+    a
+      font-size: .9em
+      line-height: 1.7em
+      display: block
+      padding: 0 20px
+      color: $c1
+      text-decoration: none
+      &:hover
+        color: $c2
+
+
+// Top-level View Styling
+// ---------------------------------
+.toolbar-view
+  @include pie-clearfix
+  position: relative
+  background: $c1
+  z-index: 9997
+  line-height: toolbar-height
+  padding: 0
+
+  div:nth-child(1)
+    padding-left: 20px
+    float: left
+    color: #FFF
+
+.scroll-view
+  overflow-x: hidden
+  overflow-y: scroll
+  position: absolute
+  top: toolbar-height
+  left: 0
+  right: 0
+  bottom: 0
+  z-index: 9996
+  background: #CCC
+  -webkit-overflow-scrolling: touch
+  ul
+    @include pie-clearfix
+    @include perspective(400)
+    position: relative
+    overflow: hidden
+    // transform translateZ(0px)
+
+
+
+
+[data-control="layout"]
+  position: absolute
+  right: 10px
+  top: 10px
+  line-height: 20px
+  button
+    line-height: 22px
+
+
+
+.load-more
+  z-index: 3
+  .btn
+    padding: 15px 0
+    display: block
+    font-weight: 100
+    background: c1
+    border: 0
+    margin: 0
+    text-align: center
+    color: white
+    cursor: pointer
+    //border-top: 1px solid darken(c1, 20)
+    //transform translateY(-100px)
+    //transition: transform .2s ease-out
+
+    span:before
+      font-size: 20px
+      line-height: 10px
+
+    &:hover
+      background: $c5
+      //border-top-color: darken(c5, 10)
+
+  &.visible
+    .btn
+      @include translateY(0px)
+
+[coupon-search]
+  position: absolute
+  top: 10px
+  right: 12px
+  input
+    background: #fff
+    width: 9em
+    color: c1
+    margin: 0
+    vertical-align: top
+    padding: 6px 6px
+    font-size: 16px
+    border: 0
+    border-radius: 2px
+    margin-right: 0px
+    // transform translateZ(0)
+    @include transition(all .2s cubic-bezier(0.175, 0.885, 0.320, 1.275))
+
+    &:focus
+      outline: none
+      width: 20em
+
+  button
+    //button()
+    vertical-align: top
+    line-height: 30px
+    margin-left: -32px
+    color: c1
+    background: transparent
+    padding: 0 2px
+    border-radius: 2px
+    &:before
+      font-size: 18px
+      vertical-align: -2px
+
+.loader
+  opacity: .9
+  background: transparent
+  position: absolute
+  top: 0
+  left: 0
+  height: 100%
+  width: 100%
+  z-index: 9999
+  //transition-property: opacity
+  & > div
+    padding: 20px 30px
+
+    border-radius: 2px
+    text-align: center
+    position: absolute
+    top: 50%
+    left: 50%
+    margin: -45px 0 0 -94px
+    font-size: 16px
+    color: #CCC
+  p
+    margin-top: 8px
+  img
+    width: 64px
+    height: auto
+
+
+.media
+  .media-img
+    float: left
+    margin-right: 10px
+
+  .media-body
+    overflow: hidden
+
+
+strong
+  font-weight: 800
+
+  &.demi
+    font-weight: 700
+
+
+
+.login-btn
+  //button()
+  zoom: 1
+
+
+.error-msg
+  text-align: center
+  font-size: 62px
+  font-weight: 100
+  color: #CCC
+  .icon-thumbs-down
+    &:before
+      font-size: 80px

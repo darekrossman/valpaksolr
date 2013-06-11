@@ -20,7 +20,6 @@ appConfig = ['$routeProvider', '$locationProvider', '$httpProvider', ($routeProv
       controller: 'ListingController'
       resolve:
         list: ($q) ->
-          console.log('resolving...')
           d = $q.defer()
           d.resolve('REJECT!')
           return d.promise
@@ -42,13 +41,35 @@ appConfig = ['$routeProvider', '$locationProvider', '$httpProvider', ($routeProv
 
   $locationProvider.html5Mode(true).hashPrefix('!')
 
+  resInterceptor = ['$rootScope', '$q', ($rootScope, $q) ->
 
-]
+    success = (response) ->
+      return response
+
+    error = (response) ->
+      return $q.reject(response)
+
+    return (promise) ->
+      return promise.then(success, error)
+
+  $httpProvider.responseInterceptors.push(resInterceptor)
 
 
 app = angular.module('app', deps)
 app.config(appConfig)
 
-app.run ['$rootScope', '$log', ($rootScope, $log) ->
-  $rootScope
+app.run ['$rootScope', '$log', 'User', ($rootScope, $log, User) ->
+
+  $rootScope.debug = $log.debug
+  $rootScope.user = User
+
+
+  # async load Facebook SDK
+  ((d) ->
+    id = 'facebook-jssdk'; ref = d.getElementsByTagName('script')[0]
+    if d.getElementById(id)
+      return
+    js = d.createElement('script'); js.id = id; js.async = true;
+    js.src = "//connect.facebook.net/en_US/all.js"; ref.parentNode.insertBefore(js, ref)
+  )(document)
 ]

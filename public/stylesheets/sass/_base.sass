@@ -1,0 +1,42 @@
+@import "compass"
+@import "compass/reset"
+
+*
+  @include box-sizing(border-box)
+
+// Layout options
+// ------------------------------------
+$fixed-header: true
+$header-height: 50px
+$secondary-width: 220px
+$primary-width: 'fluid'
+$toolbar-height: 50px
+
+
+$hot: #E83311
+$warm: #FF9D3F
+$cool: #AFE8E7
+$cold: #7DDDFF
+
+$c1: #1F5B73
+$c2: #1BA6A6
+$c3: #1BAFBF
+$c4: #F2EFC4
+$c5: #CCD96A
+
+
+
+// Typography
+// ------------------------------------
+$app-font: 'Open Sans', sans-serif
+
+
+// Helpers
+// ------------------------------------
+@mixin figure($width)
+  display: block
+  width: $width
+  img
+    max-width: 100%
+    height: auto
+

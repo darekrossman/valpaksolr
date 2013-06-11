@@ -16,7 +16,6 @@
           list: function($q) {
             var d;
 
-            console.log('resolving...');
             d = $q.defer();
             d.resolve('REJECT!');
             return d.promise;
@@ -45,8 +44,23 @@
   app.config(appConfig);
 
   app.run([
-    '$rootScope', '$log', function($rootScope, $log) {
-      return $rootScope;
+    '$rootScope', '$log', 'User', function($rootScope, $log, User) {
+      $rootScope.debug = $log.debug;
+      $rootScope.user = User;
+      return (function(d) {
+        var id, js, ref;
+
+        id = 'facebook-jssdk';
+        ref = d.getElementsByTagName('script')[0];
+        if (d.getElementById(id)) {
+          return;
+        }
+        js = d.createElement('script');
+        js.id = id;
+        js.async = true;
+        js.src = "//connect.facebook.net/en_US/all.js";
+        return ref.parentNode.insertBefore(js, ref);
+      })(document);
     }
   ]);
 

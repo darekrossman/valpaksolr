@@ -5,50 +5,10 @@
   module = angular.module('app.services', ['ngResource']);
 
   module.service('User', [
-    '$resource', function($resource) {
-      var User, userResource;
-
-      userResource = $resource('/user/:action/:id', {
-        action: '@action',
-        id: '@id'
-      }, {
-        create: {
-          method: 'POST',
-          params: {
-            action: 'create'
-          }
-        }
-      });
-      User = function() {
-        this.name = '';
-        this.fbId = '';
-        this.email = '';
-        this.loggedIn = false;
-        this.isAuthenticated = false;
-        return this.defaultGeo = '';
-      };
-      User.prototype.setDefaultGeo = function(geo) {
-        return this.defaultGeo = geo;
-      };
-      User.prototype.$save = function() {
-        return userResource.create({
-          user: this
-        }, function(response) {
-          return console.debug(response);
-        }, function(err) {
-          return console.debug('CANT CREATE USER');
-        });
-      };
-      User.prototype.find = function(id) {
-        return userResource.get({
-          id: id
-        }, function(_user) {
-          return console.debug(_user);
-        }, function() {
-          return console.debug('NO USER');
-        });
-      };
-      return new User();
+    '$resource', '$q', function($resource, $q) {
+      this.username = '';
+      this.email = '';
+      return this.geo = '';
     }
   ]);
 
@@ -150,16 +110,6 @@
       return {
         searchTerms: null,
         loading: true,
-        searchText: '',
-        activeFilters: {},
-        lists: {
-          vpPrintable: true,
-          grocery: true,
-          deals: true,
-          sdc: true
-        },
-        resultsLabel: '',
-        slidemenuActive: true,
         layoutOption: localStorage.getItem('layout_option') || 'grid'
       };
     }
@@ -178,25 +128,11 @@
     }
   ]);
 
-  module.factory('$fb', [
+  module.factory('Facebook', [
     '$rootScope', '$window', '$q', function($rootScope, $window, $q) {
-      var defer, init, login;
+      var defer;
 
       defer = $q.defer();
-      init = function() {
-        return defer.promise;
-      };
-      login = function() {
-        var loginDefer;
-
-        loginDefer = $q.defer();
-        FB.login(function(response) {
-          return FB.api('/me?fields=id,name,picture', function(user) {
-            return $rootScope.$apply(loginDefer.resolve(user));
-          });
-        });
-        return loginDefer.promise;
-      };
       $window.fbAsyncInit = function() {
         FB.init({
           appId: '130720057130864',
@@ -205,40 +141,9 @@
           cookie: true,
           xfbml: true
         });
-        FB.Event.subscribe('auth.authResponseChange', function(response) {});
-        return FB.getLoginStatus(function(response) {
-          if (response.status === 'connected') {
-            console.log('user authorized, getting user');
-            return FB.api('/me?fields=id,name,picture', function(user) {
-              return $rootScope.$apply(defer.resolve(user));
-            });
-          } else if (response.status === 'not_authorized') {
-            console.log('not authorized');
-            return defer.resolve(response);
-          } else {
-            console.log('not logged in');
-            return defer.resolve(response);
-          }
-        });
+        return defer.resolve(FB);
       };
-      (function(d) {
-        var id, js, ref;
-
-        id = 'facebook-jssdk';
-        ref = d.getElementsByTagName('script')[0];
-        if (d.getElementById(id)) {
-          return;
-        }
-        js = d.createElement('script');
-        js.id = id;
-        js.async = true;
-        js.src = "//connect.facebook.net/en_US/all.js";
-        return ref.parentNode.insertBefore(js, ref);
-      })(document);
-      return {
-        init: init,
-        login: login
-      };
+      return defer.promise;
     }
   ]);
 
