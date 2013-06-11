@@ -11,7 +11,9 @@ pids
 logs
 results
 
-.idea
+*/.idea/workspace.xml
+*/.idea/tasks.xml
+.sass-cache
 
 node_modules
 Procfile
