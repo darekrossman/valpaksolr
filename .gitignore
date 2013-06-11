@@ -11,10 +11,7 @@ pids
 logs
 results
 
-npm-debug.log
-<<<<<<< HEAD
-node-modules
+.idea
+
+node_modules
 Procfile
-=======
-node-modules
->>>>>>> 8c96aaa0b96bbc8aac6647540ae60fede9744d74
