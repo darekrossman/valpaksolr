@@ -5,51 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51bb7a8e-47eb-4df1-aac2-48d759b57381" name="Default" comment="Added more files">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/stylesheets/sass/_base.sass" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/components/angular/angular-cookies.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/stylesheets/css/app.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/stylesheets/sass/app.sass" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/middleware/auth.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/stylesheets/css/base.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/stylesheets/css/buttons.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/stylesheets/sass/buttons.sass" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/stylesheets/stylus/vp.forms.styl" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/stylesheets/app.config.styl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/stylesheets/app.style.css" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/stylesheets/app.business-profile.styl" afterPath="$PROJECT_DIR$/public/stylesheets/stylus/app.business-profile.styl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/stylesheets/app.header.styl" afterPath="$PROJECT_DIR$/public/stylesheets/stylus/app.header.styl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/stylesheets/app.style.styl" afterPath="$PROJECT_DIR$/public/stylesheets/stylus/app.style.styl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/stylesheets/app.tile.styl" afterPath="$PROJECT_DIR$/public/stylesheets/stylus/app.tile.styl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/stylesheets/fontello.css" afterPath="$PROJECT_DIR$/public/stylesheets/css/fontello.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/stylesheets/grid.styl" afterPath="$PROJECT_DIR$/public/stylesheets/stylus/grid.styl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/stylesheets/vp.buttons.styl" afterPath="$PROJECT_DIR$/public/stylesheets/stylus/vp.buttons.styl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/stylesheets/vp.forms.styl" afterPath="$PROJECT_DIR$/public/stylesheets/stylus/app.config.styl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/stylesheets/vp.fx.styl" afterPath="$PROJECT_DIR$/public/stylesheets/stylus/vp.fx.styl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/stylesheets/vp.typography.styl" afterPath="$PROJECT_DIR$/public/stylesheets/stylus/vp.typography.styl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/stylesheets/stylus/app.style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/coffee/app.coffee" afterPath="$PROJECT_DIR$/public/js/coffee/app.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/stylus/app.config.styl" afterPath="$PROJECT_DIR$/public/stylesheets/stylus/app.config.styl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/css/app.css" afterPath="$PROJECT_DIR$/public/stylesheets/css/app.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/coffee/app.js" afterPath="$PROJECT_DIR$/public/js/coffee/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/coffee/app.map" afterPath="$PROJECT_DIR$/public/js/coffee/app.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/sass/app.sass" afterPath="$PROJECT_DIR$/public/stylesheets/sass/app.sass" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/coffee/controllers.coffee" afterPath="$PROJECT_DIR$/public/js/coffee/controllers.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/coffee/controllers.js" afterPath="$PROJECT_DIR$/public/js/coffee/controllers.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/coffee/controllers.map" afterPath="$PROJECT_DIR$/public/js/coffee/controllers.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/unit/controllersSpec.js" afterPath="$PROJECT_DIR$/test/unit/controllersSpec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.js" afterPath="$PROJECT_DIR$/db.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/coffee/filters.coffee" afterPath="$PROJECT_DIR$/public/js/coffee/filters.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/coffee/filters.js" afterPath="$PROJECT_DIR$/public/js/coffee/filters.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/coffee/filters.map" afterPath="$PROJECT_DIR$/public/js/coffee/filters.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/unit/filtersSpec.js" afterPath="$PROJECT_DIR$/test/unit/filtersSpec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/index.js" afterPath="$PROJECT_DIR$/routes/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/karma.conf.js" afterPath="$PROJECT_DIR$/config/karma.conf.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/layout.jade" afterPath="$PROJECT_DIR$/views/layout.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/coffee/services.coffee" afterPath="$PROJECT_DIR$/public/js/coffee/services.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/coffee/services.js" afterPath="$PROJECT_DIR$/public/js/coffee/services.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/coffee/services.map" afterPath="$PROJECT_DIR$/public/js/coffee/services.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/unit/servicesSpec.js" afterPath="$PROJECT_DIR$/test/unit/servicesSpec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/valpak-solr-tmp.iml" afterPath="$PROJECT_DIR$/.idea/valpak-solr-tmp.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web.js" afterPath="$PROJECT_DIR$/web.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -74,62 +41,124 @@
     <favorites_list name="Unnamed" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="controllers.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/js/coffee/controllers.coffee">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="41" selection-start="648" selection-end="648" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="buttons.sass" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/stylesheets/sass/buttons.sass">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="17" selection-start="22" selection-end="22" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="layout.jade" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/layout.jade">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="18" selection-start="54" selection-end="54" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.sass" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/stylesheets/sass/app.sass">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="160" column="13" selection-start="2542" selection-end="2542" vertical-scroll-proportion="-7.173913">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.css" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/stylesheets/css/app.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="245" column="0" selection-start="0" selection-end="5091" vertical-scroll-proportion="8.19">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_base.sass" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/stylesheets/sass/_base.sass">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="21" selection-start="248" selection-end="248" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.42411262">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="controllers.coffee" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/public/js/coffee/controllers.coffee">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="175" column="43" selection-start="4050" selection-end="4050" vertical-scroll-proportion="0.500994">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="buttons.sass" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/public/stylesheets/sass/buttons.sass">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="1" column="17" selection-start="22" selection-end="22" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="layout.jade" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/views/layout.jade">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="10" column="26" selection-start="294" selection-end="294" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="coupontile.jade" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/views/partials/coupontile.jade">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="6" column="0" selection-start="83" selection-end="83" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="web.js" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/web.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="7" column="33" selection-start="102" selection-end="102" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="index.jade" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/views/index.jade">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="13" column="44" selection-start="237" selection-end="247" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="_base.sass" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/public/stylesheets/sass/_base.sass">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="12" column="21" selection-start="248" selection-end="248" vertical-scroll-proportion="-7.304348">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="app.sass" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/public/stylesheets/sass/app.sass">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="42" column="18" selection-start="715" selection-end="715" vertical-scroll-proportion="-25.565218">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="coupontile.jade" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/views/partials/coupontile.jade">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="6" column="0" selection-start="83" selection-end="83" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="app.coffee" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/public/js/coffee/app.coffee">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="63" column="19" selection-start="1584" selection-end="1584" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="app.config.styl" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/public/stylesheets/stylus/app.config.styl">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="44" column="0" selection-start="667" selection-end="667" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="app.css" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/public/stylesheets/css/app.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="17" column="0" selection-start="720" selection-end="720" vertical-scroll-proportion="0.47316104">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -148,29 +177,29 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/public/js/coffee/app.coffee" />
-        <option value="$PROJECT_DIR$/middleware/auth.js" />
-        <option value="$PROJECT_DIR$/public/js/coffee/controllers.coffee" />
-        <option value="$PROJECT_DIR$/web.js" />
-        <option value="$PROJECT_DIR$/public/stylesheets/app.config.styl" />
-        <option value="$PROJECT_DIR$/public/stylesheets/appSass.css" />
-        <option value="$PROJECT_DIR$/public/stylesheets/appSass.sass" />
-        <option value="$PROJECT_DIR$/public/stylesheets/app.sass" />
         <option value="$PROJECT_DIR$/public/stylesheets/_app.base.sass" />
         <option value="$PROJECT_DIR$/public/stylesheets/test.scss" />
         <option value="$PROJECT_DIR$/public/stylesheets/buttons.sass" />
         <option value="$PROJECT_DIR$/config.rb" />
         <option value="$PROJECT_DIR$/public/stylesheets/sass/buttons.sass" />
-        <option value="$PROJECT_DIR$/views/layout.jade" />
-        <option value="$PROJECT_DIR$/public/stylesheets/stylus/app.style.styl" />
+        <option value="$PROJECT_DIR$/public/stylesheets/css/app.css" />
         <option value="$PROJECT_DIR$/public/stylesheets/sass/app.sass" />
+        <option value="$PROJECT_DIR$/views/layout.jade" />
+        <option value="$PROJECT_DIR$/web.js" />
+        <option value="$PROJECT_DIR$/public/stylesheets/stylus/vp.buttons.styl" />
+        <option value="$PROJECT_DIR$/public/stylesheets/stylus/app.style.styl" />
+        <option value="$PROJECT_DIR$/public/stylesheets/stylus/app.config.styl" />
+        <option value="$PROJECT_DIR$/views/index.jade" />
+        <option value="$PROJECT_DIR$/views/partials/coupontile.jade" />
+        <option value="$PROJECT_DIR$/public/js/coffee/controllers.coffee" />
+        <option value="$PROJECT_DIR$/public/js/coffee/app.coffee" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="22" />
-    <option name="width" value="1436" />
-    <option name="height" value="874" />
+    <option name="width" value="1680" />
+    <option name="height" value="1024" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -178,6 +207,9 @@
         <expanded-state>
           <State>
             <id />
+          </State>
+          <State>
+            <id>CSS</id>
           </State>
           <State>
             <id>CoffeeScript</id>
@@ -206,7 +238,7 @@
         </expanded-state>
         <selected-state>
           <State>
-            <id>SassScssUnresolvedFunction</id>
+            <id>CssMissingSemicolon</id>
           </State>
         </selected-state>
       </profile-state>
@@ -226,7 +258,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+    <navigator proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
       <showMembers ProjectPane="true" />
       <showModules />
@@ -237,235 +269,38 @@
       <autoscrollFromSource />
       <sortByType ProjectPane="true" />
     </navigator>
-    <panes>
-      <pane id="Scope">
-        <subPane subId="Changed Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="valpak-solr-tmp">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-        <subPane subId="All">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="valpak-solr-tmp">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="valpak-solr-tmp">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="public">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="valpak-solr-tmp">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="public">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="stylesheets">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="valpak-solr-tmp">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="public">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="js">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="valpak-solr-tmp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="valpak-solr-tmp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="valpak-solr-tmp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="valpak-solr-tmp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="valpak-solr-tmp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="valpak-solr-tmp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="valpak-solr-tmp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stylesheets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="valpak-solr-tmp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="valpak-solr-tmp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stylesheets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sass" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="valpak-solr-tmp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="valpak-solr-tmp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stylesheets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="valpak-solr-tmp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="valpak-solr-tmp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="valpak-solr-tmp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="valpak-solr-tmp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="coffee" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="57" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="58" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="options.lastSelected" value="Errors" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="57" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="recentsLimit" value="5" />
-    <property name="JavaScriptLanguageLevel" value="ES5" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/newuser.json.js" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="60" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="610" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="610" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="60" />
     <property name="JavaScriptPreferStrict" value="true" />
     <property name="GoToClass.includeJavaFiles" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="58" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="restartRequiresConfirmation" value="true" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.28931573" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="options.lastSelected" value="liveEdit" />
+    <property name="JavaScriptLanguageLevel" value="ES5" />
+    <property name="restartRequiresConfirmation" value="true" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="PublishConfig" serverName="VishDish" serverId="99e2bc06-cd78-4fa3-a8ed-3c67d06c5aab">
     <servers>
@@ -491,7 +326,7 @@
   <component name="RestClientSettings">
     <option name="LAST_HOST" value="http://localhost:5000/" />
   </component>
-  <component name="RunManager" selected="Node.js.web.js">
+  <component name="RunManager" selected="JavaScript Debug.AngularApp">
     <configuration default="false" name="web.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="/usr/local/share/npm/bin/nodemon" path-to-js-file="web.js" working-dir="$PROJECT_DIR$" coffeescript-path="/usr/local/share/npm/bin/coffee">
       <RunnerSettings RunnerId="NodeJS.debug" />
       <RunnerSettings RunnerId="NodeJS.run" />
@@ -626,7 +461,11 @@
       <created>1370649068818</created>
       <updated>1370649068818</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added more files">
+      <created>1370912054652</created>
+      <updated>1370912054652</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TodoView" selected-index="1">
@@ -650,29 +489,29 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1436" height="874" extended-state="6" />
-    <editor active="false" />
+    <frame x="0" y="22" width="1680" height="1024" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.41798943" sideWeight="0.45410037" order="6" side_tool="false" content_ui="tabs" x="1680" y="0" width="1280" height="1024" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32734275" sideWeight="0.35277778" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32407406" sideWeight="0.4100367" order="12" side_tool="true" content_ui="tabs" />
-      <window_info id="Mongo Runner" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3042328" sideWeight="0.3830703" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33333334" sideWeight="0.44332856" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3293872" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32804233" sideWeight="0.49964714" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32804233" sideWeight="0.84968245" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22805755" sideWeight="0.6719577" order="1" side_tool="false" content_ui="tabs" x="1782" y="38" width="340" height="906" />
-      <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22460221" sideWeight="0.6732892" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.41738197" sideWeight="0.45410037" order="5" side_tool="false" content_ui="tabs" x="1680" y="0" width="1280" height="1024" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32804233" sideWeight="0.84968245" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.10954712" sideWeight="0.6719577" order="1" side_tool="false" content_ui="tabs" x="1782" y="38" width="340" height="906" />
+      <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1364749" sideWeight="0.7532189" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21510792" sideWeight="0.6759259" order="0" side_tool="false" content_ui="combo" x="690" y="44" width="299" height="979" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.51719576" sideWeight="0.41033" order="10" side_tool="true" content_ui="tabs" x="60" y="22" width="1280" height="874" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3994709" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32671082" sideWeight="0.5893513" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.41738197" sideWeight="0.5458996" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3293872" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33242133" sideWeight="0.44210526" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Mongo Runner" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36587983" sideWeight="0.65973073" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24678111" sideWeight="0.34026927" order="9" side_tool="true" content_ui="tabs" x="60" y="22" width="1280" height="874" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32781458" sideWeight="0.499388" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32734275" sideWeight="0.35277778" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32671082" sideWeight="0.5893513" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3994709" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -739,63 +578,10 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="119" />
+      <option name="time" value="122" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/middleware/auth.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="5" selection-start="235" selection-end="235" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="0" selection-start="1465" selection-end="1465" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/coffee/app.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="21" selection-start="1246" selection-end="1246" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="1" selection-start="948" selection-end="948" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/stylesheets/stylus/app.config.styl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/coffee/controllers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="35" selection-start="194" selection-end="194" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/stylesheets/sass/_base.sass">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="21" selection-start="248" selection-end="248" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/stylesheets/css/fontello.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/stylesheets/stylus/app.business-profile.styl">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
@@ -808,37 +594,98 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/coffee/controllers.coffee">
+    <entry file="file://$PROJECT_DIR$/node_modules/stylus/lib/functions/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="41" selection-start="648" selection-end="648" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="579" column="8" selection-start="11497" selection-end="11497" vertical-scroll-proportion="0.33333334" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/stylesheets/stylus/app.style.styl">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="24" selection-start="376" selection-end="376" vertical-scroll-proportion="0.0">
+        <state line="2" column="20" selection-start="49" selection-end="49" vertical-scroll-proportion="0.041237112" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/stylus/vp.buttons.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="0" selection-start="599" selection-end="616" vertical-scroll-proportion="0.7697595" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="33" selection-start="102" selection-end="102" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/layout.jade">
+    <entry file="file://$PROJECT_DIR$/views/index.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="18" selection-start="54" selection-end="54" vertical-scroll-proportion="0.0">
+        <state line="13" column="44" selection-start="237" selection-end="247" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/stylesheets/sass/app.sass">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="160" column="13" selection-start="2542" selection-end="2542" vertical-scroll-proportion="-7.173913">
+        <state line="42" column="18" selection-start="715" selection-end="715" vertical-scroll-proportion="-25.565218">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/sass/_base.sass">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="21" selection-start="248" selection-end="248" vertical-scroll-proportion="-7.304348">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/layout.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="26" selection-start="294" selection-end="294" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/coffee/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1370982721000" expanded="true" signature="-1:-1" placeholder="{&quot;templateUrl&quot;: '/partials/business_profile.jade'...}" />
+            <marker date="1370982721000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1370982721000" expanded="true" signature="-1:-1" placeholder="{&quot;redirectTo&quot;: '/'...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/partials/coupontile.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="0" selection-start="83" selection-end="83" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/coffee/app.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="19" selection-start="1584" selection-end="1584" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/stylus/app.config.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="0" selection-start="667" selection-end="667" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/stylesheets/css/app.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="245" column="0" selection-start="0" selection-end="5091" vertical-scroll-proportion="8.19">
+        <state line="17" column="0" selection-start="720" selection-end="720" vertical-scroll-proportion="0.47316104">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/coffee/controllers.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="175" column="43" selection-start="4050" selection-end="4050" vertical-scroll-proportion="0.500994">
           <folding />
         </state>
       </provider>

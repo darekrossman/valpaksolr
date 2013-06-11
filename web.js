@@ -10,6 +10,7 @@ var express = require('express'),
     http = require('http'),
     path = require('path'),
     mongoose = require( 'mongoose' ),
+    stylus = require('stylus'),
     headless = require('./headless'),
     auth = require('./middleware/auth'),
     app = express(),
@@ -17,12 +18,12 @@ var express = require('express'),
 
 var MongoStore = require('connect-mongo')(express);
 
-//function compile(str, path) {
-//  return stylus(str)
-//    .set('filename', path)
-//    .set('compress', true)
-//    .use(require('nib')());
-//}
+function compile(str, path) {
+  return stylus(str)
+    .set('filename', path)
+    .set('compress', true)
+    .use(require('nib')());
+}
 
 app.configure('development', function(){
   app.use(express.errorHandler());
@@ -74,7 +75,7 @@ app.configure(function(){
 
 
   app.use(app.router);
-  //app.use(stylus.middleware({src:__dirname + '/public', compile:compile}));
+  app.use(stylus.middleware({src:__dirname + '/public', compile:compile}));
   app.use(express.static(path.join(__dirname, 'public')));
 
 });

@@ -34,16 +34,13 @@ body
 .secondary
   @include pie-clearfix
   position: absolute
-  top: header-height
+  top: $header-height
   bottom: 0
   left: 0
-  width: secondary-width
+  width: $secondary-width
   padding: 0
-  transition: transform .2s ease-out
+  @include transition(transform .2s ease-out)
   background: #CCC
-
-
-
 
 .no-sidebar .primary,
 .no-sidebar .secondary
@@ -66,7 +63,7 @@ body
 
   .n1
     a
-      font-size: .9em
+      font-size: 0.9em
       line-height: 1.7em
       display: block
       padding: 0 20px
@@ -83,7 +80,7 @@ body
   position: relative
   background: $c1
   z-index: 9997
-  line-height: toolbar-height
+  line-height: $toolbar-height
   padding: 0
 
   div:nth-child(1)
@@ -95,7 +92,7 @@ body
   overflow-x: hidden
   overflow-y: scroll
   position: absolute
-  top: toolbar-height
+  top: $toolbar-height
   left: 0
   right: 0
   bottom: 0
@@ -128,7 +125,7 @@ body
     padding: 15px 0
     display: block
     font-weight: 100
-    background: c1
+    background: $c1
     border: 0
     margin: 0
     text-align: center
@@ -157,7 +154,7 @@ body
   input
     background: #fff
     width: 9em
-    color: c1
+    color: $c1
     margin: 0
     vertical-align: top
     padding: 6px 6px
@@ -177,7 +174,7 @@ body
     vertical-align: top
     line-height: 30px
     margin-left: -32px
-    color: c1
+    color: $c1
     background: transparent
     padding: 0 2px
     border-radius: 2px

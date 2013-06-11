@@ -186,7 +186,12 @@ module.controller('ListingController',
       displayError = (error) ->
         $scope.listingFilter.loading = false
         $scope.gotError = true
-        $scope.errorInfo = "Sorry, dawg. No can do."
+
+        if error.status is 403
+          $scope.errorInfo = "You ain't logged in, bro."
+        else
+          $scope.errorInfo = "Sorry, dawg. No can do."
+
   ]
 )
 

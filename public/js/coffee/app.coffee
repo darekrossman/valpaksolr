@@ -24,7 +24,6 @@ appConfig = ['$routeProvider', '$locationProvider', '$httpProvider', ($routeProv
           d.resolve('REJECT!')
           return d.promise
 
-
     .when '/coupons/local-coupons/:category/:geo',
       templateUrl: '/partials/results.layout.jade'
       controller: 'ListingController'
@@ -51,9 +50,11 @@ appConfig = ['$routeProvider', '$locationProvider', '$httpProvider', ($routeProv
 
     return (promise) ->
       return promise.then(success, error)
+  ]
 
   $httpProvider.responseInterceptors.push(resInterceptor)
 
+]
 
 app = angular.module('app', deps)
 app.config(appConfig)

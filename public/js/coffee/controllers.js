@@ -86,7 +86,11 @@
       return displayError = function(error) {
         $scope.listingFilter.loading = false;
         $scope.gotError = true;
-        return $scope.errorInfo = "Sorry, dawg. No can do.";
+        if (error.status === 403) {
+          return $scope.errorInfo = "You ain't logged in, bro.";
+        } else {
+          return $scope.errorInfo = "Sorry, dawg. No can do.";
+        }
       };
     }
   ]);

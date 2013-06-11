@@ -6,6 +6,8 @@
 
   appConfig = [
     '$routeProvider', '$locationProvider', '$httpProvider', function($routeProvider, $locationProvider, $httpProvider) {
+      var resInterceptor;
+
       $routeProvider.when('/coupons/home', {
         templateUrl: '/partials/home.jade',
         controller: 'HomeController'
@@ -35,7 +37,23 @@
       }).otherwise({
         redirectTo: '/'
       });
-      return $locationProvider.html5Mode(true).hashPrefix('!');
+      $locationProvider.html5Mode(true).hashPrefix('!');
+      resInterceptor = [
+        '$rootScope', '$q', function($rootScope, $q) {
+          var error, success;
+
+          success = function(response) {
+            return response;
+          };
+          error = function(response) {
+            return $q.reject(response);
+          };
+          return function(promise) {
+            return promise.then(success, error);
+          };
+        }
+      ];
+      return $httpProvider.responseInterceptors.push(resInterceptor);
     }
   ];
 
