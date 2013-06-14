@@ -6,4 +6,5 @@ module.filter('titleCase', () ->
     for word in input.split(' ')
       n.push(word.substr(0,1).toUpperCase() + word.substr(1).toLowerCase())
     return n.join(' ')
+
 )

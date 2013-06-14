@@ -15,9 +15,6 @@ AppController = module.controller('AppController',
 
     $scope.listingFilter = ListingFilter
 
-    $rootScope.$on '$routeChangeError', (ev, current, previous, rejection) ->
-      console.debug('uh oh! something went wrong!')
-
 #    $fb.init().then (fbuser) ->
 #
 #      User.get({id: fbuser.id}
@@ -39,8 +36,6 @@ AppController = module.controller('AppController',
 #        $scope.user.avatar = user.picture.data
 #        User.$save()
 
-    $rootScope.userDetail =
-      geo: '33703'
 
   ]
 )
@@ -51,7 +46,7 @@ AppController = module.controller('AppController',
 
 # Home Controller
 # -----------------------------------------
-module.controller('HomeController',
+HomeController = module.controller('HomeController',
   ['$scope', ($scope) ->
     return
   ]
@@ -63,10 +58,11 @@ module.controller('HomeController',
 
 # Toolbar Controller
 # -----------------------------------------
-module.controller('ToolbarController',
-  ['$scope', '$route', 'ListingFilter', ($scope, $route, ListingFilter) ->
+ToolbarController = module.controller('ToolbarController',
+  ['$scope', '$route', 'ListingFilter', 'User', ($scope, $route, ListingFilter, User) ->
 
-    $scope.layout = ListingFilter.layoutOption
+    $scope.user = User
+
 
     if $route.current.params.keywords
       ListingFilter.resultsLabel = "Showing results for: '#{$route.current.params.keywords}'"
@@ -74,8 +70,7 @@ module.controller('ToolbarController',
       ListingFilter.resultsLabel = $route.current.params.category
 
     $scope.setLayout = (layout) ->
-      ListingFilter.layoutOption = layout
-      $scope.layout = layout
+      $scope.userToggles.listing_layout = layout
       localStorage.setItem('layout_option', layout)
 
   ]
@@ -87,7 +82,7 @@ module.controller('ToolbarController',
 
 # Search Controller
 # -----------------------------------------
-module.controller('SearchController',
+SearchController = module.controller('SearchController',
   ['$scope', '$location', '$rootScope', 'ListingFilter', ($scope, $location, $rootScope, ListingFilter) ->
 
     $scope.listingFilter = ListingFilter
@@ -99,7 +94,7 @@ module.controller('SearchController',
 
 # Sidebar Controller
 # -----------------------------------------
-module.controller('SidebarController',
+SidebarController = module.controller('SidebarController',
   ['$scope', ($scope) ->
     return
   ]
@@ -111,7 +106,7 @@ module.controller('SidebarController',
 
 # Listing Controller
 # -----------------------------------------
-module.controller('ListingController',
+ListingController = module.controller('ListingController',
   ['$scope',
    '$location',
    '$route',
@@ -119,10 +114,12 @@ module.controller('ListingController',
    '$q',
    'Coupons'
    'ListingFilter',
-   'ScrollWatch'
-    ($scope, $location, $route, $q, $rootScope, Coupons, ListingFilter, ScrollWatch) ->
+   'ScrollWatch',
+   'User',
+    ($scope, $location, $route, $q, $rootScope, Coupons, ListingFilter, ScrollWatch, User) ->
 
       $scope.listingFilter = ListingFilter
+      $scope.userToggles = User.prefs.ui.toggles
       $scope.listings = []
       $scope.scrollBottomReached = false
 
@@ -198,7 +195,7 @@ module.controller('ListingController',
 
 # Business Profile Controller
 # -----------------------------------------
-module.controller('BusinessProfileController',
+BusinessProfileController = module.controller('BusinessProfileController',
   ['$scope', '$location', '$route', 'profile', ($scope, $location, $route, profile) ->
 
     $scope.profile = profile

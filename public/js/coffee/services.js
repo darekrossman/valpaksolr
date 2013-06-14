@@ -8,7 +8,15 @@
     '$resource', '$q', function($resource, $q) {
       this.username = '';
       this.email = '';
-      return this.geo = '';
+      this.geo = '33703';
+      this.prefs = {
+        ui: {
+          toggles: {
+            listing_layout: 'list'
+          }
+        }
+      };
+      return this;
     }
   ]);
 

@@ -1,50 +1,61 @@
 @import "_base"
 
 
+
+@import "header"
+@import "typography"
+@import "buttons"
+@import "forms"
+@import "fx"
+@import "tile"
+
+@include establish-baseline()
+
 html
   height: 100%
 
 body
+  @include debug-vertical-alignment()
   width: 100%
   overflow-x: hidden
   padding: 0
   margin: 0
   height: 100%
   font-family: $app-font
-  background: #CCC
+
+
+
+
+
 
 
 // Primary Column
 // ---------------------------------
 .primary
-  @include pie-clearfix
+  @include pie-clearfix()
   z-index: 9999
   overflow: hidden
   position: absolute
   top: $header-height
   bottom: 0
   right: 0
-  left: $secondary-width + 0px
+  left: $secondary-width
   background-size: 100% auto
-  //transition: transform .2s ease-out
 
 
 // Secondary Column
 // ---------------------------------
 .secondary
   @include pie-clearfix
+  @include transition(transform .2s ease-out)
   position: absolute
   top: $header-height
   bottom: 0
   left: 0
   width: $secondary-width
   padding: 0
-  @include transition(transform .2s ease-out)
-  background: #CCC
+  //background: #EEEEEE
 
-.no-sidebar .primary,
-.no-sidebar .secondary
-  @include translateX(-300px)
 
 
 
@@ -54,8 +65,7 @@ body
 // ---------------------------------
 .nav-module
 
-  padding: 20px 0
-
+  padding: $base-line-height 0
 
   [class^="icon-"]:before, [class*=" icon-"]:before
     margin-right: 5px
@@ -76,7 +86,7 @@ body
 // Top-level View Styling
 // ---------------------------------
 .toolbar-view
-  @include pie-clearfix
+  @include pie-clearfix()
   position: relative
   background: $c1
   z-index: 9997
@@ -97,14 +107,13 @@ body
   right: 0
   bottom: 0
   z-index: 9996
-  background: #CCC
+  background: #e6e6e6
   -webkit-overflow-scrolling: touch
   ul
-    @include pie-clearfix
+    @include pie-clearfix()
     @include perspective(400)
     position: relative
     overflow: hidden
-    // transform translateZ(0px)
 
 
 
@@ -131,7 +140,7 @@ body
     text-align: center
     color: white
     cursor: pointer
-    //border-top: 1px solid darken(c1, 20)
+    //border-top: 1px solid shade(c1, 20)
     //transform translateY(-100px)
     //transition: transform .2s ease-out
 
@@ -141,7 +150,7 @@ body
 
     &:hover
       background: $c5
-      //border-top-color: darken(c5, 10)
+      //border-top-color: shade(c5, 10)
 
   &.visible
     .btn
@@ -151,26 +160,15 @@ body
   position: absolute
   top: 10px
   right: 12px
-  input
-    background: #fff
-    width: 9em
-    color: $c1
-    margin: 0
-    vertical-align: top
-    padding: 6px 6px
-    font-size: 16px
-    border: 0
-    border-radius: 2px
-    margin-right: 0px
-    // transform translateZ(0)
-    @include transition(all .2s cubic-bezier(0.175, 0.885, 0.320, 1.275))
 
+  input
+    width: 9em
+    @include transition(all .2s cubic-bezier(0.175, 0.885, 0.320, 1.275))
     &:focus
-      outline: none
       width: 20em
 
   button
-    //button()
+    @extend %button
     vertical-align: top
     line-height: 30px
     margin-left: -32px
@@ -194,7 +192,6 @@ body
   //transition-property: opacity
   & > div
     padding: 20px 30px
-
     border-radius: 2px
     text-align: center
     position: absolute
@@ -228,8 +225,8 @@ strong
 
 
 .login-btn
-  //button()
-  zoom: 1
+  @extend %button
+  display: none
 
 
 .error-msg
@@ -240,3 +237,7 @@ strong
   .icon-thumbs-down
     &:before
       font-size: 80px
+
+
+.hide
+  display: none

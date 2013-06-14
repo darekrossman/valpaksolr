@@ -13,16 +13,7 @@
         controller: 'HomeController'
       }).when('/coupons/query', {
         templateUrl: '/partials/results.layout.jade',
-        controller: 'ListingController',
-        resolve: {
-          list: function($q) {
-            var d;
-
-            d = $q.defer();
-            d.resolve('REJECT!');
-            return d.promise;
-          }
-        }
+        controller: 'ListingController'
       }).when('/coupons/local-coupons/:category/:geo', {
         templateUrl: '/partials/results.layout.jade',
         controller: 'ListingController'
@@ -64,7 +55,9 @@
   app.run([
     '$rootScope', '$log', 'User', function($rootScope, $log, User) {
       $rootScope.debug = $log.debug;
-      $rootScope.user = User;
+      $rootScope.$on('$routeChangeError', function(ev, current, previous, rejection) {
+        return $log.debug("Error: " + rejection);
+      });
       return (function(d) {
         var id, js, ref;
 

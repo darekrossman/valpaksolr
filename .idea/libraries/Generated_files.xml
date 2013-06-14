@@ -2,27 +2,25 @@
   <library name="Generated files" type="javaScript">
     <properties>
       <sourceFilesUrls>
-        <item url="file://$PROJECT_DIR$/public/js/coffee/directives.js" />
         <item url="file://$PROJECT_DIR$/public/js/coffee/filters.js" />
         <item url="file://$PROJECT_DIR$/public/js/coffee/services.js" />
-        <item url="file://$PROJECT_DIR$/public/js/coffee/vp.googlemap.js" />
         <item url="file://$PROJECT_DIR$/public/js/build/vp.googlemap.js" />
         <item url="file://$PROJECT_DIR$/public/js/build/app.js" />
         <item url="file://$PROJECT_DIR$/public/js/coffee/controllers.js" />
-        <item url="file://$PROJECT_DIR$/public/js/build/controllers.js" />
         <item url="file://$PROJECT_DIR$/public/js/coffee/app.js" />
+        <item url="file://$PROJECT_DIR$/public/js/build/controllers.js" />
+        <item url="file://$PROJECT_DIR$/public/js/coffee/directives.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/public/js/coffee/directives.js" />
       <root url="file://$PROJECT_DIR$/public/js/coffee/filters.js" />
-      <root url="file://$PROJECT_DIR$/public/js/coffee/services.js" />
-      <root url="file://$PROJECT_DIR$/public/js/coffee/vp.googlemap.js" />
       <root url="file://$PROJECT_DIR$/public/js/build/vp.googlemap.js" />
+      <root url="file://$PROJECT_DIR$/public/js/coffee/services.js" />
       <root url="file://$PROJECT_DIR$/public/js/build/app.js" />
       <root url="file://$PROJECT_DIR$/public/js/coffee/controllers.js" />
       <root url="file://$PROJECT_DIR$/public/js/build/controllers.js" />
       <root url="file://$PROJECT_DIR$/public/js/coffee/app.js" />
+      <root url="file://$PROJECT_DIR$/public/js/coffee/directives.js" />
     </CLASSES>
     <SOURCES />
   </library>

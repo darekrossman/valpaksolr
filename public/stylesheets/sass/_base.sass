@@ -4,13 +4,19 @@
 *
   @include box-sizing(border-box)
 
+// Type options
+$base-font-size: 16px
+$base-line-height: 24px
+
 // Layout options
 // ------------------------------------
-$fixed-header: true
-$header-height: 50px
+$header-type: 'fixed'
+$header-height: $base-line-height * 2
 $secondary-width: 220px
 $primary-width: 'fluid'
 $toolbar-height: 50px
+
+
 
 
 $hot: #E83311
@@ -40,3 +46,10 @@ $app-font: 'Open Sans', sans-serif
     max-width: 100%
     height: auto
 
+
+@mixin position($pos: relative, $top: 0, $left: 0, $bottom: auto, $right: auto)
+  position: $pos
+  top: $top
+  left: $left
+  right: $right
+  bottom: $bottom

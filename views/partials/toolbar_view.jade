@@ -8,14 +8,16 @@ div.toolbar-view(ng-controller="ToolbarController")
 
   div.button-group(data-control="layout")
 
+    //set to grid layout
     button.icon-layout(
       ng-click="setLayout('grid')",
-      ng-class="{toggled: layout == 'grid'}"
+      ng-class="{toggled: userToggles.listing_layout == 'grid'}"
     )
 
+    //set to grid layout
     button.icon-menu(
       ng-click="setLayout('list')",
-      ng-class="{toggled: layout == 'list'}"
+      ng-class="{toggled: userToggles.listing_layout == 'list'}"
     )
 
 

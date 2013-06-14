@@ -1,0 +1,46 @@
+@import "_base"
+
+#app > header
+
+  @if $header-type == 'fixed'
+    // position fixed
+    z-index: 9998
+
+  position: relative
+  width: 100%
+  height: $header-height
+
+  @include padding-trailer(2)
+
+  background: $c3
+
+  .app-logo
+    @include figure(80px)
+    position: absolute
+    top: 50%
+    left: 10px
+    margin-top: -19px
+
+  .location-status
+    color: white
+    background: shade($c3, 0)
+    display: inline-block
+    padding: 5px 12px
+    border-radius: 2px
+    font-size: 14px
+    font-weight: 400
+    margin-bottom: 15px
+    position: absolute
+    right: 169px
+    top: 10px
+    line-height: 20px
+    cursor: pointer
+    &:before
+      margin: 0 4px 0 -6px
+      font-size: 17px
+      color: $c1
+      vertical-align: -1px
+    &:hover
+      background: shade($c3, 4)
+
+

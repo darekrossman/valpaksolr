@@ -7,20 +7,25 @@ module = angular.module('app.services', ['ngResource'])
 #
 # A user, duh
 # ------------------------------------------------
-module.service('User',
+module.service 'User',
   ['$resource', '$q', ($resource, $q) ->
 
 
     this.username = ''
     this.email = ''
-    this.geo = ''
-
+    this.geo = '33703'
+    this.prefs =
+      ui:
+        toggles:
+          listing_layout: 'list'
 
 
 
 #    userResource = $resource '/user/:id', {id: '@id'}
 #
 #    return userResource
+
+
 
 #    User.prototype.$save = () ->
 #      userResource.create({user: this}
@@ -44,7 +49,10 @@ module.service('User',
 #
 #
 #    return new User()
-  ])
+
+    return this
+  ]
+
 
 
 
@@ -209,11 +217,14 @@ module.service('ListingFilter',
 # ------------------------------------------------
 module.factory('ScrollWatch',
   ['$rootScope', ($rootScope) ->
+
     scrollLimit = (el) ->
       $rootScope.$broadcast('scrollLimit', el)
+
     return {
       scrollLimit: scrollLimit
     }
+
   ]
 )
 

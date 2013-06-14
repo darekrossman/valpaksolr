@@ -1,19 +1,15 @@
 extends layout
 
+
+append head-content
+  .location-status.icon-location St. Petersburg, FL
+  .app-search(coupon-search)
+
+
 block content
 
-  div#fb-root
+  .secondary(ng-controller="SidebarController")
+    include partials/listings_sidebar
 
-  div#app(ng-controller="AppController")
-
-    header
-      div
-        a.app-logo(href="/welcome")
-          img(src="img/valpak-logo-white.svg")
-
-      div.location-status.icon-location St. Petersburg, FL
-
-      div(coupon-search)
-
-    div
-      div(ng-view)
+  .primary
+    #app-view(ng-view)

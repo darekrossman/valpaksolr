@@ -2,36 +2,46 @@ doctype 5
 html(ng-app="app")
   head
     base(href="/")
-    title Valpakr
+
+    block title
+      title= title
 
     meta(name="fragment", content="!")
     meta(name="viewport", content="width=device-width, initial-scale=1.0, user-scalable=no")
     meta(name="apple-mobile-web-app-capable", content="yes")
 
-    link(rel="stylesheet", href="/stylesheets/stylus/app.style.css")
-    //link(rel="stylesheet", href="/stylesheets/css/app.css")
-    link(rel="stylesheet", href="/type/fontello/css/fontello.css")
-    link(rel="stylesheet", href="http://fonts.googleapis.com/css?family=Open+Sans:400,800,700,300")
+    block stylesheets
+      //link(rel="stylesheet", href="/stylesheets/stylus/app.style.css")
+      link(rel="stylesheet", href="/stylesheets/css/app.css")
+      link(rel="stylesheet", href="/type/fontello/css/fontello.css")
+      link(rel="stylesheet", href="http://fonts.googleapis.com/css?family=Open+Sans:400,800,700,300")
 
-    script(src="components/modernizr/modernizr.js")
-    script(src="js/lib/underscore.js")
-    script(src="components/jquery/jquery.min.js")
-    script(src="js/lib/jqueryui.js")
-    script(src="components/hammerjs/dist/jquery.hammer.min.js")
+    block scripts
+      script(src="components/modernizr/modernizr.js")
+      script(src="js/lib/underscore.js")
+      script(src="components/jquery/jquery.min.js")
+      script(src="js/lib/jqueryui.js")
+      script(src="components/hammerjs/dist/jquery.hammer.min.js")
+      script(src="http://maps.googleapis.com/maps/api/js?sensor=false")
+      script(src="js/coffee/vp.googlemap.js")
+      script(src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.4/angular.min.js")
+      script(src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.4/angular-cookies.min.js")
+      script(src="components/angular-resource/angular-resource.min.js")
 
-    script(src="http://maps.googleapis.com/maps/api/js?sensor=false")
-    script(src="js/coffee/vp.googlemap.js")
-
-    script(src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.4/angular.min.js")
-    script(src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.4/angular-cookies.min.js")
-    script(src="components/angular-resource/angular-resource.min.js")
-
-    script(src="js/coffee/app.js")
-    script(src="js/coffee/services.js")
-    script(src="js/coffee/controllers.js")
-    script(src="js/coffee/filters.js")
-    script(src="js/coffee/directives.js")
+      script(src="js/coffee/app.js")
+      script(src="js/coffee/services.js")
+      script(src="js/coffee/controllers.js")
+      script(src="js/coffee/filters.js")
+      script(src="js/coffee/directives.js")
 
   body
-    block content
+
+    #app
+
+      block head
+        header
+          a.app-logo(href="/welcome"): img(src="img/valpak-logo-white.svg")
+          block head-content
+
+      block content
 

@@ -1,0 +1,42 @@
+@mixin button($shade: 'light')
+  font-family: 'Open Sans', sans-serif
+  margin: 0
+  display: inline-block
+  border-radius: 2px
+  border: 0px solid #777
+  background: shade($c1, 5)
+  font-size: 14px
+  font-weight: 300
+  line-height: 1.5em
+  padding: .3em 1.2em
+  text-decoration: none
+
+  &.toggled
+    background: $c5
+
+  @if $shade == 'dark'
+    color: #333
+  @else
+    color: #FFF
+    border-color: #FFF
+
+
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before
+  font-size: 16px
+
+button
+  @include button()
+
+
+.button-group
+  button
+    padding-left: 8px
+    padding-right: 8px
+
+
+
+%button
+  background: $c2
+

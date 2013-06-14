@@ -12,6 +12,19 @@ module.directive 'ngTap', ->
 
 
 
+
+
+
+
+# ------------------------------------------------------------------------
+# Directive: scroll-view
+# Dependencies: ScrollWatch
+# Inherits: --
+#
+# This directive can be attached to elements that need to monitor scroll
+# events. It keeps track of the current scroll position of the element and
+# reports to the shared ScrollWatch service to trigger the desired event.
+
 module.directive 'scrollView', ['ScrollWatch', (ScrollWatch) ->
   controller: ($scope) ->
     $scope.offsetTop = 0
@@ -31,9 +44,17 @@ module.directive 'scrollView', ['ScrollWatch', (ScrollWatch) ->
 
 
 
-cnt = 161
-# Coupontile
-#   - basic: display a coupon tile with basic info and functionality
+# ------------------------------------------------------------------------
+# Directive: coupontile
+# Dependencies: --
+# Inherits: scroll-view
+#
+# A directive to handle individual coupon elements. It inherits it's scope
+# from the scroll-view directive as scope.$parent. This would typically
+# be applied to a listing of coupon results within a scroll-view. Each
+# coupon is made aware of it visibility within the scroll view (above,
+# visible, below).
+
 module.directive 'coupontile', () ->
   replace: true
   require: '^scrollView'
@@ -51,9 +72,9 @@ module.directive 'coupontile', () ->
 
     scope.initialOffset = element.offset().top
 
-
-    if (false )
-    # browser is not touch enabled
+    # TODO - needs performance optimization (temporarily disabled)
+    if (false)
+      # browser is not touch enabled
       if (!('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch)
         scope.$watch '$parent.offsetTop', () ->
           tileTop = element.offset().top
@@ -116,21 +137,22 @@ module.directive 'gmap', () ->
                     }]
 
 
-module.directive 'couponSearch', ['ListingFilter', '$location', '$rootScope', (ListingFilter, $location, $rootScope) ->
-  scope: true
-  templateUrl: '/partials/searchbar.jade'
-  link: (scope, element, attrs) ->
-    searchField = angular.element(element.find('.search-input'))
-    submitBtn = angular.element(element.find('.submit'))
+module.directive 'couponSearch',
+  ['ListingFilter', '$location', '$rootScope', 'User', (ListingFilter, $location, $rootScope, User) ->
 
-    scope.performSearch = () ->
-      searchField.val('').blur()
-      $location.url("/coupons/query?keywords=#{ListingFilter.searchTerms}&geo=#{$rootScope.userDetail.geo}")
-      #$location.search("keywords=#{ListingFilter.searchTerms}")
-      console.log($location)
+    scope: true
+    templateUrl: '/partials/searchbar.jade'
+    link: (scope, element, attrs) ->
+      searchField = angular.element(element.find('.search-input'))
+      submitBtn = angular.element(element.find('.submit'))
 
-    scope.listingFilter = ListingFilter
-]
+      scope.performSearch = () ->
+        searchField.val('').blur()
+        $location.url("/coupons/query?keywords=#{ListingFilter.searchTerms}&geo=#{User.geo}")
+
+      scope.listingFilter = ListingFilter
+
+  ]
 
 
 

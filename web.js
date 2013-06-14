@@ -80,6 +80,11 @@ app.configure(function(){
 
 });
 
+// set default template variables
+app.locals({
+  page: 'couponApp',
+  title: 'Valpak SPWA'
+});
 
 
 app.get('/', function(req, res){
@@ -102,6 +107,20 @@ app.post('/user/:id', auth(), routes.updateUser);
 app.get('/search', routes.search);
 app.get('/listings/category/:cat', routes.searchCategory);
 app.get('/listing/profile/:id', routes.index);
+
+app.get('/login', function(req, res){
+  if (req.query.username === 'drossman') {
+    req.session.user = 'drossman'
+    res.redirect('/')
+  } else {
+    res.write('need login')
+    res.end()
+  }
+});
+
+app.get('/resources/style-reference', function(req, res){
+  res.render('style-reference', {page: 'style reference', title: 'Valpak Style Reference'});
+});
 
 server = http.createServer(app).listen(app.get('port'), function(){
   console.log('Valpak Application is now listening on port ' + app.get('port'));

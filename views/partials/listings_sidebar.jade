@@ -1,49 +1,47 @@
-div.secondary(ng-controller="SidebarController")
+div.user-module(ng-click="fblogin()")
 
-  div.user-module(ng-click="fblogin()")
+div.user-detail(ng-show="isAuthorized")
+    img(ng-src="{{user.avatar.url}}")
+    h6 {{user.name}}
 
-    div.user-detail(ng-show="isAuthorized")
-        img(ng-src="{{user.avatar.url}}")
-        h6 {{user.name}}
+div.login-btn(ng-show="!isAuthorized") Login with Facebook
 
-    div.login-btn(ng-show="!isAuthorized") Login with Facebook
+div.nav-module
 
-  div.nav-module
+  nav
+    ul.n1
+      li
+        a(ng-href="/coupons/local-coupons/all/{{userDetail.geo}}") All
+      li
+        a(ng-href="/coupons/local-coupons/restaurants/{{userDetail.geo}}") Restaurants
+      li
+        a(ng-href="/coupons/local-coupons/home-office/{{userDetail.geo}}") Home &amp; Office
+      li
+        a(ng-href="/coupons/local-coupons/services/{{userDetail.geo}}") Services
+      li
+        a(ng-href="/coupons/local-coupons/automotive/{{userDetail.geo}}") Automotive
+      li
+        a(ng-href="/coupons/local-coupons/entertainment-travel/{{userDetail.geo}}") Entertainment &amp; Travel
+      li
+        a(ng-href="/coupons/local-coupons/personal-care/{{userDetail.geo}}") Personal Care
+      li
+        a(ng-href="/coupons/local-coupons/general/{{userDetail.geo}}") General
+      li
+        a(ng-href="/coupons/local-coupons/health/{{userDetail.geo}}") Health
+      li
+        a(ng-href="/coupons/local-coupons/shops/{{userDetail.geo}}") Shops
 
-      nav
-        ul.n1
-          li
-            a(ng-href="/coupons/local-coupons/all/{{userDetail.geo}}") All
-          li
-            a(ng-href="/coupons/local-coupons/restaurants/{{userDetail.geo}}") Restaurants
-          li
-            a(ng-href="/coupons/local-coupons/home-office/{{userDetail.geo}}") Home &amp; Office
-          li
-            a(ng-href="/coupons/local-coupons/services/{{userDetail.geo}}") Services
-          li
-            a(ng-href="/coupons/local-coupons/automotive/{{userDetail.geo}}") Automotive
-          li
-            a(ng-href="/coupons/local-coupons/entertainment-travel/{{userDetail.geo}}") Entertainment &amp; Travel
-          li
-            a(ng-href="/coupons/local-coupons/personal-care/{{userDetail.geo}}") Personal Care
-          li
-            a(ng-href="/coupons/local-coupons/general/{{userDetail.geo}}") General
-          li
-            a(ng-href="/coupons/local-coupons/health/{{userDetail.geo}}") Health
-          li
-            a(ng-href="/coupons/local-coupons/shops/{{userDetail.geo}}") Shops
-
-  //- form
-  //-   ul
-  //-     li
-  //-       input(type="checkbox", ng-model="listingFilter.lists.vpPrintable")
-  //-       label Printable Coupons
-  //-     li
-  //-       input(type="checkbox", ng-model="listingFilter.lists.deals")
-  //-       label Purchase Deals
-  //-     li
-  //-       input(type="checkbox", ng-model="listingFilter.lists.sdc")
-  //-       label Coupon Codes
-  //-     li
-  //-       input(type="checkbox", ng-model="listingFilter.lists.grocery")
-  //-       label Grocery Coupons
+//- form
+//-   ul
+//-     li
+//-       input(type="checkbox", ng-model="listingFilter.lists.vpPrintable")
+//-       label Printable Coupons
+//-     li
+//-       input(type="checkbox", ng-model="listingFilter.lists.deals")
+//-       label Purchase Deals
+//-     li
+//-       input(type="checkbox", ng-model="listingFilter.lists.sdc")
+//-       label Coupon Codes
+//-     li
+//-       input(type="checkbox", ng-model="listingFilter.lists.grocery")
+//-       label Grocery Coupons

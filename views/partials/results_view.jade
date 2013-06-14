@@ -2,22 +2,13 @@ div(scroll-view)
 
   div(loader, ng-class="{hide: !listingFilter.loading}") Happy saving, saver!
 
-  ul(ng-class="listingFilter.layoutOption", paginate)
+  ul(ng-class="userToggles.listing_layout", paginate)
     li(ng-repeat="listing in listings", class="listing")
       div(coupontile, type="basic")
 
-    //li(ng-repeat="listing in groceryListings", ng-show="listingFilter.lists.grocery", class="listing")
-    //  div(coupontile, type="grocery")
-    //
-    //li(ng-repeat="listing in dealsListings", ng-show="listingFilter.lists.deals", class="listing")
-    //  div(coupontile, type="deals")
-    //
-    //li(ng-repeat="listing in sdcListings", ng-show="listingFilter.lists.sdc", class="listing")
-    //  div(coupontile, type="sdc")
-
 
     li.listing.load-more(ng-class="{visible: scrollBottomReached}")
-        div.btn(loadmore, action="appendListings()", show="listings.length > 0") Show me more <span class="icon-down-open"></span>
+      div.btn(loadmore, action="appendListings()", show="listings.length > 0") Show me more <span class="icon-down-open"></span>
 
 
   div.error-msg(ng-show="gotError") <div class="icon-thumbs-down"></div> {{errorInfo}}

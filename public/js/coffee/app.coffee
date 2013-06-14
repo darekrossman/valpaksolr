@@ -18,11 +18,6 @@ appConfig = ['$routeProvider', '$locationProvider', '$httpProvider', ($routeProv
     .when '/coupons/query',
       templateUrl: '/partials/results.layout.jade'
       controller: 'ListingController'
-      resolve:
-        list: ($q) ->
-          d = $q.defer()
-          d.resolve('REJECT!')
-          return d.promise
 
     .when '/coupons/local-coupons/:category/:geo',
       templateUrl: '/partials/results.layout.jade'
@@ -40,29 +35,31 @@ appConfig = ['$routeProvider', '$locationProvider', '$httpProvider', ($routeProv
 
   $locationProvider.html5Mode(true).hashPrefix('!')
 
-  resInterceptor = ['$rootScope', '$q', ($rootScope, $q) ->
 
+  # intercept XHR responses
+  resInterceptor = ['$rootScope', '$q', ($rootScope, $q) ->
     success = (response) ->
       return response
-
     error = (response) ->
       return $q.reject(response)
-
     return (promise) ->
       return promise.then(success, error)
   ]
-
   $httpProvider.responseInterceptors.push(resInterceptor)
 
 ]
 
+
 app = angular.module('app', deps)
+
 app.config(appConfig)
 
 app.run ['$rootScope', '$log', 'User', ($rootScope, $log, User) ->
 
   $rootScope.debug = $log.debug
-  $rootScope.user = User
+
+  $rootScope.$on '$routeChangeError', (ev, current, previous, rejection) ->
+    $log.debug("Error: #{rejection}")
 
 
   # async load Facebook SDK
