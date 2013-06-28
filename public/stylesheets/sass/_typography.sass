@@ -1,0 +1,73 @@
+$light-weight: 400
+$reg-weight: 400
+$demi-weight: 700
+$bold-weight: 700
+
+$base-font-size: 16px
+$base-line-height: 24px
+
+
+@include establish-baseline()
+$grid-background-baseline-color: rgba(0,0,0,.2)
+
+.h1, .h2, .h3, .h4, .h5, .h6
+  font-weight: $bold-weight
+
+  &.subhead
+    font-weight: $light-weight
+    color: #999
+
+  small
+    font-size: 60%
+    color: #666
+    font-weight: $reg-weight
+    line-height: 0
+
+.h1
+  @include adjust-font-size-to(48px)
+  @include rhythm(1, 0, 0, 1, 48px)
+
+.h2
+  @include adjust-font-size-to(38px)
+  @include rhythm(1, 0, 0, 1, 38px)
+
+.h3
+  @include adjust-font-size-to(30px)
+  @include rhythm(1, 0, 0, 1, 30px)
+
+.h4
+  @include adjust-font-size-to(24px)
+  @include rhythm(1, 0, 0, 1, 24px)
+
+.h5
+  @include adjust-font-size-to(20px)
+  @include rhythm(1, 0, 0, 1, 20px)
+
+.h6
+  @include adjust-font-size-to(16px)
+  @include rhythm(1, 0, 0, 1, 16px)
+
+
+
+p
+  @include rhythm(0, 0, 0, 1, 16px)
+
+
+hr
+  border-width: 0
+  border-color: #DDD
+
+  clear: both
+  @include leading-border(1px)
+
+
+
+
+// Themed Styling
+.titling
+  @include adjust-font-size-to(16px)
+  @include rhythm(1, 0, 0, 1.5, 16px)
+  @include trailing-border(1px, .5, 16px, dashed)
+  font-weight: $reg-weight
+  border-color: $c5
+  color: $c1

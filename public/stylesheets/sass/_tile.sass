@@ -1,0 +1,98 @@
+$tile-columns: 3
+
+.transition1
+  @include transition(all .2s ease-out)
+  -webkit-backface-visibility: hidden
+
+//.no-touch .tile
+  //transition transform .4s ease-out, background .3s, opacity, .4s
+
+.tile
+  -webkit-backface-visibility: hidden
+  @include pie-clearfix()
+  z-index: 2
+  //background: #FFF
+  position: relative
+  border-radius: 1px
+
+  &.scroll-below
+    @include transform(translateZ(-10px) rotateX(-30deg))
+    @include transform-origin(top left)
+
+  &.scroll-above
+    @include transform(translateZ(-10px) rotateX(30deg))
+    @include transform-origin(bottom left)
+
+.grid
+  margin: 15px
+  .tile
+    width: (100% / $tile-columns)
+    //height: 150px
+    padding: 10px
+    float: left
+    border-color: gray(20)
+    border-width: 0px
+    border-style: dashed
+
+    border-right-width: 1px
+    border-bottom-width: 1px
+
+    .tile-logo
+      width: 70px
+
+    .btn
+      @include button()
+
+
+.list
+
+  .listing
+    margin-bottom: $base-line-height/2
+
+  .tile
+    margin: 0 0 0 0
+    border-color: #EEE
+    @include trailing-border(1px, .5)
+
+
+    .media-img
+      height: 48px
+      .tile-logo
+        max-height: 100%
+
+
+    .btn
+      @include button()
+      float: right
+      display: none
+
+    .tile-businessname
+      font-weight: 300
+      @include adjust-font-size-to(14px)
+      color: #AAA
+
+    .tile-offertext
+      color: $c1
+      @include adjust-font-size-to(16px)
+      @include rhythm(0, 0, 0, 0, 16px)
+      font-weight: 700
+      margin-right: 100px
+
+
+    .tile-distance
+      position: absolute
+      right: 15px
+      top: 9px
+      font-size: 12px
+      color: #CCC
+      line-height: 1.5em
+
+.scroll-visible
+  z-index: 3
+  opacity: 1
+  @include transform(translateZ(0) rotateX(0))
+  //background: #FFF
+
+
+
+
