@@ -1,5 +1,5 @@
 doctype 5
-html(ng-app="app")
+html(ng-app="app", ng-controller="AppController")
   head
     base(href="/")
 
@@ -14,9 +14,12 @@ html(ng-app="app")
       //link(rel="stylesheet", href="/stylesheets/stylus/app.style.css")
       link(rel="stylesheet", href="/stylesheets/css/app.css")
       link(rel="stylesheet", href="/type/fontello/css/fontello.css")
-      link(rel="stylesheet", href="http://fonts.googleapis.com/css?family=Open+Sans:400,800,700,300")
+
+
 
     block scripts
+      script(src="//use.typekit.net/hhm6ora.js")
+      script try{Typekit.load();}catch(e){}
       script(src="components/modernizr/modernizr.js")
       script(src="js/lib/underscore.js")
       script(src="components/jquery/jquery.min.js")
@@ -33,6 +36,7 @@ html(ng-app="app")
       script(src="js/coffee/controllers.js")
       script(src="js/coffee/filters.js")
       script(src="js/coffee/directives.js")
+      script(src="js/coffee/vp.dialogs.js")
 
   body
 
@@ -40,8 +44,9 @@ html(ng-app="app")
 
       block head
         header
-          a.app-logo(href="/welcome"): img(src="img/valpak-logo-white.svg")
-          block head-content
+          div
+            a.app-logo(href="/welcome"): img(src="img/valpak-logo-white.svg")
+            block header-content
 
       block content
 

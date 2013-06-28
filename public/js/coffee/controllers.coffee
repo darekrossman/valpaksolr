@@ -11,7 +11,20 @@ module = angular.module('app.controllers', [])
 # App Controller
 # -----------------------------------------
 AppController = module.controller('AppController',
-  ['$scope', '$rootScope', '$log', 'ListingFilter', 'User', ($scope, $rootScope, $log, ListingFilter, User) ->
+  ['$scope', '$location', '$rootScope', '$log', '$route', 'ListingFilter', 'User', 'Dialog', ($scope, $location, $rootScope, $log, $route, ListingFilter, User, Dialog) ->
+
+    oldRoute = null
+
+    $scope.openDialog = ->
+      Dialog.show('partials/business_profile.jade')
+
+#    $scope.$on '$locationChangeSuccess', (event, newLocation, oldLocation) ->
+#      console.debug(event)
+#      if oldRoute != null
+#        $route.current = oldRoute
+#        oldRoute = null
+#
+#      $log.debug Dialog.prevRoute()
 
     $scope.listingFilter = ListingFilter
 
@@ -62,12 +75,12 @@ ToolbarController = module.controller('ToolbarController',
   ['$scope', '$route', 'ListingFilter', 'User', ($scope, $route, ListingFilter, User) ->
 
     $scope.user = User
+    $scope.userToggles = User.prefs.ui.toggles
 
-
-    if $route.current.params.keywords
-      ListingFilter.resultsLabel = "Showing results for: '#{$route.current.params.keywords}'"
-    else
-      ListingFilter.resultsLabel = $route.current.params.category
+#    if $route.current.params.keywords
+#      ListingFilter.resultsLabel = "Showing results for: '#{$route.current.params.keywords}'"
+#    else
+#      ListingFilter.resultsLabel = $route.current.params.category
 
     $scope.setLayout = (layout) ->
       $scope.userToggles.listing_layout = layout
@@ -110,13 +123,13 @@ ListingController = module.controller('ListingController',
   ['$scope',
    '$location',
    '$route',
-   '$rootScope',
    '$q',
    'Coupons'
    'ListingFilter',
    'ScrollWatch',
    'User',
-    ($scope, $location, $route, $q, $rootScope, Coupons, ListingFilter, ScrollWatch, User) ->
+   'Dialog',
+    ($scope, $location, $route, $q, Coupons, ListingFilter, ScrollWatch, User, Dialog) ->
 
       $scope.listingFilter = ListingFilter
       $scope.userToggles = User.prefs.ui.toggles
@@ -126,8 +139,14 @@ ListingController = module.controller('ListingController',
       # turn on loader gif
       $scope.listingFilter.loading = true
 
+
+      lRoute = $route.current
+      $scope.$on '$routeChangeStart', (event, newRoute, oldRoute) ->
+        $route.current = lRoute
+
+
       # get all listings (based on URL)
-      Coupons.getAllListings().then(
+      Coupons.getAllListingsByKeyword($route.current.params.keywords).then(
 
         # promise successfully resolved
         (listings) ->
@@ -196,12 +215,12 @@ ListingController = module.controller('ListingController',
 # Business Profile Controller
 # -----------------------------------------
 BusinessProfileController = module.controller('BusinessProfileController',
-  ['$scope', '$location', '$route', 'profile', ($scope, $location, $route, profile) ->
+  ['$scope', '$location', '$route', 'BusinessProfileLoader', ($scope, $location, $route, BusinessProfileLoader) ->
 
-    $scope.profile = profile
-    $scope.businessGeo = profile.selectedAddressOffer.geoCoordinates
+    BusinessProfileLoader($route.current.params.profileId).then (profile) ->
+      $scope.profile = profile
+      $scope.businessGeo = profile.selectedAddressOffer.geoCoordinates
 
-#    console.log(profile)
 
   ]
 )

@@ -17,6 +17,7 @@
         </value>
       </option>
     </inspection_tool>
+    <inspection_tool class="JSUnresolvedVariable" enabled="false" level="INCONCLUSIVE" enabled_by_default="false" />
     <inspection_tool class="JSValidateTypes" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="SassScssUnresolvedFunction" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="SassScssUnresolvedMixin" enabled="false" level="INCONCLUSIVE" enabled_by_default="false" />
@@ -29,6 +30,7 @@
       <option name="suppressedTasks">
         <set>
           <option value="CoffeeScript" />
+          <option value="Jade" />
           <option value="SASS" />
           <option value="SCSS" />
         </set>

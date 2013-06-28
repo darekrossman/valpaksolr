@@ -82,7 +82,7 @@ module.factory('KeywordListingLoader',
   ['KeywordListings', '$q', '$location', (KeywordListings, $q, $location) ->
     return (keyword) ->
       delay = $q.defer()
-      KeywordListings.get({keywords:keyword}
+      KeywordListings.get({keywords:keyword},
         (listings) ->
           delay.resolve(listings)
         () ->
@@ -136,15 +136,19 @@ module.factory('CategoryListingsLoader',
 module.service('Coupons',
   ['KeywordListingLoader', 'CategoryListingsLoader', '$q', '$route', '$location', (KeywordListingLoader, CategoryListingsLoader, $q, $route, $location) ->
 
-    getListings = () ->
+    getListingsByKeyword = (terms) ->
+
+      return KeywordListingLoader(terms)
+
+
       # determine type of request (keyword | category)
-      if $route.current.params.keywords
-        return KeywordListingLoader($route.current.params.keywords)
-      else
-        return CategoryListingsLoader($route.current.params.category)
+#      if $route.current.params.keywords
+#
+#      else
+#        return CategoryListingsLoader($route.current.params.category)
 
     return {
-      getAllListings: getListings
+      getAllListingsByKeyword: getListingsByKeyword
     }
 
   ]
@@ -171,9 +175,9 @@ module.factory('BusinessProfile',
 # ------------------------------------------------
 module.factory('BusinessProfileLoader',
   ['BusinessProfile', '$q', '$route', (BusinessProfile, $q, $route) ->
-      return () ->
+      return (profileId) ->
         delay = $q.defer()
-        BusinessProfile.get({id:$route.current.params.profileId}
+        BusinessProfile.get({id:profileId}
           (profile) ->
             delay.resolve(profile)
           () ->
@@ -278,3 +282,11 @@ module.factory('Facebook',
 
   ]
 )
+
+
+
+
+
+
+
+

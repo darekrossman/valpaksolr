@@ -1,8 +1,8 @@
 div#listing-detail
 
   div
-    img.business-logo(ng-src="http://vptst.valpak.com/img/print/{{profile.logoImageFileName}}")
-    h1.business-name {{profile.profileVO.bpp.bppName | titleCase}}
+    img.business-logo(ng-src="http://www.valpak.com/img/print/{{profile.logoImageFileName}}")
+    h1.business-name {{bppName | titleCase}}
 
     div.business-detail
       p {{profile.selectedAddressOffer.asSingleString}}
@@ -13,11 +13,11 @@ div#listing-detail
         span.icon-pinterest-circled
         span.icon-gplus-circled
 
-    div.business-map(gmap)
+    //div.business-map(gmap)
 
     div.business-photos
       div(ng-repeat="image in profile.profileVO.bpp.photos.images")
-        img(ng-src="http://vptst.valpak.com/img/bpp/{{image.fileName}}")
+        img(ng-src="http://www.valpak.com/img/bpp/{{image.fileName}}")
 
 
     p.marketing-message

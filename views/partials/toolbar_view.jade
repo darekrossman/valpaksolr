@@ -1,23 +1,38 @@
-div.toolbar-view(ng-controller="ToolbarController")
+div.toolbar-view(fixed-child, ng-controller="ToolbarController")
   div
-    h3
-      strong.demi {{listingFilter.resultsLabel | titleCase}}
+
+    #category-menu(dropdown-menu)
+      h5 Categories
+
+
+      ul(dropdown-options)
+        li Item 1
+        li Item 2
+        li Item 3
+
+    #radius-menu(dropdown-menu)
+      h5 Under 25 Miles
+
+
+      ul(dropdown-options)
+        li Item 1
+        li Item 2
+        li Item 3
 
 
 
+    div.button-group(data-control="layout")
 
-  div.button-group(data-control="layout")
+      //set to grid layout
+      button.icon-layout(
+        ng-click="setLayout('grid')",
+        ng-class="{toggled: userToggles.listing_layout == 'grid'}"
+      )
 
-    //set to grid layout
-    button.icon-layout(
-      ng-click="setLayout('grid')",
-      ng-class="{toggled: userToggles.listing_layout == 'grid'}"
-    )
-
-    //set to grid layout
-    button.icon-menu(
-      ng-click="setLayout('list')",
-      ng-class="{toggled: userToggles.listing_layout == 'list'}"
-    )
+      //set to grid layout
+      button.icon-menu(
+        ng-click="setLayout('list')",
+        ng-class="{toggled: userToggles.listing_layout == 'list'}"
+      )
 
 

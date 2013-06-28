@@ -3,10 +3,10 @@
 #app > header
 
   @if $header-type == 'fixed'
-    // position fixed
+    position: fixed
+    top: 0
     z-index: 9998
 
-  position: relative
   width: 100%
   height: $header-height
 
@@ -14,12 +14,18 @@
 
   background: $c3
 
+  div:first-child
+    @include container
+    padding: 0 $gutter-width
+    position: relative
+
+
+
   .app-logo
     @include figure(80px)
     position: absolute
-    top: 50%
-    left: 10px
-    margin-top: -19px
+    top: 4px
+
 
   .location-status
     color: white

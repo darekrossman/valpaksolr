@@ -1,47 +1,15 @@
-div.user-module(ng-click="fblogin()")
+//div.user-module(ng-click="fblogin()")
 
-div.user-detail(ng-show="isAuthorized")
-    img(ng-src="{{user.avatar.url}}")
-    h6 {{user.name}}
+//div.user-detail(ng-show="isAuthorized")
+//    img(ng-src="{{user.avatar.url}}")
+//    h6 {{user.name}}
+//
+//div.login-btn(ng-show="!isAuthorized") Login with Facebook
 
-div.login-btn(ng-show="!isAuthorized") Login with Facebook
+div
 
-div.nav-module
+  h6: strong Coupon Codes
+  p Often called by many names, deals, promo codes, online coupons, and coupon codes, these offers provide the tools consumers need to reduce the costs when shopping online for services and merchandise.
 
-  nav
-    ul.n1
-      li
-        a(ng-href="/coupons/local-coupons/all/{{userDetail.geo}}") All
-      li
-        a(ng-href="/coupons/local-coupons/restaurants/{{userDetail.geo}}") Restaurants
-      li
-        a(ng-href="/coupons/local-coupons/home-office/{{userDetail.geo}}") Home &amp; Office
-      li
-        a(ng-href="/coupons/local-coupons/services/{{userDetail.geo}}") Services
-      li
-        a(ng-href="/coupons/local-coupons/automotive/{{userDetail.geo}}") Automotive
-      li
-        a(ng-href="/coupons/local-coupons/entertainment-travel/{{userDetail.geo}}") Entertainment &amp; Travel
-      li
-        a(ng-href="/coupons/local-coupons/personal-care/{{userDetail.geo}}") Personal Care
-      li
-        a(ng-href="/coupons/local-coupons/general/{{userDetail.geo}}") General
-      li
-        a(ng-href="/coupons/local-coupons/health/{{userDetail.geo}}") Health
-      li
-        a(ng-href="/coupons/local-coupons/shops/{{userDetail.geo}}") Shops
 
-//- form
-//-   ul
-//-     li
-//-       input(type="checkbox", ng-model="listingFilter.lists.vpPrintable")
-//-       label Printable Coupons
-//-     li
-//-       input(type="checkbox", ng-model="listingFilter.lists.deals")
-//-       label Purchase Deals
-//-     li
-//-       input(type="checkbox", ng-model="listingFilter.lists.sdc")
-//-       label Coupon Codes
-//-     li
-//-       input(type="checkbox", ng-model="listingFilter.lists.grocery")
-//-       label Grocery Coupons
+

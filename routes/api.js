@@ -30,6 +30,7 @@ exports.getBusinessProfile = function(req, res) {
     function(error, response, body) {
       if (!error && response.statusCode == 200) {
         res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.write(body);
         res.end();
       } else {
         res.send(404, 'Could not connect.');

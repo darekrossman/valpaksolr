@@ -1,5 +1,5 @@
 @import "_base"
-
+@import "susy"
 
 
 @import "header"
@@ -8,17 +8,18 @@
 @import "forms"
 @import "fx"
 @import "tile"
+@import "dialogs"
 
-@include establish-baseline()
+
+
 
 html
   height: 100%
 
 body
-  @include debug-vertical-alignment()
   width: 100%
   overflow-x: hidden
-  padding: 0
+  padding: $header-height 0 0 0
   margin: 0
   height: 100%
   font-family: $app-font
@@ -26,37 +27,58 @@ body
 
 
 
+.container
+
+  position: relative
+  z-index: 9991
+  background: #ffffff
+
+  & > div:first-child
+    @include container
+    background: #ffffff
 
 
+
+    //@include susy-grid-background
 
 // Primary Column
 // ---------------------------------
 .primary
-  @include pie-clearfix()
-  z-index: 9999
-  overflow: hidden
-  position: absolute
-  top: $header-height
-  bottom: 0
-  right: 0
-  left: $secondary-width
+  //@include pie-clearfix()
+  @include span-columns(9 omega)
+  z-index: 9998
+
+  @include at-breakpoint(12 40em)
+    @include span-columns(12)
+
+  padding: $base-line-height 0
+
+
+
   background-size: 100% auto
+
+//.app-view
+//  position: absolute
+//  top: 0
 
 
 // Secondary Column
 // ---------------------------------
 .secondary
-  @include pie-clearfix
   @include transition(transform .2s ease-out)
-  position: absolute
-  top: $header-height
-  bottom: 0
-  left: 0
-  width: $secondary-width
+  @include span-columns(3)
   padding: 0
-  //background: #EEEEEE
+  border-color: #EEE
+  //@include debug-vertical-alignment()
+  @include at-breakpoint(12 40em)
+    @include span-columns(12)
+    @include trailing-border(1px, 0)
 
 
+  & > div
+    margin: $base-line-height 0
+    p
+      @include adjust-font-size-to(14px)
 
 
 
@@ -65,50 +87,55 @@ body
 // ---------------------------------
 .nav-module
 
-  padding: $base-line-height 0
-
   [class^="icon-"]:before, [class*=" icon-"]:before
     margin-right: 5px
     width: 17px
 
-  .n1
-    a
-      font-size: 0.9em
-      line-height: 1.7em
-      display: block
-      padding: 0 20px
-      color: $c1
-      text-decoration: none
-      &:hover
-        color: $c2
+  & > div:first-child
+    padding: $base-line-height 0
 
 
 // Top-level View Styling
 // ---------------------------------
+.touch .toolbar-view
+  @include transition(top .3s ease-out)
 .toolbar-view
   @include pie-clearfix()
   position: relative
+  margin-top: $billboard-height
+  width: 100%
+
   background: $c1
-  z-index: 9997
-  line-height: $toolbar-height
+  z-index: 9992
+
   padding: 0
 
-  div:nth-child(1)
-    padding-left: 20px
-    float: left
-    color: #FFF
+  & > div:first-child
+    @include container
+    position: relative
+
+    div:nth-child(1)
+      color: #FFFFFF
+
+      .h5
+        font-weight: $light-weight
+        @include adjust-font-size-to(16px)
+        @include rhythm(.5, 0, 0, .5, 16px)
+
 
 .scroll-view
+  width: 100%
   overflow-x: hidden
   overflow-y: scroll
-  position: absolute
-  top: $toolbar-height
-  left: 0
-  right: 0
-  bottom: 0
+  //position: absolute
+  //top: $toolbar-height
+  //left: 0
+  //right: 0
+  //bottom: 0
   z-index: 9996
-  background: #e6e6e6
+  //background: #e6e6e6
   -webkit-overflow-scrolling: touch
+  //@include debug-vertical-alignment()
   ul
     @include pie-clearfix()
     @include perspective(400)
@@ -116,15 +143,26 @@ body
     overflow: hidden
 
 
+.module-content
+  background: transparent
+  @extend .scroll-view
+  top: 0
+  padding: 0 $base-line-height * 2
 
 
 [data-control="layout"]
-  position: absolute
-  right: 10px
-  top: 10px
-  line-height: 20px
+  @include span-columns(2 omega)
+  text-align: right
+  @include rhythm(0, 0, 0, 0, 14px)
+  line-height: $base-line-height * 2
   button
-    line-height: 22px
+    padding: $base-line-height/4
+    @include adjust-font-size-to(14px)
+  [class^="icon-"]
+    @include adjust-leading-to(1)
+
+  @include at-breakpoint(12 40em)
+    display: none
 
 
 
@@ -159,7 +197,7 @@ body
 [coupon-search]
   position: absolute
   top: 10px
-  right: 12px
+  right: $gutter-width
 
   input
     width: 9em
@@ -241,3 +279,124 @@ strong
 
 .hide
   display: none
+
+
+
+
+pre[class*="language-"]
+  @include rhythm(2, 1, 1, 2, 14px)
+  @include adjust-font-size-to(14px)
+
+
+
+.media
+  @include pie-clearfix()
+  overflow: hidden
+
+  [class*="media-aside"]
+    float: left
+    margin-right: 20px
+
+  .media-aside-fixed-2
+    width: 48px
+
+  .media-content
+    overflow: hidden
+
+
+
+.newmodal
+  background: #FFFFCC
+  position: absolute
+  top: 0
+  left: 0
+  width: 500px
+  height: 500px
+  z-index: 9999
+
+
+
+
+.touch .billboard
+  @include transition(top .1s)
+.billboard
+  left: 0
+  right: 0
+  top: $header-height
+  width: 100%
+  position: fixed
+  height: $billboard-height
+  background: $c3
+
+
+  & > div:first-child
+    @include container
+    color: #FFF
+
+    .h1
+      @include rhythm(1, 0, 0, 0, 48px)
+
+    .h2
+      @include rhythm(0, 0, 0, 1, 38px)
+      color: #FFF
+
+
+
+
+
+
+
+
+[dropdown-menu]
+  cursor: pointer
+
+
+  *:first-child
+    @include adjust-font-size-to(16px)
+    @include rhythm(0, .25, .25, 0, 16px)
+    @include border-radius(2px)
+    //border-color: $c1
+    //@include rhythm-borders($width: 2px, $lines: .5)
+    background: shade($c1, 18)
+    color: #FFF
+    padding-left: 8px
+    padding-right: 8px
+    position: relative
+
+    [class^="icon-"]
+      height: auto
+      padding: 0
+      @include adjust-font-size-to(16px)
+      border: 0
+      &:before
+        width: auto
+        color: #FFF
+        border: 0
+
+      @include adjust-leading-to(1)
+      display: inline-block
+      float: right
+
+
+
+  [dropdown-options]
+    display: none
+
+#category-menu, #radius-menu
+  @include rhythm(.5, 0, 0, .5)
+  @include span-columns(3)
+  @include at-breakpoint(12 40em)
+    @include span-columns(12)
+    @include rhythm(0,0,0,.25)
+
+#category-menu
+  @include at-breakpoint(12 40em)
+    @include rhythm(.5,0,0,.25)
+
+#radius-menu
+  @include at-breakpoint(12 40em)
+    @include rhythm(0,0,0,.5)
+
+
+
+

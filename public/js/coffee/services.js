@@ -72,17 +72,13 @@
 
   module.service('Coupons', [
     'KeywordListingLoader', 'CategoryListingsLoader', '$q', '$route', '$location', function(KeywordListingLoader, CategoryListingsLoader, $q, $route, $location) {
-      var getListings;
+      var getListingsByKeyword;
 
-      getListings = function() {
-        if ($route.current.params.keywords) {
-          return KeywordListingLoader($route.current.params.keywords);
-        } else {
-          return CategoryListingsLoader($route.current.params.category);
-        }
+      getListingsByKeyword = function(terms) {
+        return KeywordListingLoader(terms);
       };
       return {
-        getAllListings: getListings
+        getAllListingsByKeyword: getListingsByKeyword
       };
     }
   ]);
@@ -97,12 +93,12 @@
 
   module.factory('BusinessProfileLoader', [
     'BusinessProfile', '$q', '$route', function(BusinessProfile, $q, $route) {
-      return function() {
+      return function(profileId) {
         var delay;
 
         delay = $q.defer();
         BusinessProfile.get({
-          id: $route.current.params.profileId
+          id: profileId
         }, function(profile) {
           return delay.resolve(profile);
         }, function() {

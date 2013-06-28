@@ -7,11 +7,13 @@ deps = [
   'app.controllers'
   'ngResource'
   'ngCookies'
+  'vp.dialogs'
 ]
 
 appConfig = ['$routeProvider', '$locationProvider', '$httpProvider', ($routeProvider, $locationProvider, $httpProvider) ->
   $routeProvider
     .when '/coupons/home',
+#      action: 'home.welcome'
       templateUrl: '/partials/home.jade'
       controller: 'HomeController'
 
@@ -26,9 +28,13 @@ appConfig = ['$routeProvider', '$locationProvider', '$httpProvider', ($routeProv
     .when '/listing/profile/:profileId',
       templateUrl: '/partials/business_profile.jade'
       controller: 'BusinessProfileController'
-      resolve:
-        profile: (BusinessProfileLoader) ->
-          return BusinessProfileLoader()
+
+    .when '/resources/:page',
+      action: ''
+
+    .when '/modal',
+      action: ''
+
 
     .otherwise
       redirectTo: '/'

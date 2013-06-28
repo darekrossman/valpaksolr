@@ -10,5 +10,5 @@ div
       p.tile-offertext {{listing.title}}
       p.tile-distance(ng-show="listing.selectedDetail.formattedDist") {{listing.selectedDetail.formattedDist}} miles away
 
-    a.btn(ng-href="/listing/profile/{{listing.selectedDetail.bppId}}") Gimme!
+    a.btn(ng-href="/listing/profile/{{listing.selectedDetail.bppId}}", ng-click="openDialog()") Gimme!
 

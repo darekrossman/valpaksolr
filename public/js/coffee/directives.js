@@ -42,6 +42,51 @@
     }
   ]);
 
+  module.directive('fixedChild', [
+    '$document', 'ScrollWatch', function($document, ScrollWatch) {
+      return {
+        link: function(scope, element, attrs) {
+          var fixedAtOffset, isFixed, nextEl, nextElOffset, parent, parentWidth, startingOffset;
+
+          parent = element.parent();
+          parentWidth = parent.width();
+          startingOffset = element.offset().top;
+          fixedAtOffset = 48;
+          isFixed = false;
+          nextEl = element.next();
+          nextElOffset = nextEl.position().top - fixedAtOffset;
+          return $document.bind('scroll', function(event) {
+            var docScrollTop;
+
+            docScrollTop = $document.scrollTop();
+            if (docScrollTop >= startingOffset - fixedAtOffset && !isFixed) {
+              element.css({
+                'position': 'fixed',
+                'margin-top': 0,
+                'top': fixedAtOffset + 'px'
+              });
+              nextEl.css({
+                'margin-top': nextElOffset + 'px'
+              });
+              isFixed = true;
+            }
+            if (docScrollTop < startingOffset - fixedAtOffset && isFixed) {
+              element.css({
+                'margin-top': startingOffset - fixedAtOffset + 'px',
+                'position': 'relative',
+                'top': 0
+              });
+              nextEl.css({
+                'margin-top': 0
+              });
+              return isFixed = false;
+            }
+          });
+        }
+      };
+    }
+  ]);
+
   module.directive('coupontile', function() {
     return {
       replace: true,
@@ -194,6 +239,31 @@
       }
     };
   });
+
+  module.directive('slowScroll', [
+    '$document', function($document) {
+      return {
+        link: function(scope, element, attrs) {
+          return $document.bind('scroll', function() {
+            return element.css({
+              top: -0.2 * $document.scrollTop() + 48 + 'px'
+            });
+          });
+        }
+      };
+    }
+  ]);
+
+  module.directive('dropdownMenu', [
+    function() {
+      return {
+        link: function(scope, element, attrs) {
+          element.addClass('dd-menu');
+          return element.children().first().append('<span class="icon-down-open"></span>');
+        }
+      };
+    }
+  ]);
 
 }).call(this);
 

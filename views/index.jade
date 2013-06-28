@@ -1,15 +1,28 @@
 extends layout
 
 
-append head-content
+append header-content
   .location-status.icon-location St. Petersburg, FL
   .app-search(coupon-search)
 
 
 block content
 
-  .secondary(ng-controller="SidebarController")
-    include partials/listings_sidebar
+  .billboard(slow-scroll)
+    div
+      h1.h1 Hi, saver!
+      h2.h2.subhead You look great : )
 
-  .primary
-    #app-view(ng-view)
+  include partials/toolbar_view
+
+
+
+  .container
+
+    div
+
+      .secondary(ng-controller="SidebarController")
+        div(ng-include="'partials/listings_sidebar.jade'")
+
+      .primary
+        .app-view(ng-view)

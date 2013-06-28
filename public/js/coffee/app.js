@@ -2,7 +2,7 @@
 (function() {
   var app, appConfig, deps;
 
-  deps = ['app.filters', 'app.services', 'app.directives', 'app.controllers', 'ngResource', 'ngCookies'];
+  deps = ['app.filters', 'app.services', 'app.directives', 'app.controllers', 'ngResource', 'ngCookies', 'vp.dialogs'];
 
   appConfig = [
     '$routeProvider', '$locationProvider', '$httpProvider', function($routeProvider, $locationProvider, $httpProvider) {
@@ -19,12 +19,11 @@
         controller: 'ListingController'
       }).when('/listing/profile/:profileId', {
         templateUrl: '/partials/business_profile.jade',
-        controller: 'BusinessProfileController',
-        resolve: {
-          profile: function(BusinessProfileLoader) {
-            return BusinessProfileLoader();
-          }
-        }
+        controller: 'BusinessProfileController'
+      }).when('/resources/:page', {
+        action: ''
+      }).when('/modal', {
+        action: ''
       }).otherwise({
         redirectTo: '/'
       });

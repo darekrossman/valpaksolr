@@ -44,6 +44,54 @@ module.directive 'scrollView', ['ScrollWatch', (ScrollWatch) ->
 
 
 
+
+# ------------------------------------------------------------------------
+# Directive: fixed-child
+# Dependencies: ScrollWatch
+# Inherits: --
+#
+# This directive will set an element to a fixed position while maintaining
+# the correct width within its parent.
+
+module.directive 'fixedChild', ['$document', 'ScrollWatch', ($document, ScrollWatch) ->
+  link: (scope, element, attrs) ->
+    parent = element.parent()
+    parentWidth = parent.width()
+
+    startingOffset = element.offset().top
+    fixedAtOffset = 48 # height of header
+    isFixed = false
+
+    nextEl = element.next()
+    nextElOffset = nextEl.position().top - fixedAtOffset
+
+
+
+    $document.bind 'scroll', (event) ->
+      docScrollTop = $document.scrollTop()
+      if docScrollTop >= startingOffset - (fixedAtOffset) and !isFixed
+        element.css
+          'position': 'fixed'
+          'margin-top': 0
+          'top': fixedAtOffset + 'px'
+        nextEl.css
+          'margin-top': nextElOffset + 'px'
+        isFixed = true
+
+      if docScrollTop < startingOffset - (fixedAtOffset) and isFixed
+        element.css
+          'margin-top': startingOffset - fixedAtOffset + 'px'
+          'position': 'relative'
+          'top': 0
+        nextEl.css
+          'margin-top': 0
+        isFixed = false
+]
+
+
+
+
+
 # ------------------------------------------------------------------------
 # Directive: coupontile
 # Dependencies: --
@@ -225,4 +273,22 @@ module.directive 'loadmore', () ->
       )
 
 
+module.directive 'slowScroll', ['$document', ($document) ->
+  link: (scope, element, attrs) ->
+    $document.bind 'scroll', () ->
+      element.css
+        top: -0.2 * $document.scrollTop() + 48 + 'px'
 
+
+]
+
+
+
+
+
+
+module.directive 'dropdownMenu', [() ->
+  link: (scope, element, attrs) ->
+    element.addClass('dd-menu')
+    element.children().first().append('<span class="icon-down-open"></span>')
+]

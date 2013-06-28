@@ -5,7 +5,13 @@
   module = angular.module('app.controllers', []);
 
   AppController = module.controller('AppController', [
-    '$scope', '$rootScope', '$log', 'ListingFilter', 'User', function($scope, $rootScope, $log, ListingFilter, User) {
+    '$scope', '$location', '$rootScope', '$log', '$route', 'ListingFilter', 'User', 'Dialog', function($scope, $location, $rootScope, $log, $route, ListingFilter, User, Dialog) {
+      var oldRoute;
+
+      oldRoute = null;
+      $scope.openDialog = function() {
+        return Dialog.show('partials/business_profile.jade');
+      };
       return $scope.listingFilter = ListingFilter;
     }
   ]);
@@ -15,11 +21,7 @@
   ToolbarController = module.controller('ToolbarController', [
     '$scope', '$route', 'ListingFilter', 'User', function($scope, $route, ListingFilter, User) {
       $scope.user = User;
-      if ($route.current.params.keywords) {
-        ListingFilter.resultsLabel = "Showing results for: '" + $route.current.params.keywords + "'";
-      } else {
-        ListingFilter.resultsLabel = $route.current.params.category;
-      }
+      $scope.userToggles = User.prefs.ui.toggles;
       return $scope.setLayout = function(layout) {
         $scope.userToggles.listing_layout = layout;
         return localStorage.setItem('layout_option', layout);
@@ -36,15 +38,19 @@
   SidebarController = module.controller('SidebarController', ['$scope', function($scope) {}]);
 
   ListingController = module.controller('ListingController', [
-    '$scope', '$location', '$route', '$rootScope', '$q', 'Coupons', 'ListingFilter', 'ScrollWatch', 'User', function($scope, $location, $route, $q, $rootScope, Coupons, ListingFilter, ScrollWatch, User) {
-      var displayError;
+    '$scope', '$location', '$route', '$q', 'Coupons', 'ListingFilter', 'ScrollWatch', 'User', 'Dialog', function($scope, $location, $route, $q, Coupons, ListingFilter, ScrollWatch, User, Dialog) {
+      var displayError, lRoute;
 
       $scope.listingFilter = ListingFilter;
       $scope.userToggles = User.prefs.ui.toggles;
       $scope.listings = [];
       $scope.scrollBottomReached = false;
       $scope.listingFilter.loading = true;
-      Coupons.getAllListings().then(function(listings) {
+      lRoute = $route.current;
+      $scope.$on('$routeChangeStart', function(event, newRoute, oldRoute) {
+        return $route.current = lRoute;
+      });
+      Coupons.getAllListingsByKeyword($route.current.params.keywords).then(function(listings) {
         $scope.gotError = false;
         $scope.allListings = Array.prototype.concat(listings.keywordCouponsList, listings.keywordGroceryList, listings.keywordSdcCouponsList, listings.keywordDealsList);
         $scope.appendListings();
@@ -90,9 +96,11 @@
   ]);
 
   BusinessProfileController = module.controller('BusinessProfileController', [
-    '$scope', '$location', '$route', 'profile', function($scope, $location, $route, profile) {
-      $scope.profile = profile;
-      return $scope.businessGeo = profile.selectedAddressOffer.geoCoordinates;
+    '$scope', '$location', '$route', 'BusinessProfileLoader', function($scope, $location, $route, BusinessProfileLoader) {
+      return BusinessProfileLoader($route.current.params.profileId).then(function(profile) {
+        $scope.profile = profile;
+        return $scope.businessGeo = profile.selectedAddressOffer.geoCoordinates;
+      });
     }
   ]);
 
