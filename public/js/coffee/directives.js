@@ -3,7 +3,7 @@
   var module,
     __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
-  module = angular.module('app.directives', []);
+  module = angular.module('app.directives', ['vp.dropdowns']);
 
   module.directive('ngTap', function() {
     return function(scope, element, attrs) {
@@ -249,17 +249,6 @@
               top: -0.2 * $document.scrollTop() + 48 + 'px'
             });
           });
-        }
-      };
-    }
-  ]);
-
-  module.directive('dropdownMenu', [
-    function() {
-      return {
-        link: function(scope, element, attrs) {
-          element.addClass('dd-menu');
-          return element.children().first().append('<span class="icon-down-open"></span>');
         }
       };
     }

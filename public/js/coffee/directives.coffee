@@ -1,4 +1,4 @@
-module = angular.module('app.directives', [])
+module = angular.module('app.directives', ['vp.dropdowns'])
 
 
 module.directive 'ngTap', ->
@@ -285,10 +285,3 @@ module.directive 'slowScroll', ['$document', ($document) ->
 
 
 
-
-
-module.directive 'dropdownMenu', [() ->
-  link: (scope, element, attrs) ->
-    element.addClass('dd-menu')
-    element.children().first().append('<span class="icon-down-open"></span>')
-]

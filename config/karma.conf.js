@@ -10,6 +10,7 @@ basePath = '../';
 files = [
   JASMINE,
   JASMINE_ADAPTER,
+  'public/components/jquery/jquery.min.js',
   'public/components/angular/angular.min.js',
   'public/components/angular-resource/angular-resource.min.js',
   'public/components/angular/angular-cookies.min.js',

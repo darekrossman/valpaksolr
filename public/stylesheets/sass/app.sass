@@ -320,6 +320,7 @@ pre[class*="language-"]
 .touch .billboard
   @include transition(top .1s)
 .billboard
+  display: none
   left: 0
   right: 0
   top: $header-height
@@ -348,19 +349,26 @@ pre[class*="language-"]
 
 
 [dropdown-menu]
+  @include rhythm(.5, 0, 0, .5)
+  @include span-columns(3)
+  @include at-breakpoint(12 40em)
+    @include span-columns(12)
+    @include rhythm(0,0,0,.25)
+
   cursor: pointer
+  position: relative
 
-
-  *:first-child
+  button:first-child
     @include adjust-font-size-to(16px)
     @include rhythm(0, .25, .25, 0, 16px)
     @include border-radius(2px)
-    //border-color: $c1
-    //@include rhythm-borders($width: 2px, $lines: .5)
+    display: block
+    text-align: left
+    width: 100%
     background: shade($c1, 18)
     color: #FFF
-    padding-left: 8px
-    padding-right: 8px
+    padding-left: $base-line-height/3
+    padding-right: $base-line-height/3
     position: relative
 
     [class^="icon-"]
@@ -377,17 +385,33 @@ pre[class*="language-"]
       display: inline-block
       float: right
 
+    &:hover
+      background: shade($c1, 25)
+
+  &.dropdown-active
+    button:first-child
+      background: shade($c1, 25)
+
+    [dropdown-options]
+      @include rhythm(1.5, .5, .5, 0, 16px)
+      @include border-bottom-radius(3px)
+      padding-left: $base-line-height/3
+      padding-right: $base-line-height/3
+      display: block
+
 
 
   [dropdown-options]
     display: none
+    position: absolute
+    top: 0
+    left: 0
+    background: shade($c1, 18)
+    color: #FFF
+    width: 100%
 
-#category-menu, #radius-menu
-  @include rhythm(.5, 0, 0, .5)
-  @include span-columns(3)
-  @include at-breakpoint(12 40em)
-    @include span-columns(12)
-    @include rhythm(0,0,0,.25)
+
+
 
 #category-menu
   @include at-breakpoint(12 40em)

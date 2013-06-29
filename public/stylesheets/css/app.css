@@ -147,7 +147,7 @@ body { width: 100%; overflow-x: hidden; padding: 48px 0 0 0; margin: 0; height: 
 
 .touch .toolbar-view { -webkit-transition: top 0.3s ease-out; -moz-transition: top 0.3s ease-out; -o-transition: top 0.3s ease-out; transition: top 0.3s ease-out; }
 
-.toolbar-view { *zoom: 1; position: relative; margin-top: 168px; width: 100%; background: #1f5b73; z-index: 9992; padding: 0; }
+.toolbar-view { *zoom: 1; position: relative; margin-top: 0; width: 100%; background: #1f5b73; z-index: 9992; padding: 0; }
 .toolbar-view:after { content: ""; display: table; clear: both; }
 .toolbar-view > div:first-child { *zoom: 1; max-width: 940px; _width: 940px; padding-left: 20px; padding-right: 20px; margin-left: auto; margin-right: auto; position: relative; }
 .toolbar-view > div:first-child:after { content: ""; display: table; clear: both; }
@@ -207,20 +207,21 @@ pre[class*="language-"] { margin-top: 3.42857em; padding-top: 1.71429em; padding
 
 .touch .billboard { -webkit-transition: top 0.1s; -moz-transition: top 0.1s; -o-transition: top 0.1s; transition: top 0.1s; }
 
-.billboard { left: 0; right: 0; top: 48px; width: 100%; position: fixed; height: 168px; background: #1bafbf; }
+.billboard { display: none; left: 0; right: 0; top: 48px; width: 100%; position: fixed; height: 0; background: #1bafbf; }
 .billboard > div:first-child { *zoom: 1; max-width: 940px; _width: 940px; padding-left: 20px; padding-right: 20px; margin-left: auto; margin-right: auto; color: white; }
 .billboard > div:first-child:after { content: ""; display: table; clear: both; }
 .billboard > div:first-child .h1 { margin-top: 0.5em; padding-top: 0em; padding-bottom: 0em; margin-bottom: 0em; }
 .billboard > div:first-child .h2 { margin-top: 0em; padding-top: 0em; padding-bottom: 0em; margin-bottom: 0.63158em; color: white; }
 
-[dropdown-menu] { cursor: pointer; }
-[dropdown-menu] *:first-child { font-size: 1em; line-height: 1.5em; margin-top: 0em; padding-top: 0.375em; padding-bottom: 0.375em; margin-bottom: 0em; -webkit-border-radius: 2px; -moz-border-radius: 2px; -ms-border-radius: 2px; -o-border-radius: 2px; border-radius: 2px; background: #194a5e; color: white; padding-left: 8px; padding-right: 8px; position: relative; }
-[dropdown-menu] *:first-child [class^="icon-"] { height: auto; padding: 0; font-size: 1em; line-height: 1.5em; border: 0; line-height: 1.5em; display: inline-block; float: right; }
-[dropdown-menu] *:first-child [class^="icon-"]:before { width: auto; color: white; border: 0; }
-[dropdown-menu] [dropdown-options] { display: none; }
-
-#category-menu, #radius-menu { margin-top: 0.75em; padding-top: 0em; padding-bottom: 0em; margin-bottom: 0.75em; width: 23.40426%; float: left; margin-right: 2.12766%; display: inline; }
-@media (max-width: 40em) { #category-menu, #radius-menu { width: 100%; float: left; margin-right: 2.12766%; margin-top: 0em; padding-top: 0em; padding-bottom: 0em; margin-bottom: 0.375em; } }
+[dropdown-menu] { margin-top: 0.75em; padding-top: 0em; padding-bottom: 0em; margin-bottom: 0.75em; width: 23.40426%; float: left; margin-right: 2.12766%; display: inline; cursor: pointer; position: relative; }
+@media (max-width: 40em) { [dropdown-menu] { width: 100%; float: left; margin-right: 2.12766%; margin-top: 0em; padding-top: 0em; padding-bottom: 0em; margin-bottom: 0.375em; } }
+[dropdown-menu] button:first-child { font-size: 1em; line-height: 1.5em; margin-top: 0em; padding-top: 0.375em; padding-bottom: 0.375em; margin-bottom: 0em; -webkit-border-radius: 2px; -moz-border-radius: 2px; -ms-border-radius: 2px; -o-border-radius: 2px; border-radius: 2px; display: block; text-align: left; width: 100%; background: #194a5e; color: white; padding-left: 8px; padding-right: 8px; position: relative; }
+[dropdown-menu] button:first-child [class^="icon-"] { height: auto; padding: 0; font-size: 1em; line-height: 1.5em; border: 0; line-height: 1.5em; display: inline-block; float: right; }
+[dropdown-menu] button:first-child [class^="icon-"]:before { width: auto; color: white; border: 0; }
+[dropdown-menu] button:first-child:hover { background: #174456; }
+[dropdown-menu].dropdown-active button:first-child { background: #174456; }
+[dropdown-menu].dropdown-active [dropdown-options] { margin-top: 2.25em; padding-top: 0.75em; padding-bottom: 0.75em; margin-bottom: 0em; -moz-border-radius-bottomleft: 3px; -webkit-border-bottom-left-radius: 3px; border-bottom-left-radius: 3px; -moz-border-radius-bottomright: 3px; -webkit-border-bottom-right-radius: 3px; border-bottom-right-radius: 3px; padding-left: 8px; padding-right: 8px; display: block; }
+[dropdown-menu] [dropdown-options] { display: none; position: absolute; top: 0; left: 0; background: #194a5e; color: white; width: 100%; }
 
 @media (max-width: 40em) { #category-menu { margin-top: 0.75em; padding-top: 0em; padding-bottom: 0em; margin-bottom: 0.375em; } }
 
